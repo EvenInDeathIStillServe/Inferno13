@@ -1,0 +1,23 @@
+{
+	"version": 1,
+	"map_name": "Inferno",
+	"map_path": "map_files/Inferno",
+	"map_file": "inferno.dmm",
+	"station_ruin_budget":0,
+	"space_ruin_levels":0,
+	"space_empty_levels":0,
+    "shuttles": {
+		"cargo":"cargo_delta"
+	},
+	"traits":[
+		{
+			"Gravity":true,
+			"Station":1
+		},
+		{
+			"Gravity":true,
+			"Baseturf":"/turf/open/indestructible/ground/mountain"
+		}
+	],
+	"minetype":"none"
+}
