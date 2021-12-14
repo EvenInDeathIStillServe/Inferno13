@@ -1,0 +1,30 @@
+## Uncomment by removing the '#' character in front of them to enable these ##
+#output_name: "output"
+#base_icon_state: "icon"
+
+north_end: 5
+
+se_convex: 0
+nw_convex: 1
+ne_convex: 2
+sw_convex: 3
+
+se_concave: 20
+nw_concave: 21
+ne_concave: 22
+sw_concave: 23
+
+se_horizontal: 4
+nw_horizontal: 5
+ne_horizontal: 18
+sw_horizontal: 19
+
+se_vertical: 16
+nw_vertical: 17
+ne_vertical: 14
+sw_vertical: 15
+
+se_flat: 28
+nw_flat: 29
+ne_flat: 30
+sw_flat: 31

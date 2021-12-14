@@ -1,0 +1,56 @@
+## Uncomment by removing the '#' character in front of them to enable these ##
+#output_name: "output"
+#base_icon_state: "icon"
+
+prefabs:
+ 9: 22
+ 5: 25
+ 10: 28
+ 6: 31
+ 137: 22
+ 21: 25
+ 74: 28
+ 38: 31
+
+prefab_overlays:
+ 9:
+  - 20
+ 5:
+  - 23
+ 10:
+  - 26
+ 6:
+  - 29
+ 137:
+  - 21
+ 21:
+  - 24
+ 74:
+  - 27
+ 38:
+  - 30
+
+nw_convex: 0
+ne_convex: 1
+sw_convex: 2
+se_convex: 3
+
+nw_vertical: 4
+ne_vertical: 5
+sw_vertical: 6
+se_vertical: 7
+
+nw_horizontal: 8
+ne_horizontal: 9
+sw_horizontal: 10
+se_horizontal: 11
+
+nw_concave: 12
+ne_concave: 13
+sw_concave: 14
+se_concave: 15
+
+nw_flat: 16
+ne_flat: 17
+sw_flat: 18
+se_flat: 19
