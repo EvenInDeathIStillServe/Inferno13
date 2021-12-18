@@ -12,11 +12,15 @@
 	"traits":[
 		{
 			"Gravity":true,
-			"Station":1
+			"Up": 1,
+			"Baseturf": "/turf/open/indestructible/ground/mountain",
+			"Linkage": "Cross"
 		},
 		{
 			"Gravity":true,
-			"Baseturf":"/turf/open/indestructible/ground/mountain"
+			"Down": -1,
+			"Baseturf": "/turf/open/indestructible/ground/mountain",
+			"Linkage": "Cross"
 		}
 	],
 	"minetype":"none"

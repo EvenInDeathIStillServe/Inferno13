@@ -30,6 +30,10 @@
 		return FALSE
 	if(world.time < spawn_delay)
 		return 0
+	for (var/mob/living/carbon/human/H in viewers(world.view, loc))
+		if (H.client && H.stat != DEAD)
+			addtimer(CALLBACK(src, .proc/spawn_mob), 1 MINUTES)
+			return FALSE
 	spawn_delay = world.time + spawn_time
 	if(spawned_mobs.len >= max_mobs)
 		return FALSE
@@ -68,3 +72,11 @@
 /obj/structure/nest/hidden/chud
 	mob_types = list(/mob/living/simple_animal/hostile/humanoid/chud = 1)
 	spawn_time = 2 MINUTES
+
+/obj/structure/nest/hidden/firefighter
+	mob_types = list(/mob/living/simple_animal/hostile/humanoid/firefighter = 1)
+	spawn_time = 5 MINUTES
+
+/obj/structure/nest/hidden/hardplace
+	mob_types = list(/mob/living/simple_animal/hostile/humanoid/hardplace = 1)
+	spawn_time = 5 MINUTES

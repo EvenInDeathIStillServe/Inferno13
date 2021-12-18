@@ -15,6 +15,7 @@
 	var/list/gas_filters
 	///Type of filter that spawns on roundstart
 	var/starting_filter_type = /obj/item/gas_filter
+	obj_value = 125
 
 /obj/item/clothing/mask/gas/Initialize(mapload)
 	. = ..()

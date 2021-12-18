@@ -193,6 +193,8 @@
 	ADD_TRAIT(src, TRAIT_NOFIRE_SPREAD, ROUNDSTART_TRAIT)
 	for(var/trait in weather_immunities)
 		ADD_TRAIT(src, trait, ROUNDSTART_TRAIT)
+	if (islist(armor))
+		armor = getArmor(arglist(armor))
 
 	if(speak)
 		speak = string_list(speak)

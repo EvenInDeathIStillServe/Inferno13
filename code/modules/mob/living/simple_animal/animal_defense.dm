@@ -1,3 +1,6 @@
+/mob/living/simple_animal/getarmor(def_zone, type)
+	return armor?.getRating(type)
+
 /mob/living/simple_animal/attack_hand(mob/living/carbon/human/user, list/modifiers)
 	// so that martial arts don't double dip
 	if (..())
@@ -125,7 +128,7 @@
 		return
 	return ..()
 
-/mob/living/simple_animal/proc/attack_threshold_check(damage, damagetype = BRUTE, armorcheck = MELEE, actuallydamage = TRUE)
+/mob/living/simple_animal/proc/attack_threshold_check(damage, damagetype = BRUTE, armorcheck = BEAT, actuallydamage = TRUE)
 	var/temp_damage = damage
 	if(!damage_coeff[damagetype])
 		temp_damage = 0
@@ -141,7 +144,7 @@
 		return TRUE
 
 /mob/living/simple_animal/bullet_act(obj/projectile/Proj, def_zone, piercing_hit = FALSE)
-	apply_damage(Proj.damage, Proj.damage_type)
+	attack_threshold_check(Proj.damage, Proj.damage_type, Proj.damage_type)
 	Proj.on_hit(src, 0, piercing_hit)
 	return BULLET_ACT_HIT
 

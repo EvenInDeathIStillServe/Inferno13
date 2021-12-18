@@ -21,7 +21,8 @@
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/obj/projectile/melee/M = new /obj/projectile/melee(proj_turf)
-	M.preparePixelProjectile(target, user, clickparams)
+	var/modifiers = params2list(clickparams)
+	M.preparePixelProjectile(target, user, modifiers)
 	M.firer = user
 	M.name = name
 	M.damage = apply_damage_modifier()
@@ -190,7 +191,7 @@ obj/item/melee/proc/charge_indicator(force_update = FALSE)
 	name = "swing"
 	icon_state = "swing"
 	damage = 0
-	damage_type = BRUTE
+	damage_type = BEAT
 	flag = "beat"
 	range = 3
 	speed = 1.3

@@ -106,3 +106,8 @@
 	name = "cell block sign"
 	desc = "A sign indicating which cell block you are prisoner in."
 	icon_state = "cells"
+
+/obj/structure/decoration/firebrigade
+	name = "fire brigade sign"
+	desc = "A sign indicating the sovereignty of the Catharsis City Fire Brigade."
+	icon_state = "firebrigade"

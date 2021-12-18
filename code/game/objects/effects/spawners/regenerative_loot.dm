@@ -28,7 +28,7 @@
 		for (var/mob/living/carbon/human/H in viewers(world.view, loc))
 			if (H.client && H.stat != DEAD)
 				addtimer(CALLBACK(src, .proc/drop_loot), viewed_regen_timer)
-				break
+				return
 	var/loot_spawned = 0
 	var/list/possibilities = loot
 	while((lootcount-loot_spawned) && possibilities.len)

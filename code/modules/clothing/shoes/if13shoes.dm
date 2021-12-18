@@ -14,6 +14,7 @@
 	desc = "Firefighter boots that'll let you stomp out fires."
 	icon_state = "turnout"
 	armor = list("beat" = 14, "slash" = 10, "stab" = 10, "shot" = 5, "enflame" = 20, "electric" = 16, "acid" = 12, "irradiation" = 5, "cold" = 14)
+	resistance_flags = FIRE_PROOF
 	obj_value = 200
 
 /obj/item/clothing/shoes/if13/leather

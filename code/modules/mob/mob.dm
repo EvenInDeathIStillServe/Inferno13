@@ -1459,4 +1459,4 @@
 			if (saved_skill == SSskills.all_skills[skillpath].name)
 				new_character.mind.set_level(skillpath, new_character.client.prefs.skills[saved_skill], TRUE)
 
-	SSjob.EquipRank(new_character, new_character.mind.assigned_role, 1)
+	SSjob.EquipRank(new_character, new_character.mind.assigned_role, new_character.client)

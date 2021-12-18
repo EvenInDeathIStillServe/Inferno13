@@ -22,6 +22,9 @@
 	var/move_to_delay = 3 //delay for the automated movement.
 	var/list/friends = list()
 	var/list/emote_taunt = list()
+	var/list/say_taunt = list()
+	var/last_taunt = 0
+	var/taunt_cooldown = 10 SECONDS
 	var/taunt_chance = 0
 
 	var/rapid_melee = 1  //Number of melee attacks between each npc pool tick. Spread evenly.
@@ -363,8 +366,12 @@
 
 /mob/living/simple_animal/hostile/proc/Aggro()
 	vision_range = aggro_vision_range
-	if(target && emote_taunt.len && prob(taunt_chance))
-		manual_emote("[pick(emote_taunt)] at [target].")
+	if(target && ((last_taunt + taunt_cooldown) <= world.time) && (emote_taunt.len || say_taunt.len) && prob(taunt_chance))
+		if (say_taunt)
+			say(pick(say_taunt), forced = "taunt")
+		else
+			manual_emote("[pick(emote_taunt)] at [target].")
+		last_taunt = world.time
 		taunt_chance = max(taunt_chance-7,2)
 
 

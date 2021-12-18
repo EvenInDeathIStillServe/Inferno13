@@ -114,3 +114,66 @@
 	icon_living = "chud_[rand(1,4)]"
 	icon_dead = icon_living
 	icon_state = icon_living
+
+/mob/living/simple_animal/hostile/humanoid/firefighter
+	name = "firefighter"
+	desc = "A stalwart member of the Catharsis City Fire Brigade. The Brigade is independent from the city itself and take no monetary compensation: they take care of fires in exchange for taking care of whoever is responsible."
+	icon_state = "firefighter_1"
+	icon_living = "firefighter_1"
+	icon_dead = "firefighter_1"
+	maxHealth = 130
+	health = 130
+	taunt_chance = 70
+	say_taunt = list("Who the fuck are you?!", "Arsonist!", "Get some!", "GAAAAAAAAH!!!", "Get 'em!")
+	armor = list("beat" = 8, "slash" = 8, "stab" = 8, "shot" = 4, "enflame" = 20, "electric" = 12, "acid" = 12, "irradiation" = 5, "cold" = 14)
+	harm_intent_damage = 40
+	melee_damage_lower = 40
+	melee_damage_upper = 40
+	melee_damage_type = SLASH
+	ranged_message = "swings an axe"
+	projectile_name = "fire axe"
+	weapon_overlay = "fireaxe"
+	attack_sound = 'sound/weapons/bladeslice.ogg'
+	cash_loot_min = 50
+	cash_loot_max = 100
+	loot = list(/obj/item/melee/club/fireaxe)
+	deep_loot = list(
+				/obj/item/clothing/head/helmet/if13/turnout = 10,
+				/obj/item/clothing/suit/armor/if13/turnout = 10,
+				/obj/item/clothing/gloves/if13/turnout = 10,
+				/obj/item/clothing/shoes/if13/turnout = 10)
+
+/mob/living/simple_animal/hostile/humanoid/firefighter/Initialize()
+	..()
+	icon_living = "firefighter_[rand(1,4)]"
+	icon_dead = icon_living
+	icon_state = icon_living
+
+/mob/living/simple_animal/hostile/humanoid/hardplace
+	name = "Rock Hardplace"
+	desc = "Chief Hardplace is feared among arsonists all over Catharsis. Hulking, unyielding, and absolutely merciless."
+	icon_state = "rockhardplace"
+	icon_living = "rockhardplace"
+	icon_dead = "rockhardplace"
+	maxHealth = 250
+	health = 250
+	taunt_chance = 100
+	say_taunt = list("The fuck are you doing down here?!", "You're getting cooked!", "Burn!", "Nice roast coming up!", "You're FIRED!")
+	armor = list("beat" = 8, "slash" = 8, "stab" = 8, "shot" = 4, "enflame" = 20, "electric" = 12, "acid" = 12, "irradiation" = 5, "cold" = 14)
+	retreat_distance = 2
+	minimum_distance = 2
+	harm_intent_damage = 40
+	melee_damage_lower = 40
+	melee_damage_upper = 40
+	projectiletype = /obj/projectile/energy/flame
+	ranged_message = "flames away"
+	projectile_name = "flame blast"
+	projectilesound = 'sound/weapons/flamethrower.ogg'
+	weapon_overlay = "flamethrower"
+	cash_loot_min = 500
+	cash_loot_max = 1000
+	deep_loot = list(
+				/obj/item/clothing/head/helmet/if13/turnout = 100,
+				/obj/item/clothing/suit/armor/if13/turnout = 100,
+				/obj/item/clothing/gloves/if13/turnout = 100,
+				/obj/item/clothing/shoes/if13/turnout = 100)

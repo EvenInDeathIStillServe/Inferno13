@@ -13,7 +13,7 @@
 	var/money_max
 	var/money_min
 
-	loot = list(/obj/item/holochip)
+	loot = list(/obj/item/holochip = 100)
 
 /obj/effect/spawner/regenlootdrop/if13/money/special_loot_act(obj/item/holochip/holo)
 	holo.credits = rand(money_min, money_max)
@@ -24,3 +24,20 @@
 /obj/effect/spawner/regenlootdrop/if13/money/low
 	money_max = 100
 	money_min = 25
+
+/obj/effect/spawner/regenlootdrop/if13/money/medium
+	money_max = 100
+	money_min = 250
+
+/obj/effect/spawner/regenlootdrop/if13/firestation
+	loot = list(
+				/obj/item/clothing/head/helmet/if13/turnout = 10,
+				/obj/item/clothing/suit/armor/if13/turnout = 10,
+				/obj/item/clothing/gloves/if13/turnout = 10,
+				/obj/item/clothing/shoes/if13/turnout = 10,
+				/obj/item/melee/club/fireaxe = 10,
+				/obj/item/melee/club/crowbar = 20,
+				/obj/item/extinguisher = 20,
+				/obj/item/clothing/mask/gas = 20,
+				/obj/item/flashlight = 10,
+				/obj/item/storage/fancy/cigarettes = 10)

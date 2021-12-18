@@ -38,3 +38,4 @@
 	bare_wound_bonus = 15
 	tool_behaviour = TOOL_KNIFE
 	charge_time = 1.5 SECONDS
+	obj_value = 75
