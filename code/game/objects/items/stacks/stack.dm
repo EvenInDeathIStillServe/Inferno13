@@ -564,6 +564,9 @@
 	if(istype(M) && M.dirty < 100)
 		M.dirty += amount
 
+/obj/item/stack/get_obj_value()
+	return obj_value * amount
+
 /*
  * Recipe datum
  */

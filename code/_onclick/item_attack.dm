@@ -261,6 +261,8 @@
 	if(!attack_threshold_check(I.force, I.damtype, I.damtype, FALSE))
 		playsound(loc, 'sound/weapons/tap.ogg', I.get_clamped_volume(), TRUE, -1)
 	else
+		if (ishuman(user))
+			player_attackers |= user
 		return ..()
 
 /mob/living/basic/attacked_by(obj/item/I, mob/living/user)

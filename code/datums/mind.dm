@@ -217,9 +217,12 @@
 
 ///Set level of a specific skill
 /datum/mind/proc/set_level(skill, newlevel, silent = FALSE)
+	adjust_experience(skill, get_exp_to_level(skill, newlevel), silent)
+
+/datum/mind/proc/get_exp_to_level(skill, newlevel)
 	var/oldlevel = get_skill_level(skill)
 	var/difference = SKILL_EXP_LIST[newlevel] - SKILL_EXP_LIST[oldlevel]
-	adjust_experience(skill, difference, silent)
+	return difference
 
 ///Check what the current skill level is based on that skill's exp
 /datum/mind/proc/update_skill_level(skill)

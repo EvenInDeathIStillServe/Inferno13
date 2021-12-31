@@ -66,6 +66,7 @@
 /obj/effect/projectile/tracer/tracer/aiming
 	icon_state = "pixelbeam_greyscale"
 	plane = ABOVE_LIGHTING_PLANE
+	alpha = 220
 
 /obj/effect/projectile/tracer/wormhole
 	icon_state = "wormhole_g"

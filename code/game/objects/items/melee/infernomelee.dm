@@ -34,7 +34,7 @@
 	if (ishuman(user))
 		var/meleemod = 1 + user.mind.get_skill_level(/datum/skill/melee)/10
 		M.damage *= meleemod
-	playsound(user, 'sound/weapons/punchmiss.ogg', 100, 1)
+	playsound(user, 'sound/weapons/punchmiss.ogg', 50, 1)
 	M.fire()
 	after_melee_attack()
 	return

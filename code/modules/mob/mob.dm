@@ -1428,21 +1428,7 @@
 
 	var/mob/living/carbon/human/new_character = new//The mob being spawned.
 	SSjob.SendToLateJoin(new_character)
-/*
-	var/datum/data/record/record_found			//Referenced to later to either randomize or not randomize the character.
-	if(mind)	//mind isn't currently in use by someone/something
-		/*Try and locate a record for the person being respawned through GLOB.data_core.
-		This isn't an exact science but it does the trick more often than not.*/
-		var/id = md5("[real_name][mind.assigned_role]")
 
-		record_found = find_record("id", id, GLOB.data_core.locked)
-
-	if(record_found)//If they have a record we can determine a few things.
-		new_character.real_name = record_found.fields["name"]
-		new_character.gender = lowertext(record_found.fields["gender"])
-		new_character.age = record_found.fields["age"]
-		new_character.hardset_dna(record_found.fields["identity"], record_found.fields["enzymes"], record_found.fields["name"], record_found.fields["blood_type"], record_found.fields["species"], record_found.fields["features"])
-*/
 	client.prefs.safe_transfer_prefs_to(new_character)
 	new_character.dna.update_dna_identity()
 	new_character.key = key
@@ -1453,10 +1439,5 @@
 		new_character.mind_initialize()
 	if(!new_character.mind.assigned_role)
 		new_character.mind.assigned_role = "Clone"//If they somehow got a null assigned role.
-
-	for (var/saved_skill in new_character.client.prefs.skills)
-		for (var/skillpath in SSskills.all_skills)
-			if (saved_skill == SSskills.all_skills[skillpath].name)
-				new_character.mind.set_level(skillpath, new_character.client.prefs.skills[saved_skill], TRUE)
 
 	SSjob.EquipRank(new_character, new_character.mind.assigned_role, new_character.client)

@@ -116,6 +116,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 	if (id && id.registered_account)
 		. += "The credit chip's display reads: <b>$[id.registered_account.account_balance]</b>."
+	if (ishuman(loc))
+		var/mob/living/carbon/human/wearer = loc
+		. += span_nicegreen("XP: <b>[wearer.free_experience]</b> available out of [wearer.total_experience].")
 
 	if(inserted_item && (!isturf(loc)))
 		. += span_notice("Ctrl-click to remove [inserted_item].") //traitor pens are disguised so we're fine naming them on examine
@@ -230,6 +233,11 @@ GLOBAL_LIST_EMPTY(PDAs)
 		explode(user, from_message_menu = TRUE)
 		return
 
+	if (!ishuman(user)) //You don't need to interact with this if you're not human.
+		return
+
+	var/mob/living/carbon/human/H = user
+
 	..()
 
 	var/datum/asset/spritesheet/assets = get_asset_datum(/datum/asset/spritesheet/simple/pda)
@@ -267,14 +275,13 @@ GLOBAL_LIST_EMPTY(PDAs)
 	else
 		switch (ui_mode)
 			if (PDA_UI_HUB)
-				dat += "<h2>PERSONAL DATA ASSISTANT v.1.2</h2>"
+				dat += "<h2>CC WRIST-BUD v1.39</h2>"
 				dat += "Owner: [owner], [ownjob]<br>"
-				dat += text("ID: <a href='?src=[REF(src)];choice=Authenticate'>[id ? "[id.registered_name], [id.assignment]" : "----------"]")
-				dat += text("<br><a href='?src=[REF(src)];choice=UpdateInfo'>[id ? "Update PDA Info" : ""]</A><br><br>")
+				dat += "Level: [H.experience_level]<br>"
+				dat += "XP: [H.free_experience] available out of [H.total_experience]<br>"
 
 				dat += "[station_time_timestamp()]<br>" //:[world.time / 100 % 6][world.time / 100 % 10]"
-				dat += "[time2text(world.realtime, "MMM DD")] [GLOB.year_integer+540]<br>"
-				dat += "It has been [ROUND_TIME] since the emergency shuttle was last called."
+				dat += "[time2text(world.realtime, "MMM DD")] [GLOB.year_integer+60]<br>"
 
 
 				dat += "<br><br>"
@@ -911,6 +918,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 /obj/item/pda/CtrlShiftClick(mob/user)
 	..()
 	eject_cart(user)
+
+/obj/item/pda/attack_hand(mob/user, list/modifiers)
+	if (loc == usr && usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+		return attack_self(user)
 
 /obj/item/pda/verb/verb_toggle_light()
 	set name = "Toggle light"

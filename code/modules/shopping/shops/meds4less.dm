@@ -8,7 +8,7 @@
 /obj/machinery/shop_rack/meds4less/meds
 	icon_state = "meds"
 	goods = list(
-		new /datum/data/shopping_good("Nanite Healer",			/obj/item/reagent_containers/hypospray/medipen/nanite,	100),
+		new /datum/data/shopping_good("Nanite Healer",			/obj/item/reagent_containers/hypospray/medipen/nanite,	300),
 		new /datum/data/shopping_good("First Aid Kit",			/obj/item/storage/firstaid/regular,						200),
 		new /datum/data/shopping_good("Gauze",					/obj/item/stack/medical/gauze,							30),
 		new /datum/data/shopping_good("Suture",					/obj/item/stack/medical/suture,							50),

@@ -5,6 +5,7 @@
 	icon = 'icons/obj/bodybag.dmi'
 	icon_state = "bodybag"
 	density = FALSE
+	anchored = FALSE
 	mob_storage_capacity = 2
 	open_sound = 'sound/items/zip.ogg'
 	close_sound = 'sound/items/zip.ogg'

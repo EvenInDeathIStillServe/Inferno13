@@ -15,6 +15,8 @@
 	var/store
 	var/bag_icon
 
+	///How much of the value the shop pays for items
+	var/sell_modifier = 1
 	var/list/bought_objects
 	var/list/unwanted_objects
 
@@ -41,11 +43,11 @@
 				new path(bag)
 		bag.illustration = bag_icon
 		bag.update_icon()
-		user.put_in_hands(bag)
 		qdel(card)
+		user.put_in_active_hand(bag)
 	else if (can_buy(W))
 		to_chat(user, "<span class='notice'>You sell [W].</span>")
-		user:payact(W.get_obj_value())
+		user:payact(round(W.get_obj_value() * sell_modifier))
 		qdel(W)
 
 /obj/machinery/shop_counter/proc/can_buy(obj/item/W)

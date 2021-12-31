@@ -315,6 +315,18 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Quirks
 	READ_FILE(S["all_quirks"], all_quirks)
 
+	//Skills
+	READ_FILE(S["skills"], skills)
+	if (!skills)
+		skills = list()
+
+	//Current level
+	READ_FILE(S["experience_level"] , experience_level)
+	//Total XP
+	READ_FILE(S["total_experience"] , total_experience)
+	//Available XP
+	READ_FILE(S["free_experience"] , free_experience)
+
 	//try to fix any outdated data if necessary
 	//preference updating will handle saving the updated data for us.
 	if(needs_update >= 0)
@@ -374,6 +386,17 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Quirks
 	WRITE_FILE(S["all_quirks"] , all_quirks)
+
+	//Skills
+	WRITE_FILE(S["skills"] , skills)
+
+	//Current level
+	WRITE_FILE(S["experience_level"] , experience_level)
+	//Total XP
+	WRITE_FILE(S["total_experience"] , total_experience)
+	//Available XP
+	WRITE_FILE(S["free_experience"] , free_experience)
+
 
 	return TRUE
 

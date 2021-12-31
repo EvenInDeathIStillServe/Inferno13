@@ -12,3 +12,12 @@
 
 /obj/machinery/shop_rack/junkmanjims
 	store = "Junkman Jim's"
+
+/mob/living/simple_animal/snm/interactible/shopkeeper/junkmanjim
+	name = "Junkman Jim"
+	desc = "Catharsis City's leading expert on trash, rubbish, garbage and refuse."
+	icon_state = "junkmanjim"
+	icon_living = "junkmanjim"
+	icon_dead = "junkmanjim"
+	anchored = TRUE
+	taught_skills = list("Scavenging" = 5)

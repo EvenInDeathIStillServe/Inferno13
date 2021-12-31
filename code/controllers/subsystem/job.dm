@@ -545,8 +545,16 @@ SUBSYSTEM_DEF(job)
 			to_chat(player_client, related_policy)
 
 	if(ishuman(equipping))
-		var/mob/living/carbon/human/wageslave = equipping
-		wageslave.mind.add_memory(MEMORY_ACCOUNT, list(DETAIL_ACCOUNT_ID = wageslave.account_id), story_value = STORY_VALUE_SHIT, memory_flags = MEMORY_FLAG_NOLOCATION)
+		var/mob/living/carbon/human/new_character = equipping
+		new_character.mind.add_memory(MEMORY_ACCOUNT, list(DETAIL_ACCOUNT_ID = new_character.account_id), story_value = STORY_VALUE_SHIT, memory_flags = MEMORY_FLAG_NOLOCATION)
+
+		for (var/saved_skill in player_client.prefs.skills)
+			for (var/skillpath in SSskills.all_skills)
+				if (saved_skill == SSskills.all_skills[skillpath].name)
+					new_character.mind.set_level(skillpath, player_client.prefs.skills[saved_skill], TRUE)
+
+		new_character.total_experience = new_character.client.prefs.total_experience
+		new_character.free_experience = new_character.client.prefs.free_experience
 
 
 	job.after_spawn(equipping, player_client)

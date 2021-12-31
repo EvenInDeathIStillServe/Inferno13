@@ -175,10 +175,12 @@
 
 /mob/living/carbon/human/on_job_equipping(datum/job/equipping)
 	var/existing_account
-	for(var/datum/bank_account/B in SSeconomy.generated_accounts)
-		if(B.account_holder == real_name)
-			account_id = B.account_id
+	for(var/i in SSeconomy.bank_accounts_by_id)
+		var/datum/bank_account/current_acc = SSeconomy.bank_accounts_by_id[i]
+		if (current_acc.account_holder == real_name)
+			account_id = current_acc.account_id
 			existing_account = TRUE
+			break
 	if(!existing_account)
 		var/datum/bank_account/bank_account = new(real_name, equipping, dna.species.payday_modifier)
 		bank_account.payday(STARTING_PAYCHECKS, TRUE)

@@ -81,7 +81,7 @@
 	/// The degree of pressure protection that mobs in list/contents have from the external environment, between 0 and 1
 	var/contents_pressure_protection = 0
 
-	//The regenerative lootdrop that spawned it, if applicable.
+	///The regenerative lootdrop that spawned it, if applicable.
 	var/obj/effect/spawner/regenlootdrop/regen_lootdrop
 
 
@@ -134,6 +134,11 @@
 	if(orbiting)
 		orbiting.end_orbit(src)
 		orbiting = null
+
+	if (regen_lootdrop && !regen_lootdrop.regenerating)
+		addtimer(CALLBACK(regen_lootdrop, /obj/effect/spawner/regenlootdrop/proc/drop_loot), regen_lootdrop.regen_timer)
+		regen_lootdrop.regenerating = TRUE
+		regen_lootdrop = null
 
 	. = ..()
 
@@ -586,6 +591,11 @@
 
 	if (old_turf?.z != new_turf?.z)
 		on_changed_z_level(old_turf, new_turf)
+
+	if (regen_lootdrop && !regen_lootdrop.regenerating)
+		addtimer(CALLBACK(regen_lootdrop, /obj/effect/spawner/regenlootdrop/proc/drop_loot), regen_lootdrop.regen_timer)
+		regen_lootdrop.regenerating = TRUE
+		regen_lootdrop = null
 
 	return TRUE
 

@@ -45,6 +45,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	///Skills, with key indicating XP.
 	var/list/skills = list()
 
+	///Current level
+	var/experience_level = 1
+	///Total experience
+	var/total_experience = 0
+	///Available experience
+	var/free_experience = 0
+
 	/// The current window, PREFERENCE_TAB_* in [`code/__DEFINES/preferences.dm`]
 	var/current_window = PREFERENCE_TAB_CHARACTER_PREFERENCES
 

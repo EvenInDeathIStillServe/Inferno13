@@ -3,6 +3,8 @@
 	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
+	hitsound = 'sound/weapons/genhit1.ogg'
+	damtype = BEAT
 
 /obj/item/melee/club/baseball_bat
 	name = "baseball bat"

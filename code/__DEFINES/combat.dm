@@ -50,6 +50,9 @@
 /// Involves being eaten
 #define CONSUME "consume"
 
+#define IS_PHYSICAL_DAMAGE(D) 	D in list(BEAT, SLASH, STAB, SHOT)
+#define IS_ELEMENTAL_DAMAGE(D) 	D in list(ENFLAME, ELECTRIC, CAUSTIC, IRRADIATION, COLD)
+
 //bitflag damage defines used for suicide_act
 #define BRUTELOSS (1<<0)
 #define FIRELOSS (1<<1)

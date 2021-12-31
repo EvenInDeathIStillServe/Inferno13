@@ -12,6 +12,7 @@
 
 	var/regen_timer = 3 MINUTES
 	var/viewed_regen_timer = 1 MINUTES //Don't spawn stuff if someone's looking
+
 	var/regenerating = FALSE
 
 
@@ -51,6 +52,7 @@
 		loot_spawned++
 	if (istype(A, /obj/structure/closet))
 		A:close()
+	regenerating = FALSE
 
 /obj/effect/spawner/regenlootdrop/proc/special_loot_act(atom/movable/M)
 	return

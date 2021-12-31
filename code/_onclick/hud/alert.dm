@@ -188,7 +188,7 @@
 /atom/movable/screen/alert/thirst
 	name = "Thirst"
 	desc = "You're feeling dehydrated."
-	icon_state = "starving"
+	icon_state = "thirst"
 
 /atom/movable/screen/alert/gross
 	name = "Grossed out."

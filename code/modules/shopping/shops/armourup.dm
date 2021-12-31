@@ -1,6 +1,7 @@
 /obj/machinery/shop_counter/armourup
 	store = "Armour Up"
 	bag_icon = "armourup"
+	sell_modifier = 0.2
 	bought_objects = list(
 		/obj/item/clothing/suit,
 		/obj/item/clothing/head,

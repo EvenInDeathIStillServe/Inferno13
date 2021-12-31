@@ -32,7 +32,7 @@
 		return 0
 	for (var/mob/living/carbon/human/H in viewers(world.view, loc))
 		if (H.client && H.stat != DEAD)
-			addtimer(CALLBACK(src, .proc/spawn_mob), 1 MINUTES)
+			addtimer(CALLBACK(src, .proc/spawn_mob), spawn_time/2)
 			return FALSE
 	spawn_delay = world.time + spawn_time
 	if(spawned_mobs.len >= max_mobs)

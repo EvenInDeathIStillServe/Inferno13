@@ -35,6 +35,7 @@
 	harm_intent_damage = 8
 	melee_damage_lower = 10
 	melee_damage_upper = 10
+	experience_on_kill = 10
 
 /mob/living/simple_animal/hostile/humanoid/clone/female
 	gender = FEMALE
@@ -62,6 +63,7 @@
 	melee_damage_upper = 20
 	cash_loot_min = 0
 	cash_loot_max = 50
+	experience_on_kill = 20
 
 /mob/living/simple_animal/hostile/humanoid/crackhead/Initialize()
 	..()
@@ -107,7 +109,8 @@
 	projectile_name = "claws"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	emote_taunt = list("gnashes its teeth")
-	guaranteed_butcher_results = list(/obj/item/food/meat/slab/human/mutant/chud = 1, /obj/item/stack/sheet/animalhide/chud = 2)
+	butcher_results = list(/obj/item/food/meat/slab/human/mutant/chud = 2, /obj/item/stack/sheet/animalhide/chud = 2)
+	experience_on_kill = 30
 
 /mob/living/simple_animal/hostile/humanoid/chud/Initialize()
 	..()
@@ -142,6 +145,7 @@
 				/obj/item/clothing/suit/armor/if13/turnout = 10,
 				/obj/item/clothing/gloves/if13/turnout = 10,
 				/obj/item/clothing/shoes/if13/turnout = 10)
+	experience_on_kill = 75
 
 /mob/living/simple_animal/hostile/humanoid/firefighter/Initialize()
 	..()
@@ -177,3 +181,4 @@
 				/obj/item/clothing/suit/armor/if13/turnout = 100,
 				/obj/item/clothing/gloves/if13/turnout = 100,
 				/obj/item/clothing/shoes/if13/turnout = 100)
+	experience_on_kill = 300

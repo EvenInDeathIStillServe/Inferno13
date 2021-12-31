@@ -89,7 +89,9 @@
 	///Damage type of a simple mob's melee attack, should it do damage.
 	var/melee_damage_type = BEAT
 	/// 1 for full damage , 0 for none , -1 for 1:1 heal from that source.
-	var/list/damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
+	var/list/damage_coeff = list(BEAT = 1, SLASH = 1, STAB = 1, SHOT = 1,
+								ENFLAME = 1, ELECTRIC = 1, CAUSTIC = 1, IRRADIATION = 1, COLD = 1,
+								BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
 	///Attacking verb in present continuous tense.
 	var/attack_verb_continuous = "attacks"
 	///Attacking verb in present simple tense.
@@ -174,6 +176,11 @@
 
 	///Is this animal horrible at hunting?
 	var/inept_hunter = FALSE
+
+	///How much experience is it worth?
+	var/experience_on_kill = 0
+	///Players that have hit this mob.
+	var/list/player_attackers = list()
 
 
 /mob/living/simple_animal/Initialize(mapload)
@@ -464,6 +471,10 @@
 		nest.spawned_mobs -= src
 		nest = null
 	drop_loot()
+	if (experience_on_kill)
+		for (var/mob/living/carbon/human/attacker in player_attackers)
+			attacker.grant_experience(experience_on_kill)
+		experience_on_kill = 0
 	if(dextrous)
 		drop_all_held_items()
 	if(!gibbed)

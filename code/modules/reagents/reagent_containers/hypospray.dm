@@ -319,6 +319,6 @@
 	name = "nanite healer"
 	desc = "An autoinjector filled with healing nanites, for when you need to get back up."
 	icon_state = "nanite"
-	volume = 45
-	amount_per_transfer_from_this = 15
-	list_reagents = list(/datum/reagent/medicine/nanite = 30, /datum/reagent/medicine/stimulants = 5)
+	volume = 30
+	amount_per_transfer_from_this = 10
+	list_reagents = list(/datum/reagent/medicine/nanite = 27, /datum/reagent/medicine/stimulants = 3)

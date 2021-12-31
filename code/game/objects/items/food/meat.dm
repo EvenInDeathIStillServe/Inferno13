@@ -659,6 +659,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 4, /datum/reagent/consumable/cooking_oil = 2, /datum/reagent/toxin = 2)
 	tastes = list("recursive cannibalism" = 1)
 	foodtypes = MEAT | RAW | GROSS
+	obj_value = 50
 
 /obj/item/food/meat/slab/human/mutant/slime
 	icon_state = "slimemeat"
