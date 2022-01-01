@@ -5,7 +5,7 @@
 	icon_state = "nvlamp-singles"
 
 	light_system = MOVABLE_LIGHT
-	light_range = 4
+	light_range = 5
 	light_color = "#a8a582"
 	light_on = FALSE
 

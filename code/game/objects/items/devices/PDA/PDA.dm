@@ -1126,13 +1126,17 @@ GLOBAL_LIST_EMPTY(PDAs)
 		id.attackby(C, user) // If we do, try and put that attacking object in
 	else if (istype(C, /obj/item/shopping_card))
 		var/obj/item/shopping_card/S = C
-		if (S.authenticator)
+		if (S.prepaid)
 			to_chat(user, span_warning("This card already has a creditchip signature."))
-			return ..()
+			return
+		if (!user.canpay(card.total))
+			to_chat(user, span_warning("You slide \the [S] into your [src], but it ejects it back. You can't afford it!"))
+			return
+		user.payact(-card.total)
 		to_chat(user, span_notice("You slide \the [S] into your [src]. It ejects it back with a creditchip signature."))
 		if (!silent)
 			playsound(src, 'sound/machines/terminal_success.ogg', 15, 1)
-		S.authenticator = user
+		S.prepaid = TRUE
 		S.icon_state = "punchcard-signed"
 	else
 		return ..()

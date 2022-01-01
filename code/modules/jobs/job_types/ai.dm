@@ -2,8 +2,8 @@
 	title = "AI"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SILICON
 	faction = FACTION_STATION
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "your laws"
 	selection_color = "#ccffcc"
 	spawn_type = /mob/living/silicon/ai

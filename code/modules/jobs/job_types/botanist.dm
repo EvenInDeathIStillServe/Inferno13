@@ -2,8 +2,8 @@
 	title = "Botanist"
 	department_head = list("Head of Personnel")
 	faction = FACTION_STATION
-	total_positions = 3
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the head of personnel"
 	selection_color = "#bbe291"
 	exp_granted_type = EXP_TYPE_CREW

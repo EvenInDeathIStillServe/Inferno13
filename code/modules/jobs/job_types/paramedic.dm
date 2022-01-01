@@ -2,8 +2,8 @@
 	title = "Paramedic"
 	department_head = list("Chief Medical Officer")
 	faction = FACTION_STATION
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
 	exp_granted_type = EXP_TYPE_CREW

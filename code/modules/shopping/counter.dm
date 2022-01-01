@@ -28,14 +28,12 @@
 		if (card.store != store)
 			to_chat(usr, "<span class='warning'>This card is for another store! You look like a real fool.</span>")
 			return
-		if (!(card.authenticator))
-			to_chat(usr, "<span class='warning'>This card isn't authenticated. Slot it into your wristpad to approve it.</span>")
-			return
-		if (!user:canpay(card.total))
+		if (!user:canpay(card.total) && !card.prepaid)
 			to_chat(usr, "<span class='warning'>You can't afford it, you bum!</span>")
 			return
 		to_chat(usr, "<span class='notice'>You pay for your purchase and get a bag with your stuff inside.</span>")
-		user:payact(-card.total)
+		if (!card.prepaid)
+			user:payact(-card.total)
 		var/obj/item/storage/box/shopping_bag/bag = new /obj/item/storage/box/shopping_bag(loc)
 		for (var/list/entry in card.goods)
 			var/path = entry["item_path"]

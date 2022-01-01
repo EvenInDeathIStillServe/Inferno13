@@ -194,7 +194,7 @@
 			SSticker.queued_players += new_player
 			to_chat(new_player, span_notice("You have been added to the queue to join the game. Your position in queue is [SSticker.queued_players.len]."))
 		return
-	new_player.LateChoices()
+	new_player.AttemptLateSpawn("Clone")
 
 /atom/movable/screen/lobby/button/join/proc/show_join_button()
 	SIGNAL_HANDLER

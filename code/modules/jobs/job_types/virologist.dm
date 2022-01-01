@@ -2,8 +2,8 @@
 	title = "Virologist"
 	department_head = list("Chief Medical Officer")
 	faction = FACTION_STATION
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
 	exp_requirements = 60

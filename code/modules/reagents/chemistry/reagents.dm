@@ -65,7 +65,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// You fucked up and this is now triggering its overdose effects, purge that shit quick.
 	var/overdosed = FALSE
 	/// How much this quenches thirst.
-	var/water_factor = 1
+	var/water_factor = REAGENTS_METABOLISM
 	///if false stops metab in liverless mobs
 	var/self_consuming = FALSE
 	///affects how far it travels when sprayed

@@ -387,52 +387,10 @@ export const JobsPage = () => {
               <PriorityHeaders />
 
               <Department
-                department={Departments.Engineering}
-                name="Engineering" />
-
-              <Gap amount={6} />
-
-              <Department
-                department={Departments.Science}
-                name="Science" />
-
-              <Gap amount={6} />
-
-              <Department
-                department={Departments.Silicon}
-                name="Silicon" />
-
-              <Gap amount={12} />
-
-              <Department
                 department={Departments.Inferno}
                 name="Inferno" />
             </Stack.Item>
 
-            <Stack.Item mr={1}>
-              <PriorityHeaders />
-              <Department department={Departments.Captain} name="Captain" />
-              <Gap amount={6} />
-              <Department department={Departments.Service} name="Service" />
-              <Gap amount={6} />
-              <Department department={Departments.Cargo} name="Supply" />
-            </Stack.Item>
-
-            <Stack.Item>
-              <Gap amount={36} />
-
-              <PriorityHeaders />
-
-              <Department
-                department={Departments.Security}
-                name="Security" />
-
-              <Gap amount={6} />
-
-              <Department
-                department={Departments.Medical}
-                name="Medical" />
-            </Stack.Item>
           </Stack>
         </Stack.Item>
       </Stack>

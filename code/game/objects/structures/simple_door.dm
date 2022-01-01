@@ -84,6 +84,9 @@
 	density = 0
 	icon_state = "[door_type]open"
 	layer = OPEN_DOOR_LAYER
+	spawn (10 SECONDS)
+		if (!density)
+			SwitchState(TRUE)
 
 /obj/structure/simple_door/proc/Close(animate)
 	playsound(src.loc, close_sound, 30, 0, 0)
@@ -215,13 +218,6 @@
 	return !density
 
 /obj/structure/simple_door/proc/check_exit(atom/movable/O as mob|obj, target)
-	if(!density && !manual_opened && ishuman(O))
-		var/mob/living/carbon/human/H = O
-		if(H.client && H.stat != 2)
-			if(hard_open)
-				spawn(H.cached_multiplicative_slowdown)TryToSwitchState(H) //AutoClosing
-			else
-				spawn(H.cached_multiplicative_slowdown)TryToSwitchState(H,1)
 	if(O.loc == loc)
 		return 1
 	return !density

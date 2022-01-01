@@ -104,7 +104,7 @@
 	reagent_state = LIQUID
 	color = "#FFE464"
 	nutriment_factor = 0.5 * REAGENTS_METABOLISM
-	water_factor = 0.2 * REAGENTS_METABOLISM
+	water_factor = 2 * REAGENTS_METABOLISM
 	var/decal_path = /obj/effect/decal/cleanable/urine
 
 /datum/reagent/consumable/urine/expose_turf(turf/T, reac_volume)
@@ -174,6 +174,7 @@
 	description = "An ubiquitous chemical substance that is composed of hydrogen and oxygen."
 	color = "#AAAAAA77" // rgb: 170, 170, 170, 77 (alpha)
 	taste_description = "water"
+	water_factor = 10 * REAGENTS_METABOLISM
 	var/cooling_temperature = 2
 	glass_icon_state = "glass_clear"
 	glass_name = "glass of water"

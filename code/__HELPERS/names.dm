@@ -39,7 +39,7 @@ GLOBAL_VAR(command_name)
 		if(config_station_name)
 			newname = config_station_name
 		else
-			newname = new_station_name()
+			newname = "Catharsis"
 
 		set_station_name(newname)
 

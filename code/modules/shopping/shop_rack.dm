@@ -55,8 +55,8 @@
 			var/mob/living/carbon/human/H = usr
 			var/obj/item/held = H.get_active_held_item()
 			if (held && istype(held, /obj/item/shopping_card))
-				if (held:authenticator)
-					to_chat(usr, "<span class='warning'>You slot your card into the puncher, and it spits it back out. It's already authenticated!</span>")
+				if (held:prepaid)
+					to_chat(usr, "<span class='warning'>You slot your card into the puncher, and it spits it back out. It's already paid for!</span>")
 					return
 				if (held:store != store)
 					to_chat(usr, "<span class='warning'>You slot your card into the puncher, and it spits it back out. It's for another store!</span>")
@@ -78,8 +78,8 @@
 			var/mob/living/carbon/human/H = usr
 			var/obj/item/held = H.get_active_held_item()
 			if (held && istype(held, /obj/item/shopping_card))
-				if (held:authenticator)
-					to_chat(usr, "<span class='warning'>You slot your card into the puncher, and it spits it back out. It's already authenticated!</span>")
+				if (held:prepaid)
+					to_chat(usr, "<span class='warning'>You slot your card into the puncher, and it spits it back out. It's already paid for!</span>")
 					return
 				if (held:store != store)
 					to_chat(usr, "<span class='warning'>You slot your card into the puncher, and it spits it back out. It's for another store!</span>")
@@ -103,7 +103,7 @@
 	resistance_flags = FLAMMABLE
 	max_integrity = 50
 	var/store //string
-	var/mob/living/carbon/human/authenticator
+	var/prepaid = FALSE
 	var/total
 	var/list/goods = list()
 
@@ -123,7 +123,7 @@
 	shopping_list += english_list(strings)
 
 	. += "[shopping_list]. The total is <b>$[total]</b>."
-	if(authenticator)
+	if(prepaid)
 		. += "<span class='notice'>It bears a creditchip signature.</span>"
 
 /obj/item/shopping_card/proc/add_to_cart(var/item_path, var/item_name, var/price)

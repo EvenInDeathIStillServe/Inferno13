@@ -4,7 +4,7 @@
 	total_positions = 100
 	spawn_positions = 100
 	supervisors = "absolutely everyone"
-	selection_color = "#dddddd"
+	selection_color = "#bbe291"
 	exp_granted_type = EXP_TYPE_CREW
 	outfit = /datum/outfit/job/clone
 	paycheck = 300
@@ -24,6 +24,7 @@
 		/obj/item/reagent_containers/hypospray/medipen/survival = 1,
 		)
 
+	ears = null
 	backpack = /obj/item/storage/backpack/explorer
 	satchel = /obj/item/storage/backpack/satchel/explorer
 	duffelbag = /obj/item/storage/backpack/duffelbag/explorer

@@ -6,8 +6,8 @@ Assistant
 /datum/job/assistant
 	title = "Assistant"
 	faction = FACTION_STATION
-	total_positions = 5
-	spawn_positions = 5
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "absolutely everyone"
 	selection_color = "#dddddd"
 	exp_granted_type = EXP_TYPE_CREW

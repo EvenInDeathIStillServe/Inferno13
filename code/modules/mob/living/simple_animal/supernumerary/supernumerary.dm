@@ -66,7 +66,7 @@
 			M.payact(-exp_needed)
 			say(say_teach)
 			M.mind.set_level(skillpath, next_level)
-			M.save_clone_data()
+			M.spend_experience(exp_needed)
 			break
 	return
 
