@@ -413,6 +413,7 @@
 	name = "chudburger"
 	desc = "Just don't think about it too much."
 	icon_state = "chudburger"
+	tastes = list("bun" = 2, "some kind of meat patty" = 4)
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/nutriment/protein = 6, /datum/reagent/consumable/nutriment/vitamin = 2)
 	foodtypes = GRAIN | MEAT
 

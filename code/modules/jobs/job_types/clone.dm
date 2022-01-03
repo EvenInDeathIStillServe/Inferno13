@@ -18,16 +18,14 @@
 	name = "Clone"
 	jobtype = /datum/job/clone
 
-	id_trim = /datum/id_trim/job/assistant
+	id_trim = /datum/id_trim/job/clone
 	uniform = /obj/item/clothing/under/color/grey
-	backpack_contents = list(
-		/obj/item/reagent_containers/hypospray/medipen/survival = 1,
-		)
+	backpack_contents = list()
 
 	ears = null
 	backpack = /obj/item/storage/backpack/explorer
 	satchel = /obj/item/storage/backpack/satchel/explorer
 	duffelbag = /obj/item/storage/backpack/duffelbag/explorer
 
-	box = /obj/item/storage/box/survival/mining
+	box = null
 	pda_slot = ITEM_SLOT_BELT

@@ -109,5 +109,6 @@
 		interacting = FALSE
 
 /mob/living/simple_animal/snm/interactible/shopkeeper
+	anchored = TRUE
 
 /mob/living/simple_animal/snm/interactible/bartender/lechuck

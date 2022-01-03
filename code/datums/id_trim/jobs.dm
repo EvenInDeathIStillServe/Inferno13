@@ -78,6 +78,14 @@
 
 	return TRUE
 
+/datum/id_trim/job/clone
+	assignment = "Clone"
+	trim_state = "trim_assistant"
+	minimal_access = list()
+	config_job = "clone"
+	template_access = list(ACCESS_CAPTAIN, ACCESS_HOP, ACCESS_CHANGE_IDS)
+	job = /datum/job/clone
+
 /datum/id_trim/job/assistant
 	assignment = "Assistant"
 	trim_state = "trim_assistant"

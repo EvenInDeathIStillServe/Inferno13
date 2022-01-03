@@ -26,16 +26,15 @@
 	. = ..()
 
 /obj/structure/nest/proc/spawn_mob()
-	if(covered)
+	if (covered)
 		return FALSE
-	if(world.time < spawn_delay)
+	if (world.time < spawn_delay)
 		return 0
-	for (var/mob/living/carbon/human/H in viewers(world.view, loc))
-		if (H.client && H.stat != DEAD)
-			addtimer(CALLBACK(src, .proc/spawn_mob), spawn_time/2)
-			return FALSE
+	if (viewed_by_player())
+		addtimer(CALLBACK(src, .proc/spawn_mob), spawn_time/2)
+		return FALSE
 	spawn_delay = world.time + spawn_time
-	if(spawned_mobs.len >= max_mobs)
+	if (spawned_mobs.len >= max_mobs)
 		return FALSE
 	var/chosen_mob_type = pick_weight(mob_types)
 	var/mob/living/simple_animal/L = new chosen_mob_type(src.loc)

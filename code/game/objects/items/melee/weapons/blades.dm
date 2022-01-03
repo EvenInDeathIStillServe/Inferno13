@@ -8,6 +8,7 @@
 	sharpness = SHARP_EDGED
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	damtype = SLASH
+	charging_slowdown = 0.4
 
 /obj/item/melee/blade/Initialize(mapload)
 	. = ..()

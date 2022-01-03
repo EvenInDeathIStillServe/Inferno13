@@ -170,7 +170,7 @@
 
 /mob/living/carbon/human/equipped_speed_mods()
 	. = ..()
-	for(var/sloties in get_all_slots() - list(l_store, r_store, s_store))
+	for(var/sloties in (get_all_slots() | held_items))// - list(l_store, r_store, s_store))
 		var/obj/item/thing = sloties
 		. += thing?.slowdown
 

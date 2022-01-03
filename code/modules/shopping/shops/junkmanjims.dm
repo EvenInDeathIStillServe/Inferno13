@@ -19,5 +19,4 @@
 	icon_state = "junkmanjim"
 	icon_living = "junkmanjim"
 	icon_dead = "junkmanjim"
-	anchored = TRUE
 	taught_skills = list("Scavenging" = 5)

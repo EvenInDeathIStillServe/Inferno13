@@ -93,10 +93,10 @@
 	..()
 	if(istype(I, /obj/item/holochip))
 		var/obj/item/holochip/H = I
-		credits += H.credits
-		to_chat(user, span_notice("You insert the credits into [src]."))
-		update_appearance()
-		qdel(H)
+		H.credits += credits
+		to_chat(user, span_notice("You insert the credits into [H]."))
+		H.update_appearance()
+		qdel(src)
 
 /obj/item/holochip/AltClick(mob/user)
 	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, !iscyborg(user)))

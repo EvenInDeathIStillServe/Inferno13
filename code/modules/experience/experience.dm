@@ -14,6 +14,9 @@
 /mob/living/carbon/human/proc/check_levelup()
 	if (total_experience >= EXPERIENCE_LEVELS[experience_level+1])
 		experience_level++
+		if (check_levelup())
+			return
 		playsound_local(src, 'sound/effects/drums.ogg', 50, TRUE)
-		to_chat(src, span_nicegreen("<b>Level Up!</b>. You are now level [experience_level]."))
+		to_chat(src, span_nicegreen("<b>Level Up!</b> You are now level [experience_level]."))
 		save_clone_data()
+		return TRUE

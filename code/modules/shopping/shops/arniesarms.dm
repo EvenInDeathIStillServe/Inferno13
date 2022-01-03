@@ -39,3 +39,11 @@
 	goods = list(
 		new /datum/data/shopping_good("Kitchen Knife",				/obj/item/melee/blade/kitchen_knife,			150)
 		)
+
+/mob/living/simple_animal/snm/interactible/shopkeeper/arnie
+	name = "Arnie"
+	desc = "Proprietor of Arnie's Arms, named for both his hardware and physique."
+	icon_state = "arnie"
+	icon_living = "arnie"
+	icon_dead = "arnie"
+	taught_skills = list("Melee" = 5)

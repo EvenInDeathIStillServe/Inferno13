@@ -490,11 +490,11 @@
 		health = 0
 		icon_state = icon_dead
 		if(flip_on_death)
-			//transform = transform.Turn(180)
 			transform = transform.Turn(90)
 		set_density(FALSE)
 		..()
 		update_icon()
+		addtimer(CALLBACK(src, .proc/despawn), 3 MINUTES)
 
 /mob/living/simple_animal/update_overlays()
 	. = ..()
@@ -761,3 +761,9 @@
 		hunted = null
 		COOLDOWN_START(src, emote_cooldown, 1 MINUTES)
 		return
+
+/mob/living/simple_animal/proc/despawn(forced = FALSE)
+	if (!forced && viewed_by_player())
+		addtimer(CALLBACK(src, .proc/despawn), 1 MINUTES)
+		return
+	qdel(src)

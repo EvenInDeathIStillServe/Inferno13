@@ -6,7 +6,7 @@
  *Proc to create or update an alert. Returns the alert if the alert is new or updated, 0 if it was thrown already
  *category is a text string. Each mob may only have one alert per category; the previous one will be replaced
  *path is a type path of the actual alert type to throw
- *severity is an optional number that will be placed at the end of the icon_state for this alert
+ *severity is an optional number that will be placed at the end of the icon_state for this alert, and can have different descriptions
  *for example, high pressure's icon_state is "highpressure" and can be serverity 1 or 2 to get "highpressure1" or "highpressure2"
  *new_master is optional and sets the alert's icon state to "template" in the ui_style icons with the master as an overlay.
  *flicks are forwarded to master
@@ -56,6 +56,8 @@
 	else
 		thealert.icon_state = "[initial(thealert.icon_state)][severity]"
 		thealert.severity = severity
+		if (LAZYLEN(thealert.severity_descriptors))
+			thealert.desc = thealert.severity_descriptors[severity]
 
 	alerts[category] = thealert
 	if(client && hud_used)
@@ -98,6 +100,7 @@
 	mouse_opacity = MOUSE_OPACITY_ICON
 	var/timeout = 0 //If set to a number, this alert will clear itself after that many deciseconds
 	var/severity = 0
+	var/list/severity_descriptors = list()
 	var/alerttooltipstyle = ""
 	var/override_alerts = FALSE //If it is overriding other alerts of the same type
 	var/mob/owner //Alert owner
@@ -185,9 +188,22 @@
 	desc = "You're severely malnourished. The hunger pains make moving around a chore."
 	icon_state = "starving"
 
+/atom/movable/screen/alert/hunger
+	name = "Hunger"
+	desc = "You could go for a bite."
+	severity_descriptors = list("You could go for a bite.",
+								"You're hungry.",
+								"You're famished!",
+								"You're starving!")
+	icon_state = "hunger"
+
 /atom/movable/screen/alert/thirst
 	name = "Thirst"
-	desc = "You're feeling dehydrated."
+	desc = "You're feeling a bit thirsty."
+	severity_descriptors = list("You're feeling a bit thirsty.",
+								"Your mouth feels dry.",
+								"You're parched!",
+								"You're dying of dehydration!")
 	icon_state = "thirst"
 
 /atom/movable/screen/alert/gross

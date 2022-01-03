@@ -435,7 +435,11 @@ Behavior that's still missing from this component that original food items had t
 
 	on_consume?.Invoke(eater, feeder)
 
-	to_chat(feeder, span_warning("There is nothing left of [parent], oh no!"))
+	if (eater == feeder)
+		to_chat(feeder, span_notice("You finish [parent]."))
+	else
+		to_chat(feeder, span_warning("[eater] finishes [parent]."))
+		to_chat(eater, span_warning("You finish [parent]."))
 	if(isturf(parent))
 		var/turf/T = parent
 		T.ScrapeAway(1, CHANGETURF_INHERIT_AIR)

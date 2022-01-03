@@ -298,6 +298,12 @@ rough example of the "cone" made by the 3 dirs checked
 		if(location == src)
 			return TRUE
 
+/atom/proc/viewed_by_player()
+	for (var/mob/living/carbon/human/H in viewers(world.view, loc))
+		if (H.client && H.stat != DEAD)
+			return TRUE
+	return FALSE
+
 ///A do nothing proc
 /proc/pass(...)
 	return

@@ -48,6 +48,7 @@
 /obj/item/melee
 	combat_capable = TRUE
 	canMouseDown = TRUE
+	var/charging_slowdown = 0.5
 	var/charging = FALSE
 	var/charge_time_left = 2 SECONDS
 	var/charge_time = 2 SECONDS
@@ -102,6 +103,7 @@
 		return
 	if(mob:combat_mode)
 		set_user(mob)
+		mouse_track()
 		start_charging()
 	return ..()
 
@@ -110,9 +112,8 @@
 		return ..()
 	if(istype(object, /atom/movable/screen))// && !istype(object, /obj/screen/click_catcher))
 		return
-	if(M:combat_mode)
-		melee_attack(object, M, M.CanReach(object,src), M.client.mouseParams)
-		set_user(null)
+	melee_attack(object, M, M.CanReach(object,src), M.client.mouseParams)
+	set_user(null)
 	return ..()
 
 obj/item/melee/onMouseDrag(src_object, over_object, src_location, over_location, params, mob)
@@ -168,12 +169,16 @@ obj/item/melee/proc/charge_indicator(force_update = FALSE)
 /obj/item/melee/proc/start_charging()
 	charge_time_left = charge_time
 	charging = TRUE
+	slowdown = charging_slowdown
+	current_user?.update_equipment_speed_mods()
 
 /obj/item/melee/proc/stop_charging()
 	set waitfor = FALSE
 	charge_time_left = charge_time
 	charging = FALSE
 	QDEL_LIST(current_indicators)
+	slowdown = initial(slowdown)
+	current_user?.update_equipment_speed_mods()
 
 /obj/item/melee/proc/set_user(mob/user)
 	if(user == current_user)

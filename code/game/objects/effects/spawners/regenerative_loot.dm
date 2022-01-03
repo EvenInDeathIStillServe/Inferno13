@@ -25,11 +25,9 @@
 	var/atom/A = locate(/obj/structure/closet) in get_turf(src)
 	if (!A)
 		A = spawn_on_turf ? get_turf(src) : loc
-	if (!forced)
-		for (var/mob/living/carbon/human/H in viewers(world.view, loc))
-			if (H.client && H.stat != DEAD)
-				addtimer(CALLBACK(src, .proc/drop_loot), viewed_regen_timer)
-				return
+	if (!forced && viewed_by_player())
+		addtimer(CALLBACK(src, .proc/drop_loot), viewed_regen_timer)
+		return
 	var/loot_spawned = 0
 	var/list/possibilities = loot
 	while((lootcount-loot_spawned) && possibilities.len)

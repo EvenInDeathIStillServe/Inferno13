@@ -176,8 +176,10 @@
 #define NUTRITION_LEVEL_FULL 550
 #define NUTRITION_LEVEL_WELL_FED 450
 #define NUTRITION_LEVEL_FED 350
-#define NUTRITION_LEVEL_HUNGRY 250
-#define NUTRITION_LEVEL_STARVING 150
+#define NUTRITION_LEVEL_PECKISH 250
+#define NUTRITION_LEVEL_HUNGRY 150
+#define NUTRITION_LEVEL_MALNOURISHED 70
+#define NUTRITION_LEVEL_STARVING 30
 
 #define NUTRITION_LEVEL_START_MIN 250
 #define NUTRITION_LEVEL_START_MAX 400
@@ -348,7 +350,7 @@
 #define DOOR_CRUSH_DAMAGE 15 //the amount of damage that airlocks deal when they crush you
 
 #define HUNGER_FACTOR		0.1 //factor at which mob nutrition decreases
-#define THIRST_FACTOR		0.05 //factor at which mob hydration decreases
+#define THIRST_FACTOR		0.1 //factor at which mob hydration decreases
 #define ETHEREAL_CHARGE_FACTOR 0.8 //factor at which ethereal's charge decreases per second
 #define REAGENTS_METABOLISM 0.2 //How many units of reagent are consumed per second, by default.
 #define REAGENTS_EFFECT_MULTIPLIER (REAGENTS_METABOLISM / 0.4) // By defining the effect multiplier this way, it'll exactly adjust all effects according to how they originally were with the 0.4 metabolism

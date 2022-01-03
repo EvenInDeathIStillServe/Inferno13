@@ -535,8 +535,9 @@ SUBSYSTEM_DEF(job)
 				if (saved_skill == SSskills.all_skills[skillpath].name)
 					new_character.mind.set_level(skillpath, player_client.prefs.skills[saved_skill], TRUE)
 
-		new_character.total_experience = new_character.client.prefs.total_experience
-		new_character.free_experience = new_character.client.prefs.free_experience
+		new_character.experience_level = player_client.prefs.experience_level
+		new_character.total_experience = player_client.prefs.total_experience
+		new_character.free_experience = player_client.prefs.free_experience
 
 
 	job.after_spawn(equipping, player_client)

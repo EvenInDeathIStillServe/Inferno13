@@ -166,7 +166,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 			equipped = TRUE
 
 /obj/item/pda/proc/update_label()
-	name = "PDA-[owner] ([ownjob])" //Name generalisation
+	name = "wristpad - [owner]"
 
 /obj/item/pda/GetAccess()
 	if(id)
@@ -1066,7 +1066,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 
 // access to status display signals
-/obj/item/pda/attackby(obj/item/C, mob/user, params)
+/obj/item/pda/attackby(obj/item/C, mob/living/carbon/human/user, params)
 	if(istype(C, /obj/item/cartridge))
 		if(!user.transferItemToLoc(C, src))
 			return
@@ -1129,10 +1129,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 		if (S.prepaid)
 			to_chat(user, span_warning("This card already has a creditchip signature."))
 			return
-		if (!user.canpay(card.total))
+		if (!user.canpay(S.total))
 			to_chat(user, span_warning("You slide \the [S] into your [src], but it ejects it back. You can't afford it!"))
 			return
-		user.payact(-card.total)
+		user.payact(-S.total)
 		to_chat(user, span_notice("You slide \the [S] into your [src]. It ejects it back with a creditchip signature."))
 		if (!silent)
 			playsound(src, 'sound/machines/terminal_success.ogg', 15, 1)
