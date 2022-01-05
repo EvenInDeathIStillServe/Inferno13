@@ -47,3 +47,8 @@
 	icon_living = "arnie"
 	icon_dead = "arnie"
 	taught_skills = list("Melee" = 5)
+	say_greet = "What do you want?"
+	say_no_money = "Bullshit. Come back when you have money."
+	say_no_exp = "The hell with you."
+	say_higher_level = "You know better than me. No, I am not shitting you."
+	say_teach = "You wanna be a tough guy? You come to the right place."

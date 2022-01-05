@@ -411,19 +411,14 @@ GLOBAL_LIST_EMPTY(PDAs)
 						var/xp_prog_to_level = targetmind.exp_needed_to_level_up(type)
 						var/xp_req_to_level = 0
 						if (xp_prog_to_level)//is it even possible to level up?
-							xp_req_to_level = SKILL_EXP_LIST[lvl_num+1] - SKILL_EXP_LIST[lvl_num]
+							xp_req_to_level = S.skill_experience_list[lvl_num+1]
 						dat += "<HR><b>[S.name]</b>"
 						dat += "<br><i>[S.desc]</i>"
-						dat += "<ul><li>EMPLOYEE SKILL LEVEL: <b>[lvl_name]</b>"
-						if (exp && xp_req_to_level)
+						dat += "<ul><li>SKILL LEVEL: <b>[lvl_name]</b>"
+						if ((exp || lvl_num > 0) && xp_req_to_level)
 							var/progress_percent = (xp_req_to_level-xp_prog_to_level)/xp_req_to_level
-							var/overall_percent = exp / SKILL_EXP_LIST[length(SKILL_EXP_LIST)]
 							dat += "<br>PROGRESS TO NEXT SKILL LEVEL:"
 							dat += "<br>" + num2loadingbar(progress_percent) + "([progress_percent*100])%"
-							dat += "<br>OVERALL DEVELOPMENT PROGRESS:"
-							dat += "<br>" + num2loadingbar(overall_percent) + "([overall_percent*100])%"
-						if (lvl_num >= length(SKILL_EXP_LIST) && !(type in targetmind.skills_rewarded))
-							dat += "<br><a href='byond://?src=[REF(src)];choice=SkillReward;skill=[type]'>Contact the Professional [S.title] Association</a>"
 						dat += "</li></ul>"
 			if(PDA_UI_READ_MESSAGES)
 				if(icon_alert && !istext(icon_alert))

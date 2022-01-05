@@ -79,13 +79,13 @@
 /atom/movable/screen/ai/announcement
 	name = "Make Vox Announcement"
 	icon_state = "announcement"
-
+/*
 /atom/movable/screen/ai/announcement/Click()
 	if(..())
 		return
 	var/mob/living/silicon/ai/AI = usr
 	AI.announcement()
-
+*/
 /atom/movable/screen/ai/call_shuttle
 	name = "Call Emergency Shuttle"
 	icon_state = "call_shuttle"

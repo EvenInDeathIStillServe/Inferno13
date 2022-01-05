@@ -31,9 +31,9 @@
 			var/xp_prog_to_level = targetmind.exp_needed_to_level_up(type)
 			var/xp_req_to_level = 0
 			if (xp_prog_to_level)//is it even possible to level up?
-				xp_req_to_level = SKILL_EXP_LIST[lvl_num+1] - SKILL_EXP_LIST[lvl_num]
-			var/exp_percent = exp / SKILL_EXP_LIST[SKILL_LEVEL_LEGENDARY]
-			.["skills"] += list(list("playername" = targetmind.current, "path" = type, "name" = S.name, "desc" = S.desc, "lvlnum" = lvl_num, "lvl" = lvl_name, "exp" = exp, "exp_prog" = xp_req_to_level - xp_prog_to_level, "exp_req" = xp_req_to_level, "exp_percent" = exp_percent, "max_exp" = SKILL_EXP_LIST[length(SKILL_EXP_LIST)]))
+				xp_req_to_level = S.skill_experience_list[lvl_num+1]
+			var/exp_percent = exp / S.skill_experience_list[length(S.skill_experience_list)]
+			.["skills"] += list(list("playername" = targetmind.current, "path" = type, "name" = S.name, "desc" = S.desc, "lvlnum" = lvl_num, "lvl" = lvl_name, "exp" = exp, "exp_prog" = xp_req_to_level - xp_prog_to_level, "exp_req" = xp_req_to_level, "exp_percent" = exp_percent, "max_exp" = S.skill_experience_list[length(S.skill_experience_list)]))
 
 /datum/skill_panel/ui_act(action, params)
 	. = ..()
@@ -52,7 +52,8 @@
 				targetmind.set_experience(skill, number)
 		if ("set_lvl")
 			var/skill = text2path(params["skill"])
-			var/max_skill = length(SKILL_EXP_LIST)
+			var/datum/skill/S = GetSkillRef(skill)
+			var/max_skill = length(S.skill_experience_list)
 			var/number = input("Please insert a whole number between 1 (NONE) and [max_skill] (LEGENDARY) corresponding to the level you'd like to set the player to.") as num|null
 			if (number > 0 && number <= max_skill )
 				targetmind.set_level(skill, number)

@@ -14,7 +14,7 @@
 		cooldown_time = world.time + 2 SECONDS
 		user.save_clone_data()
 		playsound(src, 'sound/machines/high_tech_confirm.ogg', 50)
-		balloon_alert(user, "Clone data saved!")
+		balloon_alert(user, "Clone data saved!", COLOR_DARK_CYAN)
 
 /mob/living/carbon/human/proc/save_clone_data()
 		var/datum/preferences/preferences = client.prefs

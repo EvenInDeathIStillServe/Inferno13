@@ -320,8 +320,10 @@
 	if(can_inflict <= 0)
 		return FALSE
 	if(brute)
+		owner?.balloon_alert_to_viewers("-[brute]", text_color = COLOR_DARK_RED)
 		set_brute_dam(brute_dam + brute)
 	if(burn)
+		owner?.balloon_alert_to_viewers("-[burn]", text_color = COLOR_ORANGE)
 		set_burn_dam(burn_dam + burn)
 
 	//We've dealt the physical damages, if there's room lets apply the stamina damage.
@@ -514,8 +516,10 @@
 		return
 
 	if(brute)
+		owner?.balloon_alert_to_viewers("+[brute]", text_color = COLOR_GREEN)
 		set_brute_dam(round(max(brute_dam - brute, 0), DAMAGE_PRECISION))
 	if(burn)
+		owner?.balloon_alert_to_viewers("+[burn]", text_color = COLOR_GREEN)
 		set_burn_dam(round(max(burn_dam - burn, 0), DAMAGE_PRECISION))
 	if(stamina)
 		set_stamina_dam(round(max(stamina_dam - stamina, 0), DAMAGE_PRECISION))

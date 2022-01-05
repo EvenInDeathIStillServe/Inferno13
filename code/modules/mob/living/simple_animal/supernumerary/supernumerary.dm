@@ -54,14 +54,14 @@
 			if (next_level > taught_skills[choice])
 				say(say_higher_level)
 				return
-			var/exp_needed = M.mind.get_exp_to_level(skillpath, next_level)
+			var/exp_needed = M.mind.get_exp_to_level(skillpath, next_level) - M.mind.get_skill_exp(skillpath)
 			if (M.free_experience < exp_needed)
 				say(say_no_exp)
-				say("You need [exp_needed] experience.")
+				to_chat(M, span_warning("You need [exp_needed] experience."))
 				return
 			if (!M.canpay(exp_needed))
 				say(say_no_money)
-				say("You need $[exp_needed].")
+				to_chat(M, span_warning("You need $[exp_needed]."))
 				return
 			M.payact(-exp_needed)
 			say(say_teach)

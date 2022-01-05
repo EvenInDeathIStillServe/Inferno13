@@ -16,6 +16,7 @@
 	faction = list("nefarious")
 	status_flags = CANPUSH
 	butcher_results = list(/obj/item/food/meat/slab/human = 2)
+	deathmessage = "keels over and falls limp."
 	ranged = TRUE
 	ranged_message = "swings"
 	projectiletype = /obj/projectile/melee

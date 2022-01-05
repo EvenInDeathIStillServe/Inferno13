@@ -12,6 +12,7 @@ GLOBAL_LIST_INIT(skill_types, subtypesof(/datum/skill))
 	var/list/levelUpMessages = list()
 	///List associating different messages that appear on level up with different levels
 	var/list/levelDownMessages = list()
+	var/list/skill_experience_list = SKILL_EXP_LIST
 
 /datum/skill/proc/get_skill_modifier(modifier, level)
 	return modifiers[modifier][level] //Levels range from 1 (None) to 7 (Legendary)
@@ -65,7 +66,7 @@ GLOBAL_LIST_INIT(skill_types, subtypesof(/datum/skill))
  * * new_level - The current level of the user. Used to check if it meets the requirements for a reward
  */
 /datum/skill/proc/try_skill_reward(datum/mind/mind, new_level)
-	if (new_level != SKILL_LEVEL_LEGENDARY)
+	if (new_level != length(skill_experience_list))
 		return
 	if (!ispath(skill_cape_path))
 		to_chat(mind.current, span_nicegreen("My legendary [name] skill is quite impressive, though it seems the Professional [title] Association doesn't have any status symbols to commemorate my abilities with. I should let Centcom know of this travesty, maybe they can do something about it."))

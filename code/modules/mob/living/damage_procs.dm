@@ -154,6 +154,10 @@
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	bruteloss = clamp((bruteloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
+	if (amount > 0)
+		balloon_alert_to_viewers("-[amount]", text_color = COLOR_DARK_RED)
+	else if (amount <= -5)
+		balloon_alert_to_viewers("+[-amount]", text_color = COLOR_GREEN)
 	if(updating_health)
 		updatehealth()
 	return amount
@@ -166,6 +170,10 @@
 		return
 	. = oxyloss
 	oxyloss = clamp((oxyloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
+	if (amount > 0)
+		balloon_alert_to_viewers("-[amount]", text_color = COLOR_BLUE)
+	else if (amount <= -10)
+		balloon_alert_to_viewers("+[-amount]", text_color = COLOR_GREEN)
 	if(updating_health)
 		updatehealth()
 
@@ -186,6 +194,10 @@
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	toxloss = clamp((toxloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
+	if (amount > 0)
+		balloon_alert_to_viewers("-[amount]", text_color = COLOR_VIOLET)
+	else if (amount <= -5)
+		balloon_alert_to_viewers("+[-amount]", text_color = COLOR_GREEN)
 	if(updating_health)
 		updatehealth()
 	return amount
@@ -205,6 +217,10 @@
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	fireloss = clamp((fireloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
+	if (amount > 0)
+		balloon_alert_to_viewers("-[amount]", text_color = COLOR_ORANGE)
+	else if (amount <= -5)
+		balloon_alert_to_viewers("+[-amount]", text_color = COLOR_GREEN)
 	if(updating_health)
 		updatehealth()
 	return amount
@@ -216,6 +232,10 @@
 	if(!forced && ( (status_flags & GODMODE) || HAS_TRAIT(src, TRAIT_NOCLONELOSS)) )
 		return FALSE
 	cloneloss = clamp((cloneloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
+	if (amount > 0)
+		balloon_alert_to_viewers("-[amount]", text_color = COLOR_GRAY)
+	else if (amount <= -5)
+		balloon_alert_to_viewers("+[-amount]", text_color = COLOR_GREEN)
 	if(updating_health)
 		updatehealth()
 	return amount

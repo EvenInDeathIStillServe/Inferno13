@@ -188,10 +188,11 @@
 
 ///Return the amount of EXP needed to go to the next level. Returns 0 if max level
 /datum/mind/proc/exp_needed_to_level_up(skill)
-	var/lvl = update_skill_level(skill)
-	if (lvl >= length(SKILL_EXP_LIST)) //If we're already past the last exp threshold
+	var/datum/skill/S = GetSkillRef(skill)
+	var/lvl = known_skills[skill][SKILL_LVL]
+	if (lvl >= length(S.skill_experience_list)) //If we're already past the last exp threshold
 		return 0
-	return SKILL_EXP_LIST[lvl+1] - known_skills[skill][SKILL_EXP]
+	return S.skill_experience_list[lvl+1] - known_skills[skill][SKILL_EXP]
 
 ///Adjust experience of a specific skill
 /datum/mind/proc/adjust_experience(skill, amt, silent = FALSE, force_old_level = 0)
@@ -201,13 +202,11 @@
 	for(var/key in experience_multiplier_reasons)
 		experience_multiplier += experience_multiplier_reasons[key]
 	known_skills[skill][SKILL_EXP] = max(0, known_skills[skill][SKILL_EXP] + amt*experience_multiplier) //Update exp. Prevent going below 0
-	known_skills[skill][SKILL_LVL] = update_skill_level(skill)//Check what the current skill level is based on that skill's exp
-	if(silent)
-		return
-	if(known_skills[skill][SKILL_LVL] > old_level)
-		S.level_gained(src, known_skills[skill][SKILL_LVL], old_level)
-	else if(known_skills[skill][SKILL_LVL] < old_level)
-		S.level_lost(src, known_skills[skill][SKILL_LVL], old_level)
+	if (known_skills[skill][SKILL_EXP] >= S.skill_experience_list[old_level])
+		known_skills[skill][SKILL_LVL] = old_level+1
+		known_skills[skill][SKILL_EXP] = 0 //R-r-r-reset!
+		if (!silent)
+			S.level_gained(src, known_skills[skill][SKILL_LVL], old_level)
 
 ///Set experience of a specific skill to a number
 /datum/mind/proc/set_experience(skill, amt, silent = FALSE)
@@ -217,19 +216,22 @@
 
 ///Set level of a specific skill
 /datum/mind/proc/set_level(skill, newlevel, silent = FALSE)
-	adjust_experience(skill, get_exp_to_level(skill, newlevel), silent)
+	known_skills[skill][SKILL_LVL] = newlevel
+	known_skills[skill][SKILL_EXP] = 0
 
 /datum/mind/proc/get_exp_to_level(skill, newlevel)
+	var/datum/skill/S = GetSkillRef(skill)
 	var/oldlevel = get_skill_level(skill)
-	var/difference = SKILL_EXP_LIST[newlevel] - SKILL_EXP_LIST[oldlevel]
+	var/difference = S.skill_experience_list[newlevel] - S.skill_experience_list[oldlevel]
 	return difference
 
 ///Check what the current skill level is based on that skill's exp
 /datum/mind/proc/update_skill_level(skill)
+	var/datum/skill/S = GetSkillRef(skill)
 	var/i = 0
-	for (var/exp in SKILL_EXP_LIST)
+	for (var/exp in S.skill_experience_list)
 		i ++
-		if (known_skills[skill][SKILL_EXP] >= SKILL_EXP_LIST[i])
+		if (known_skills[skill][SKILL_EXP] >= S.skill_experience_list[i])
 			continue
 		return i - 1 //Return level based on the last exp requirement that we were greater than
 	return i //If we had greater EXP than even the last exp threshold, we return the last level

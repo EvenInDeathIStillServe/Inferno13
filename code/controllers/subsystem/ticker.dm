@@ -267,7 +267,7 @@ SUBSYSTEM_DEF(ticker)
 	SSdbcore.SetRoundStart()
 
 	to_chat(world, span_warning("<B>[station_name()] awaits!</B>"))
-	SEND_SOUND(world, sound(SSstation.announcer.get_rand_welcome_sound()))
+	SEND_SOUND(world, sound('sound/effects/mystery.ogg'))
 
 	current_state = GAME_STATE_PLAYING
 	Master.SetRunLevel(RUNLEVEL_GAME)

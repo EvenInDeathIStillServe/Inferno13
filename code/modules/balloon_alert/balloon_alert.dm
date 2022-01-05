@@ -9,14 +9,14 @@
 #define BALLOON_TEXT_CHAR_LIFETIME_INCREASE_MIN 10
 
 /// Creates text that will float from the atom upwards to the viewer.
-/atom/proc/balloon_alert(mob/viewer, text)
+/atom/proc/balloon_alert(mob/viewer, text, text_color)
 	SHOULD_NOT_SLEEP(TRUE)
 
-	INVOKE_ASYNC(src, .proc/balloon_alert_perform, viewer, text)
+	INVOKE_ASYNC(src, .proc/balloon_alert_perform, viewer, text, text_color)
 
 /// Create balloon alerts (text that floats up) to everything within range.
 /// Will only display to people who can see.
-/atom/proc/balloon_alert_to_viewers(message, self_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs)
+/atom/proc/balloon_alert_to_viewers(message, self_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, text_color)
 	SHOULD_NOT_SLEEP(TRUE)
 
 	var/list/hearers = get_hearers_in_view(vision_distance, src)
@@ -26,13 +26,13 @@
 		if (hearer.is_blind())
 			continue
 
-		balloon_alert(hearer, (hearer == src && self_message) || message)
+		balloon_alert(hearer, (hearer == src && self_message) || message, text_color)
 
 // Do not use.
 // MeasureText blocks. I have no idea for how long.
 // I would've made the maptext_height update on its own, but I don't know
 // if this would look bad on laggy clients.
-/atom/proc/balloon_alert_perform(mob/viewer, text)
+/atom/proc/balloon_alert_perform(mob/viewer, text, text_color)
 	var/client/viewer_client = viewer.client
 	if (isnull(viewer_client))
 		return
@@ -45,7 +45,8 @@
 	var/image/balloon_alert = image(loc = get_atom_on_turf(src), layer = ABOVE_MOB_LAYER)
 	balloon_alert.plane = BALLOON_CHAT_PLANE
 	balloon_alert.alpha = 0
-	balloon_alert.appearance_flags = RESET_ALPHA|RESET_COLOR|RESET_TRANSFORM
+	balloon_alert.color = text_color
+	balloon_alert.appearance_flags = RESET_ALPHA|RESET_TRANSFORM
 	balloon_alert.maptext = MAPTEXT("<span style='text-align: center; -dm-text-outline: 1px #0005'>[text]</span>")
 	balloon_alert.maptext_x = (BALLOON_TEXT_WIDTH - bound_width) * -0.5
 	balloon_alert.maptext_height = WXH_TO_HEIGHT(viewer_client?.MeasureText(text, null, BALLOON_TEXT_WIDTH))
