@@ -42,6 +42,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	///Job preferences 2.0 - indexed by job title , no key or value implies never
 	var/list/job_preferences = list()
 
+	///Unlocked achievement journals
+	var/list/journals = list()
+
+	///Duty progress
+	var/list/duties = list()
+
 	///Skills, with key indicating XP.
 	var/list/skills = list()
 

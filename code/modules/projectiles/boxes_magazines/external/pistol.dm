@@ -25,7 +25,7 @@
 	base_icon_state = "9x19p"
 	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = CALIBER_9MM
-	max_ammo = 12
+	max_ammo = 13
 
 /obj/item/ammo_box/magazine/m9mm/update_icon_state()
 	. = ..()

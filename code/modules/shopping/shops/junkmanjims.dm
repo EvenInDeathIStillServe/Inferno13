@@ -7,8 +7,15 @@
 		/obj/item/stack/sheet/animalhide,
 		/obj/item/reagent_containers/syringe,
 		/obj/item/toy,
-		/obj/item/geiger_counter
+		/obj/item/geiger_counter,
+		/obj/item/clothing/head/cone
 		)
+
+	shopkeeper_type = /mob/living/simple_animal/snm/interactible/shopkeeper/junkmanjim
+
+	say_purchase = "You're actually buying my junk?"
+	say_cant_afford = "I know it's all junk, but you still gotta pay.."
+	say_sell = "Seems like junk to me. I'll buy it."
 
 /obj/machinery/shop_rack/junkmanjims
 	store = "Junkman Jim's"

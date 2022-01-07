@@ -13,6 +13,7 @@
 	attack_verb_simple = list("warn", "caution", "smash")
 	resistance_flags = NONE
 	dynamic_hair_suffix = ""
+	obj_value = 50
 
 /obj/item/clothing/head/cone/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()

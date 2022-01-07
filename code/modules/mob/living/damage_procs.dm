@@ -16,10 +16,10 @@
  */
 /mob/living/proc/apply_damage(damage = 0,damagetype = BRUTE, def_zone = null, blocked = FALSE, forced = FALSE, spread_damage = FALSE, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE)
 	SEND_SIGNAL(src, COMSIG_MOB_APPLY_DAMAGE, damage, damagetype, def_zone)
-	var/hit_percent = (100-blocked)/100
-	if(!damage || (!forced && hit_percent <= 0))
+	var/actual_damage = damage-blocked
+	if(!damage || (!forced && actual_damage <= 0))
 		return FALSE
-	var/damage_amount = forced ? damage : damage * hit_percent
+	var/damage_amount = forced ? damage : actual_damage
 	switch(damagetype)
 		if(BRUTE, BEAT, SLASH, STAB, SHOT)
 			adjustBruteLoss(damage_amount, forced = forced)
@@ -194,7 +194,7 @@
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	toxloss = clamp((toxloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
-	if (amount > 0)
+	if (amount > 0 && stat != DEAD) //Dead people still get toxin damage bruh
 		balloon_alert_to_viewers("-[amount]", text_color = COLOR_VIOLET)
 	else if (amount <= -5)
 		balloon_alert_to_viewers("+[-amount]", text_color = COLOR_GREEN)

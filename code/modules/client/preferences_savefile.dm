@@ -315,6 +315,16 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Quirks
 	READ_FILE(S["all_quirks"], all_quirks)
 
+	//Journals
+	READ_FILE(S["journals"], journals)
+	if (!journals)
+		journals = list()
+
+	//Duties in progress
+	READ_FILE(S["duties"], duties)
+	if (!duties)
+		duties = list()
+
 	//Skills
 	READ_FILE(S["skills"], skills)
 	if (!skills)
@@ -322,6 +332,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Current level
 	READ_FILE(S["experience_level"] , experience_level)
+	if (experience_level < 1)
+		experience_level = 1
 	//Total XP
 	READ_FILE(S["total_experience"] , total_experience)
 	//Available XP
@@ -386,6 +398,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Quirks
 	WRITE_FILE(S["all_quirks"] , all_quirks)
+
+	//Journals
+	WRITE_FILE(S["journals"] , journals)
+
+	//Duties
+	WRITE_FILE(S["duties"] , duties)
 
 	//Skills
 	WRITE_FILE(S["skills"] , skills)

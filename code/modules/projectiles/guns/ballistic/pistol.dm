@@ -52,8 +52,7 @@
 	icon_state = "ruger"
 	mag_type = /obj/item/ammo_box/magazine/m22
 	mag_display = FALSE
-	w_class = WEIGHT_CLASS_SMALL
-	fire_delay = 0
+	w_class = WEIGHT_CLASS_NORMAL
 	can_suppress = FALSE
 	can_unsuppress = FALSE
 	suppressed = 1
@@ -68,6 +67,7 @@
 	icon_state = "m1911"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/m45
+	mag_display = FALSE
 	can_suppress = FALSE
 	fire_sound = 'sound/weapons/gun/pistol/shot_alt.ogg'
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'

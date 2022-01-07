@@ -65,7 +65,7 @@
 				return
 			M.payact(-exp_needed)
 			say(say_teach)
-			M.mind.set_level(skillpath, next_level)
+			M.mind.set_level(skillpath, next_level, FALSE)
 			M.spend_experience(exp_needed)
 			break
 	return
@@ -107,6 +107,34 @@
 		say("Here, you'll need this. It's not much, but hey, it's free. Here's some scratch for more ammo, too. Every defective you knock off is a load off my back, and pay for you.")
 		beggars += M
 		interacting = FALSE
+
+/mob/living/simple_animal/snm/interactible/vanguard_graphic
+	name = "\improper Vanguard graphic designer"
+	desc = "A graphic designer working for the Vanguard corporation. He looks stuck."
+	icon_state = "vanguard_graphic"
+	icon_living = "vanguard_graphic"
+	icon_dead = "vanguard_graphic"
+
+/mob/living/simple_animal/snm/interactible/vanguard_graphic/snm_interacted(mob/living/carbon/human/M)
+	if (interacting)
+		return
+	interacting = TRUE
+	say("Oh, hello. I'm kind of in the middle of designing a logo for Vanguard's new video player software.")
+	spawn (50)
+		say("Argh, who am I kidding. This isn't going anywhere. Hey, if you get me some kind of inspiration, I'd be real grateful.")
+		interacting = FALSE
+
+/mob/living/simple_animal/snm/interactible/vanguard_graphic/attackby(obj/item/I, mob/living/carbon/human/M)
+	if (istype(I, /obj/item/clothing/head/cone))
+		if (M.award_journal(/datum/journal/iconeic))
+			say("Yes, that's exactly it! Thank you so much! Here, some compensation for your trouble.")
+			M.payact(1000)
+			qdel(I)
+		else
+			say("Oh, you helped me out already. I'll finish this up eventually, no worries.")
+	else
+		say("No, no, that won't do. I need something that stands out, something... iconic.")
+
 
 /mob/living/simple_animal/snm/interactible/shopkeeper
 	anchored = TRUE

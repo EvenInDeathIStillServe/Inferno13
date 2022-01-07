@@ -215,9 +215,12 @@
 	adjust_experience(skill, 0, silent, old_level) //Make a call to adjust_experience to handle updating level
 
 ///Set level of a specific skill
-/datum/mind/proc/set_level(skill, newlevel, silent = FALSE)
+/datum/mind/proc/set_level(skill, newlevel, silent = TRUE)
 	known_skills[skill][SKILL_LVL] = newlevel
 	known_skills[skill][SKILL_EXP] = 0
+	if (!silent)
+		var/datum/skill/S = GetSkillRef(skill)
+		S.level_gained(src, newlevel)
 
 /datum/mind/proc/get_exp_to_level(skill, newlevel)
 	var/datum/skill/S = GetSkillRef(skill)

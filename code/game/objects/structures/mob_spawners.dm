@@ -56,7 +56,7 @@
 	icon_state = "pod_1"
 	mob_types = list(/mob/living/simple_animal/hostile/humanoid/clone = 1,
 					/mob/living/simple_animal/hostile/humanoid/clone/female = 1)
-	spawn_time = 20 SECONDS
+	spawn_time = 2 MINUTES
 	spawn_text = "is expelled from"
 
 /obj/structure/nest/hidden
@@ -70,12 +70,12 @@
 
 /obj/structure/nest/hidden/chud
 	mob_types = list(/mob/living/simple_animal/hostile/humanoid/chud = 1)
-	spawn_time = 2 MINUTES
+	spawn_time = 3 MINUTES
 
 /obj/structure/nest/hidden/firefighter
 	mob_types = list(/mob/living/simple_animal/hostile/humanoid/firefighter = 1)
-	spawn_time = 5 MINUTES
+	spawn_time = 7 MINUTES
 
 /obj/structure/nest/hidden/hardplace
 	mob_types = list(/mob/living/simple_animal/hostile/humanoid/hardplace = 1)
-	spawn_time = 5 MINUTES
+	spawn_time = 7 MINUTES

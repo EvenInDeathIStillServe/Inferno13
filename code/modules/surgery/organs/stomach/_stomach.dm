@@ -218,8 +218,7 @@
 		else
 			human.throw_alert("hydration", /atom/movable/screen/alert/thirst, 4)
 	if(human.hydration < HYDRATION_LEVEL_DEADLY)
-		human.adjustOxyLoss(2)
-		human.adjustToxLoss(2)
+		human.adjustToxLoss(0.5)
 
 ///for when mood is disabled and hunger should handle slowdowns
 /obj/item/organ/stomach/proc/handle_hunger_slowdown(mob/living/carbon/human/human)

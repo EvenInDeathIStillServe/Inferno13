@@ -36,8 +36,9 @@
 				/obj/item/clothing/gloves/if13/turnout = 10,
 				/obj/item/clothing/shoes/if13/turnout = 10,
 				/obj/item/melee/club/fireaxe = 10,
-				/obj/item/melee/club/crowbar = 20,
-				/obj/item/extinguisher = 20,
-				/obj/item/clothing/mask/gas = 20,
+				/obj/item/melee/club/crowbar = 15,
+				/obj/item/extinguisher = 10,
+				/obj/item/clothing/mask/gas = 10,
 				/obj/item/flashlight = 10,
+				/obj/item/clothing/head/cone = 10,
 				/obj/item/storage/fancy/cigarettes = 10)
