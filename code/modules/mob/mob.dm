@@ -1441,3 +1441,5 @@
 		new_character.mind.assigned_role = "Clone"//If they somehow got a null assigned role.
 
 	SSjob.EquipRank(new_character, new_character.mind.assigned_role, new_character.client)
+
+	new_character.award_journal(/datum/journal/respawn)

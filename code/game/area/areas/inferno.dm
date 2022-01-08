@@ -20,6 +20,11 @@
 	'sound/if13ambience/ambigen_6.ogg','sound/if13ambience/ambigen_7.ogg','sound/if13ambience/ambigen_8.ogg','sound/if13ambience/ambigen_9.ogg')
 	sound_environment = SOUND_ENVIRONMENT_ROOM
 
+/area/if13/building/firestation
+	name = "Fire Station"
+	icon_state = "firestation"
+	visit_journal = /datum/journal/visit/firestation
+
 /area/if13/tunnel
 	name = "Tunnel"
 	icon_state = "tunnel"
@@ -31,6 +36,7 @@
 	icon_state = "sewer"
 	ambientsounds = list('sound/if13ambience/ambigen_9.ogg','sound/effects/steam_short.ogg','sound/effects/steam_long.ogg')
 	sound_environment = SOUND_ENVIRONMENT_SEWER_PIPE
+	visit_journal = /datum/journal/visit/sewers
 
 /area/if13/caves
 	name = "Caves"

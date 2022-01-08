@@ -59,6 +59,8 @@
 
 	if(href_list["examine"])
 		to_chat(user, span_notice("[build_label_text(source)]"))
+		if (ishuman(user))
+			user:award_journal(/datum/journal/eyeforvalue)
 
 /**
  *
@@ -73,25 +75,28 @@
 	var/list/readout = list("") // Readout is used to store the text block output to the user so it all can be sent in one message
 
 	// Doesn't show the base notes for items that have the override notes variable set to true
-	if(!source.override_notes)
+	if (!source.override_notes)
 		// Make sure not to divide by 0 on accident
-		if(source.force > 0)
-			readout += "Our extensive research has shown that it takes a mere [span_warning("[HITS_TO_CRIT(source.force)] hit\s")] to beat down a baseline human with no armor."
+		if (source.force > 0)
+			readout += "A regular blow deals [source.force] [source.damtype] damage."
 		else
-			readout += "Our extensive research found that you couldn't beat anyone to death with this if you tried."
+			readout += "It is useless as a weapon."
 
-		if(source.throwforce > 0)
-			readout += "If you decide to throw this object instead, one will take [span_warning("[HITS_TO_CRIT(source.throwforce)] hit\s")] before collapsing."
+		if (source.throwforce > 0)
+			readout += "When thrown, it will deal [source.throwforce] damage."
 		else
-			readout += "If you decide to throw this object instead, then you will have trouble damaging anything."
-		if(source.armour_penetration > 0 || source.block_chance > 0)
-			readout += "This item has proven itself [span_warning("[weapon_tag_convert(source.armour_penetration)]")] of piercing armor and [span_warning("[weapon_tag_convert(source.block_chance)]")] of blocking attacks."
+			readout += "When thrown, it will accomplish nothing of note."
+		if (source.armour_penetration > 0 || source.block_chance > 0)
+			readout += "This item is [span_warning("[weapon_tag_convert(source.armour_penetration)]")] of piercing armor and [span_warning("[weapon_tag_convert(source.block_chance)]")] of blocking attacks."
+		if (source.combat_skill)
+			var/datum/skill/S = GetSkillRef(source.combat_skill)
+			readout += "Its usage relies on [S.name] skill, with a minimum level of [source.minimum_combat_skill] in order to be effective."
 	// Custom manual notes
-	if(source.offensive_notes)
+	if (source.offensive_notes)
 		readout += source.offensive_notes
 
 	// Check if we have an additional proc, if so, add it to the readout
-	if(attached_proc)
+	if (attached_proc)
 		readout += call(source, attached_proc)()
 
 	// Finally bringing the fields together

@@ -6,6 +6,8 @@
 	icon_state = "ladder11"
 	anchored = TRUE
 	obj_flags = CAN_BE_HIT | BLOCK_Z_OUT_DOWN
+	var/list/climb_sounds = list('sound/effects/ladder.ogg', 'sound/effects/ladder2.ogg',
+								 'sound/effects/ladder3.ogg', 'sound/effects/ladder4.ogg')
 	var/obj/structure/ladder/down   //the ladder below this one
 	var/obj/structure/ladder/up     //the ladder above this one
 	var/crafted = FALSE
@@ -76,6 +78,7 @@
 		if(!do_after(user, travel_time, target = src))
 			return
 		show_fluff_message(going_up, user)
+		playsound(src, pick(climb_sounds), 50)
 
 
 	var/turf/T = get_turf(ladder)

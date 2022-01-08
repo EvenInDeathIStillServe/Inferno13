@@ -39,6 +39,8 @@
 	/// Size of the area in open turfs, only calculated for indoors areas.
 	var/areasize = 0
 
+	var/visit_journal //A journal that you get for visiting the area for the first time.
+
 	/// Bonus mood for being in this area
 	var/mood_bonus = 0
 	/// Mood message for being here, only shows up if mood_bonus != 0
@@ -507,6 +509,9 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	//Ship ambience just loops if turned on.
 	if(L.client?.prefs.toggles & SOUND_SHIP_AMBIENCE)
 		SEND_SOUND(L, sound('sound/ambience/shipambience.ogg', repeat = 1, wait = 0, volume = 35, channel = CHANNEL_BUZZ))
+
+	if (visit_journal && ishuman(L))
+		L:award_journal(visit_journal)
 
 
 
