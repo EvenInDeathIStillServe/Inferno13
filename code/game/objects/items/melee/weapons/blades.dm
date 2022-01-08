@@ -25,7 +25,7 @@
 	return (BRUTELOSS)
 
 /obj/item/melee/blade/kitchen_knife
-	name = "knife"
+	name = "kitchen knife"
 	icon_state = "kitchen_knife"
 	worn_icon_state = "knife"
 	desc = "For putting food on the table, in more ways than one."

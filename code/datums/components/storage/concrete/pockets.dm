@@ -73,7 +73,7 @@
 /datum/component/storage/concrete/pockets/shoes/clown/Initialize()
 	. = ..()
 	set_holdable(list(
-		/obj/item/knife, /obj/item/switchblade, /obj/item/pen,
+		/obj/item/melee/blade/kitchen_knife, /obj/item/switchblade, /obj/item/pen,
 		/obj/item/scalpel, /obj/item/reagent_containers/syringe, /obj/item/dnainjector,
 		/obj/item/reagent_containers/hypospray/medipen, /obj/item/reagent_containers/dropper,
 		/obj/item/implanter, /obj/item/screwdriver, /obj/item/weldingtool/mini,

@@ -8,6 +8,7 @@ GLOBAL_LIST(gang_tags)
 	gender = NEUTER
 	plane = GAME_PLANE //makes the graffiti visible over a wall.
 	mergeable_decal = FALSE
+	autoclean_time = 15 MINUTES
 	var/do_icon_rotate = TRUE
 	var/rotation = 0
 	var/paint_colour = "#FFFFFF"

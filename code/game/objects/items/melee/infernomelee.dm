@@ -3,6 +3,8 @@
 /obj/item
 	var/combat_capable = FALSE //Whether it can swing as a weapon.
 	var/attack_range = 3
+	var/combat_skill =  /datum/skill/melee //Combat skill used
+	var/minimum_combat_skill = 0 //If combat skill is lower than this, big damage debuff
 
 /obj/item/afterattack(atom/target, mob/living/user, flag, params)
 	. = ..()
@@ -31,10 +33,13 @@
 	M.hitsound = hitsound
 	M.def_zone = ran_zone(user.zone_selected)
 	M.range = attack_range
-	if (ishuman(user))
-		var/meleemod = 1 + user.mind.get_skill_level(/datum/skill/melee)/10
-		M.damage *= meleemod
-	playsound(user, 'sound/weapons/punchmiss.ogg', 50, 1)
+	if (ishuman(user) && combat_skill)
+		var/combatant_skill = user.mind.get_skill_level(combat_skill)
+		if (combatant_skill < minimum_combat_skill)
+			M.damage *= 0.25
+		else
+			M.damage *= 1 + combatant_skill/10
+	playsound(user, 'sound/weapons/punchmiss.ogg', 40, 1)
 	M.fire()
 	after_melee_attack()
 	return
@@ -48,6 +53,7 @@
 /obj/item/melee
 	combat_capable = TRUE
 	canMouseDown = TRUE
+	slot_flags = ITEM_SLOT_BELT
 	var/charging_slowdown = 0.5
 	var/charging = FALSE
 	var/charge_time_left = 2 SECONDS

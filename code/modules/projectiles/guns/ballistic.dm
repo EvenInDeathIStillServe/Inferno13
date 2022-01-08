@@ -221,6 +221,8 @@
 		else if(casing_ejector || !from_firing)
 			casing.forceMove(drop_location()) //Eject casing onto ground.
 			casing.bounce_away(TRUE)
+			if (!casing.loaded_projectile) //Clean it up.
+				addtimer(CALLBACK(casing, /atom/movable/.proc/despawn_if_unseen), 3 MINUTES)
 			SEND_SIGNAL(casing, COMSIG_CASING_EJECTED)
 			chambered = null
 		else if(empty_chamber)

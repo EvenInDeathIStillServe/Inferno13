@@ -1280,3 +1280,9 @@
 */
 /atom/movable/proc/keybind_face_direction(direction)
 	setDir(direction)
+
+/atom/movable/proc/despawn_if_unseen(forced = FALSE)
+	if (!forced && viewed_by_player())
+		addtimer(CALLBACK(src, .proc/despawn_if_unseen), 1 MINUTES)
+		return
+	qdel(src)

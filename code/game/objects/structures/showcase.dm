@@ -81,8 +81,8 @@
 	icon_state = "mw"
 
 /obj/structure/showcase/machinery/cloning_pod
-	name = "cloning pod exhibit"
-	desc = "Depicts a prototype from a failed attempt at reliable cloning technology. The technology was scrapped after reports of severe mutations, wiggly ear syndrome and spontaneous tail growth. The date 11.11.2558 is engraved on the base."
+	name = "\improper Lamarck pod"
+	desc = "A state-of-the-art cloning pod. You wish you could go back in..."
 	icon = 'icons/obj/machines/cloning.dmi'
 	icon_state = "pod_0"
 

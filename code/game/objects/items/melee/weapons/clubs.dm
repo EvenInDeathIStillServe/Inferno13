@@ -42,6 +42,7 @@
 	sharpness = SHARP_EDGED
 	damtype = SLASH
 	resistance_flags = FIRE_PROOF
+	minimum_combat_skill = 5
 	wound_bonus = -15
 	bare_wound_bonus = 20
 	charge_time = 3 SECONDS

@@ -12,10 +12,6 @@
 	// Additional proc to be run for specific object types
 	var/attached_proc
 
-	// Flavor text crimes used in build_weapon_text()
-	var/list/crimes = list("Assaults", "Third Degree Murders", "Robberies", "Terrorist Attacks", "Different Felonies", "Felinies", "Counts of Tax Evasion", "Mutinies")
-	var/list/victims = list("a human", "a moth", "a felinid", "a lizard", "a particularly resilient slime", "a syndicate agent", "a clown", "a mime", "a mortal foe", "an innocent bystander")
-
 /datum/element/weapon_description/Attach(datum/target, attached_proc)
 	. = ..()
 	if(!isitem(target)) // Do not attach this to anything that isn't an item
@@ -44,7 +40,7 @@
 	SIGNAL_HANDLER
 
 	if(item.force >= 5 || item.throwforce >= 5 || item.override_notes || item.offensive_notes || attached_proc) /// Only show this tag for items that could feasibly be weapons, shields, or those that have special notes
-		examine_texts += span_notice("It appears to have an ever-updating bluespace <a href='?src=[REF(item)];examine=1'>warning label.</a>")
+		examine_texts += span_notice("<a href='?src=[REF(item)];examine=1'>Appraise.</a>")
 
 /**
  *
@@ -76,14 +72,11 @@
 /datum/element/weapon_description/proc/build_label_text(obj/item/source)
 	var/list/readout = list("") // Readout is used to store the text block output to the user so it all can be sent in one message
 
-	// Meaningless flavor text. The number of crimes is constantly changing because of the complex Nanotrasen legal system and the esoteric nature of time itself!
-	readout += "[span_warning("WARNING:")] This item has been marked as dangerous by the NT legal team because of its use in [span_warning("[rand(2,99)] [crimes[rand(1, crimes.len)]]")] in the past hour.\n"
-
 	// Doesn't show the base notes for items that have the override notes variable set to true
 	if(!source.override_notes)
 		// Make sure not to divide by 0 on accident
 		if(source.force > 0)
-			readout += "Our extensive research has shown that it takes a mere [span_warning("[HITS_TO_CRIT(source.force)] hit\s")] to beat down [victims[rand(1, victims.len)]] with no armor."
+			readout += "Our extensive research has shown that it takes a mere [span_warning("[HITS_TO_CRIT(source.force)] hit\s")] to beat down a baseline human with no armor."
 		else
 			readout += "Our extensive research found that you couldn't beat anyone to death with this if you tried."
 

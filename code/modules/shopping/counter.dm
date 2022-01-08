@@ -26,6 +26,7 @@
 	var/say_purchase = "Thanks for stopping by."
 	var/say_cant_afford = "You can't afford it."
 	var/say_sell = "I'll take that off your hands."
+	var/say_no_sell = "Not interested."
 
 /obj/machinery/shop_counter/Initialize(mapload)
 	. = ..()
@@ -36,21 +37,21 @@
 			shopkeeper = S
 			return
 
-/obj/machinery/shop_counter/attackby(obj/item/W, mob/user, params)
-	if (!(ishuman(user)))
+/obj/machinery/shop_counter/attackby(obj/item/W, mob/living/carbon/human/user, params)
+	if (!user)
 		return
 	if (istype(W, /obj/item/shopping_card))
 		var/obj/item/shopping_card/card = W
 		if (card.store != store)
 			to_chat(usr, "<span class='warning'>This card is for another store! You look like a real fool.</span>")
 			return
-		if (!user:canpay(card.total) && !card.prepaid)
+		if (!user.canpay(card.total) && !card.prepaid)
 			speech(say_cant_afford)
 			to_chat(usr, "<span class='warning'>You can't afford it.</span>")
 			return
 		to_chat(usr, "<span class='notice'>You pay for your purchase and get a bag with your stuff inside.</span>")
 		if (!card.prepaid)
-			user:payact(-card.total)
+			user.payact(-card.total)
 		var/obj/item/storage/box/shopping_bag/bag = new /obj/item/storage/box/shopping_bag(loc)
 		for (var/list/entry in card.goods)
 			var/path = entry["item_path"]
@@ -61,21 +62,38 @@
 		qdel(card)
 		speech(say_purchase)
 		user.put_in_active_hand(bag)
-	else if (can_buy(W))
-		to_chat(user, "<span class='notice'>You sell [W].</span>")
-		user:payact(round(W.get_obj_value() * sell_modifier))
-		speech(say_sell)
-		qdel(W)
+	else
+		var/sale_value = try_sell(W, user)
+		if (sale_value > 0)
+			user.payact(sale_value)
+			speech(say_sell)
+		else
+			speech(say_no_sell)
 
-/obj/machinery/shop_counter/proc/can_buy(obj/item/W)
-	if (bought_objects.len)
+/obj/machinery/shop_counter/proc/try_sell(obj/item/W, mob/living/carbon/human/user, bulk = FALSE)
+	if (istype(W, /obj/item/storage))
+		var/total_value = 0
+		for (var/obj/item/thing in W)
+			total_value += try_sell(thing, user, TRUE)
+		to_chat(user, "<span class='notice'>You present the contents of [W].</span>")
+		return total_value
+	else if (bought_objects.len)
 		if (!W.get_obj_value())
-			to_chat(usr, "<span class='warning'>[W] is worthless.</span>")
+			if (!bulk)
+				to_chat(usr, "<span class='warning'>[W] is worthless.</span>")
 			return
 		if (!(is_type_in_list(W, bought_objects)) || (unwanted_objects && is_type_in_list(W, unwanted_objects)))
-			to_chat(usr, "<span class='warning'>This shop isn't interested in [W].</span>")
+			if (!bulk)
+				to_chat(usr, "<span class='warning'>This shop isn't interested in [W].</span>")
 			return
-		return TRUE
+		special_sell(W, user)
+		var/sell_value = round(W.get_obj_value() * sell_modifier)
+		to_chat(user, "<span class='notice'>You sell [W].</span>")
+		qdel(W)
+		return sell_value
+
+/obj/machinery/shop_counter/proc/special_sell(obj/item/W, mob/living/carbon/human/user)
+	return
 
 /obj/machinery/shop_counter/proc/speech(speech_line)
 	if (!shopkeeper)

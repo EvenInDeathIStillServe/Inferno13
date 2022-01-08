@@ -8,6 +8,7 @@
 	var/beauty = 0
 	///The type of cleaning required to clean the decal, CLEAN_TYPE_LIGHT_DECAL can be cleaned with mops and soap, CLEAN_TYPE_HARD_DECAL can be cleaned by soap, see __DEFINES/cleaning.dm for the others
 	var/clean_type = CLEAN_TYPE_LIGHT_DECAL
+	var/autoclean_time = 7 MINUTES //How long it takes for it to automatically be qdel'd.
 
 /obj/effect/decal/cleanable/Initialize(mapload, list/datum/disease/diseases)
 	. = ..()
@@ -37,6 +38,8 @@
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
+
+	addtimer(CALLBACK(src, /atom/movable/.proc/despawn_if_unseen), autoclean_time)
 
 /obj/effect/decal/cleanable/Destroy()
 	var/turf/T = get_turf(src)

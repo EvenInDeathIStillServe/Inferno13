@@ -35,7 +35,14 @@ GLOBAL_LIST_INIT(duty_types, subtypesof(/datum/duty))
 
 /datum/duty/repairman
 	name = "Repairman"
-	desc = "Got down and dirty in the name of the municipality."
+	desc = "Get down and dirty in the name of the municipality."
 	tasks = 5
-	experience_value = 200
+	experience_value = 300
 	money_value = 300
+
+/datum/duty/chudhunter
+	name = "Chud Hunter"
+	desc = "Supply a fast-food place with delectable 'meat'."
+	tasks = 5
+	experience_value = 300
+	money_value = 200

@@ -31,11 +31,11 @@
 
 /obj/effect/spawner/regenlootdrop/if13/firestation
 	loot = list(
-				/obj/item/clothing/head/helmet/if13/turnout = 10,
-				/obj/item/clothing/suit/armor/if13/turnout = 10,
-				/obj/item/clothing/gloves/if13/turnout = 10,
-				/obj/item/clothing/shoes/if13/turnout = 10,
-				/obj/item/melee/club/fireaxe = 10,
+				/obj/item/clothing/head/helmet/if13/turnout = 5,
+				/obj/item/clothing/suit/armor/if13/turnout = 5,
+				/obj/item/clothing/gloves/if13/turnout = 5,
+				/obj/item/clothing/shoes/if13/turnout = 5,
+				/obj/item/melee/club/fireaxe = 5,
 				/obj/item/melee/club/crowbar = 15,
 				/obj/item/extinguisher = 10,
 				/obj/item/clothing/mask/gas = 10,

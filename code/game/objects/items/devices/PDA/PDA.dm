@@ -414,10 +414,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 							xp_req_to_level = S.skill_experience_list[lvl_num+1]
 						dat += "<HR><b>[S.name]</b>"
 						dat += "<br><i>[S.desc]</i>"
-						dat += "<ul><li>SKILL LEVEL: <b>[lvl_name]</b>"
-						if ((exp || lvl_num > 0) && xp_req_to_level)
+						dat += "<ul><li>SKILL LEVEL: <b>[lvl_name] ([lvl_num])</b>"
+						if ((exp || lvl_num > 1) && xp_req_to_level)
 							var/progress_percent = (xp_req_to_level-xp_prog_to_level)/xp_req_to_level
-							dat += "<br>PROGRESS TO NEXT SKILL LEVEL:"
+							dat += "<br>PROGRESS TO NEXT SKILL LEVEL: [xp_req_to_level-xp_prog_to_level] XP LEFT"
 							dat += "<br>" + num2loadingbar(progress_percent) + "([progress_percent*100])%"
 						dat += "</li></ul>"
 			if(PDA_UI_READ_MESSAGES)

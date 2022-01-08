@@ -11,6 +11,7 @@
 /obj/structure/electrical_panel/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
+	short_out()
 
 /obj/structure/electrical_panel/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -20,8 +21,6 @@
 	if (shorted)
 		if (DT_PROB(20, delta_time))
 			do_sparks(rand(1,2), FALSE, src)
-	else if (DT_PROB(1, delta_time))
-		shorted = TRUE
 
 /obj/structure/electrical_panel/examine(mob/user)
 	. = ..()
@@ -48,6 +47,7 @@
 			playsound(src, 'sound/machines/closet2_close.ogg', 75, TRUE)
 			user.award_duty(/datum/duty/repairman)
 			update_appearance()
+			addtimer(CALLBACK(src, .proc/short_out), rand(30 SECONDS, 2 MINUTES))
 		else
 			to_chat(user, span_warning("[src] isn't broken. No need to mess around with it."))
 
@@ -83,3 +83,6 @@
 	else
 		to_chat(user, span_warning("You need a screwdriver to fix [src]."))
 		return
+
+/obj/structure/electrical_panel/proc/short_out()
+	shorted = TRUE

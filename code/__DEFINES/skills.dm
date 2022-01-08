@@ -11,6 +11,9 @@
 #define SKILL_LVL 1
 #define SKILL_EXP 2
 
+#define COMBAT_SKILL_TYPE 1
+#define COMBAT_SKILL_LVL 2
+
 // Level experience requirements
 #define SKILL_EXP_NONE 0
 #define SKILL_EXP_NOVICE 100

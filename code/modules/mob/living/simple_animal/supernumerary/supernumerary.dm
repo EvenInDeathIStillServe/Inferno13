@@ -34,9 +34,9 @@
 /mob/living/simple_animal/snm/interactible/proc/snm_interacted(mob/living/carbon/human/M)
 	if (!check_interactable(M))
 		return
+	say(say_greet)
 	if (!LAZYLEN(taught_skills))
 		return
-	say(say_greet)
 	var/list/choices = list()
 	for (var/skill in taught_skills)
 		choices[skill] = icon('icons/hud/radial.dmi', lowertext(skill))
