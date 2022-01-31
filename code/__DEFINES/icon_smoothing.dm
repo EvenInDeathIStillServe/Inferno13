@@ -21,7 +21,6 @@ DEFINE_BITFIELD(smoothing_flags, list(
 	"SMOOTH_OBJ" = SMOOTH_OBJ,
 ))
 
-//Fallout 13 smoothing dirs. I can't bear trying to figure out how NOT to have to use this for the nightcycle system.
 #define NORTH_JUNCTION NORTH //(1<<0)
 #define SOUTH_JUNCTION SOUTH //(1<<1)
 #define EAST_JUNCTION EAST  //(1<<2)

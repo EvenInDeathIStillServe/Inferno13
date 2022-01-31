@@ -60,10 +60,6 @@
 	padlock = null
 	update_icon()
 
-
-/obj/structure/simple_door/bullet_act(obj/item/projectile/Proj)
-	..()
-
 /obj/structure/simple_door/Bumped(atom/user)
 	..()
 	if(density)
@@ -215,7 +211,7 @@
 /obj/structure/simple_door/CanPass(atom/movable/mover, turf/target, height=0)
 	if(mover.loc == loc)
 		return 1
-	return !density
+	..()
 
 /obj/structure/simple_door/proc/check_exit(atom/movable/O as mob|obj, target)
 	if(O.loc == loc)

@@ -342,7 +342,7 @@
 		else if(ishuman(C))
 			var/mob/living/carbon/human/H = C
 			if(istype(H.s_store, /obj/item/tank))
-				to_chat(H, span_notice("You are now running on internals from [H.s_store] on your [H.wear_suit.name]."))
+				to_chat(H, span_notice("You are now running on internals from [H.s_store] on your body."))
 				H.internal = H.s_store
 			else if(istype(H.belt, /obj/item/tank))
 				to_chat(H, span_notice("You are now running on internals from [H.belt] on your belt."))

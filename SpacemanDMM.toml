@@ -1,4 +1,4 @@
-environment = "tgstation.dme"
+environment = "Inferno13.dme"
 
 [langserver]
 dreamchecker = true

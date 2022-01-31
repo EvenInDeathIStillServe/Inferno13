@@ -140,7 +140,7 @@
 /obj/item/reagent_containers/hypospray/medipen/examine()
 	. = ..()
 	if(reagents?.reagent_list.len)
-		. += span_notice("It is currently loaded.")
+		. += span_notice("It is currently loaded with [reagents.total_volume] units.")
 	else
 		. += span_notice("It is spent.")
 
@@ -322,4 +322,4 @@
 	icon_state = "nanite"
 	volume = 30
 	amount_per_transfer_from_this = 10
-	list_reagents = list(/datum/reagent/medicine/nanite = 27, /datum/reagent/medicine/stimulants = 3)
+	list_reagents = list(/datum/reagent/medicine/nanite = 30)

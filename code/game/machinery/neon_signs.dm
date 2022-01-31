@@ -22,6 +22,7 @@
 
 
 /obj/machinery/light/sign/update_icon()
+	..()
 	return
 
 /obj/machinery/light/sign/update()

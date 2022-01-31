@@ -368,7 +368,8 @@
 	vision_range = aggro_vision_range
 	if(target && ((last_taunt + taunt_cooldown) <= world.time) && (emote_taunt.len || say_taunt.len) && prob(taunt_chance))
 		if (say_taunt)
-			say(pick(say_taunt), forced = "taunt")
+			spawn(0)
+				say(pick(say_taunt), forced = "taunt")
 		else
 			manual_emote("[pick(emote_taunt)] at [target].")
 		last_taunt = world.time

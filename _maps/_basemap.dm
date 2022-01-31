@@ -1,4 +1,4 @@
-//#define LOWMEMORYMODE //uncomment this to load centcom and runtime station and thats it.
+//#define LOWMEMORYMODE //uncomment this to load behindthescenes only.
 
 #include "map_files\generic\behindthescenes.dmm"
 

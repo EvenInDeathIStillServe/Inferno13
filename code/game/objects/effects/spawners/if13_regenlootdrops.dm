@@ -19,7 +19,7 @@
 	holo.credits = rand(money_min, money_max)
 	if (prob(75)) //Will most of the time be a multiple of 5, but there's always going to be a weirdo stashing 98 bucks
 		holo.credits = round(holo.credits,5)
-	holo.update_icon()
+	holo.update_appearance()
 
 /obj/effect/spawner/regenlootdrop/if13/money/low
 	money_max = 100

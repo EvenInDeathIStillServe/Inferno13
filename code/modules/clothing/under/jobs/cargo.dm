@@ -45,7 +45,7 @@
 	resistance_flags = NONE
 
 /obj/item/clothing/under/rank/cargo/miner/lavaland
-	desc = "A green uniform for operating in hazardous environments."
-	name = "shaft miner's jumpsuit"
+	name = "scavenger's jumpsuit"
+	desc = "A green uniform commonly worn by scavengers."
 	icon_state = "explorer"
 	inhand_icon_state = "explorer"

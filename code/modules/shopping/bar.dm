@@ -37,7 +37,7 @@
 	src.cost = cost
 
 /obj/machinery/menu/can_interact(mob/user)
-	if (ishuman(user) && user in view())
+	if (ishuman(user) && (user in view()))
 		return TRUE
 
 /obj/machinery/menu/examine(mob/user)

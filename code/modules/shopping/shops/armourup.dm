@@ -3,10 +3,10 @@
 	bag_icon = "armourup"
 	sell_modifier = 0.2
 	bought_objects = list(
-		/obj/item/clothing/suit,
-		/obj/item/clothing/head,
-		/obj/item/clothing/gloves,
-		/obj/item/clothing/shoes,
+		/obj/item/clothing/suit/armor/if13,
+		/obj/item/clothing/head/helmet/if13,
+		/obj/item/clothing/gloves/if13,
+		/obj/item/clothing/shoes/if13,
 		/obj/item/stack/sheet/animalhide
 		)
 

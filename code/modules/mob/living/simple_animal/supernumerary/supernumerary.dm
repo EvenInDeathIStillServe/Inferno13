@@ -74,7 +74,7 @@
 	. = ..()
 	if (!ishuman(speaker) || radio_freq || stat || get_dist(src, speaker) > 4)
 		return
-	if (findtext(raw_message, "hello"))
+	if (findtext(raw_message, "hi") || findtext(raw_message, "hello"))
 		snm_interacted(speaker)
 
 /mob/living/simple_animal/snm/interactible/lance

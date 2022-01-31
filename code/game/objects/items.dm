@@ -910,6 +910,8 @@ attack_basic_mob
 	var/theme = lowertext(usr.client?.prefs?.read_preference(/datum/preference/choiced/ui_style))
 	if(!outline_color) //if we weren't provided with a color, take the theme's color
 		switch(theme) //yeah it kinda has to be this way
+			if("inferno")
+				outline_color = COLOR_THEME_INFERNO
 			if("midnight")
 				outline_color = COLOR_THEME_MIDNIGHT
 			if("plasmafire")

@@ -36,8 +36,8 @@
 	if(wear_suit && !(wear_suit.item_flags & EXAMINE_SKIP))
 		. += "[t_He] [t_is] wearing [wear_suit.get_examine_string(user)]."
 		//suit/armor storage
-		if(s_store && !(obscured & ITEM_SLOT_SUITSTORE) && !(s_store.item_flags & EXAMINE_SKIP))
-			. += "[t_He] [t_is] carrying [s_store.get_examine_string(user)] on [t_his] [wear_suit.name]."
+	if(s_store && !(obscured & ITEM_SLOT_SUITSTORE) && !(s_store.item_flags & EXAMINE_SKIP))
+		. += "[t_He] [t_is] carrying [s_store.get_examine_string(user)] on [t_him]."
 	//back
 	if(back && !(back.item_flags & EXAMINE_SKIP))
 		. += "[t_He] [t_has] [back.get_examine_string(user)] on [t_his] back."

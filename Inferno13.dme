@@ -3730,6 +3730,7 @@
 #include "code\modules\shopping\shops\junkmanjims.dm"
 #include "code\modules\shopping\shops\meds4less.dm"
 #include "code\modules\shopping\shops\skumm.dm"
+#include "code\modules\shopping\shops\threads.dm"
 #include "code\modules\shopping\shops\vanguardmaintenance.dm"
 #include "code\modules\shuttle\arrivals.dm"
 #include "code\modules\shuttle\assault_pod.dm"
