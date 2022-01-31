@@ -208,11 +208,6 @@
 		manual_opened = 1
 	..()
 
-/obj/structure/simple_door/CanPass(atom/movable/mover, turf/target, height=0)
-	if(mover.loc == loc)
-		return 1
-	..()
-
 /obj/structure/simple_door/proc/check_exit(atom/movable/O as mob|obj, target)
 	if(O.loc == loc)
 		return 1
@@ -221,7 +216,7 @@
 // Inferno 13 general doors directory
 
 /obj/structure/simple_door/tentflap_leather
-	name = "brahminskin tent entrance"
+	name = "leather tent entrance"
 	icon_state = "tentflap_leather"
 	door_type = "tentflap_leather"
 	can_disasemble = FALSE
@@ -257,21 +252,21 @@
 	can_hold_padlock = TRUE
 
 /obj/structure/simple_door/dirtyglass
-	desc = "A glass is dirty, you can't see a thing behind it."
+	desc = "The glass is dirty, you can't see a thing behind it."
 	icon_state = "dirtyglass"
 	door_type = "dirtyglass"
 	can_hold_padlock = TRUE
 
 /obj/structure/simple_door/fakeglass
 	name = "old damaged door"
-	desc = "It still somehow opens and closes."
+	desc = "It still opens and closes somehow."
 	icon_state = "fakeglass"
 	door_type = "fakeglass"
 	can_hold_padlock = TRUE
 
 /obj/structure/simple_door/brokenglass
 	name = "shattered door"
-	desc = "It still opens and closes."
+	desc = "It still opens and closes somehow."
 	icon_state = "brokenglass"
 	door_type = "brokenglass"
 	opacity = FALSE
@@ -301,7 +296,7 @@
 	explosion_block = 2
 
 /obj/structure/simple_door/metal/dirtystore
-	desc = "A metal door with dirty glass, you can't see a thing behind it."
+	desc = "A metal door with dirty glass. You can't see a thing behind it."
 	icon_state = "dirtystore"
 	door_type = "dirtystore"
 	can_hold_padlock = TRUE

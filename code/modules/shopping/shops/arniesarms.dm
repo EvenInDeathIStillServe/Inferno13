@@ -11,7 +11,7 @@
 
 	say_purchase = "I hope you know how to use it."
 	say_cant_afford = "I don't do credit, asshole."
-	say_sell = "Yeah, I will take it.."
+	say_sell = "Yeah, I will take it."
 
 /obj/machinery/shop_rack/arniesarms
 	store = "Arnie's Arms"

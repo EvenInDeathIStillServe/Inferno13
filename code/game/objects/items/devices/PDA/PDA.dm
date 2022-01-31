@@ -165,9 +165,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 					font_mode = FONT_MONO
 			equipped = TRUE
 
-/obj/item/pda/proc/update_label()
-	name = "wristpad - [owner]"
-
 /obj/item/pda/GetAccess()
 	if(id)
 		return id.GetAccess()
@@ -521,7 +518,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 				id_check(U)
 			if("UpdateInfo")
 				ownjob = id.assignment
-				update_label()
 				if(!silent)
 					playsound(src, 'sound/machines/terminal_processing.ogg', 15, TRUE)
 					addtimer(CALLBACK(GLOBAL_PROC, .proc/playsound, src, 'sound/machines/terminal_success.ogg', 15, TRUE), 1.3 SECONDS)
@@ -1083,7 +1079,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 		if(!owner)
 			owner = idcard.registered_name
 			ownjob = idcard.assignment
-			update_label()
 			to_chat(user, span_notice("Card scanned."))
 			if(!silent)
 				playsound(src, 'sound/machines/terminal_success.ogg', 50, TRUE)
