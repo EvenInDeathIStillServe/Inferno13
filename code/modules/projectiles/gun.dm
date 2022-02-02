@@ -20,6 +20,7 @@
 	item_flags = NEEDS_PERMIT
 	attack_verb_continuous = list("strikes", "hits", "bashes")
 	attack_verb_simple = list("strike", "hit", "bash")
+	combat_skill = /datum/skill/guns
 
 	var/gun_flags = NONE
 	var/fire_sound = 'sound/weapons/gun/pistol/shot.ogg'
@@ -270,6 +271,7 @@
 	if(weapon_weight == WEAPON_HEAVY && (user.get_inactive_held_item() || !other_hand))
 		to_chat(user, span_warning("You need two hands to fire [src]!"))
 		return
+
 	//DUAL (or more!) WIELDING
 	var/bonus_spread = 0
 	var/loop_counter = 0
@@ -283,6 +285,10 @@
 				loop_counter++
 				addtimer(CALLBACK(G, /obj/item/gun.proc/process_fire, target, user, TRUE, params, null, bonus_spread), loop_counter)
 
+	if (ishuman(user) && combat_skill && minimum_combat_skill)
+		var/gun_skill = user.mind.get_skill_level(combat_skill)
+		if (gun_skill < minimum_combat_skill)
+			bonus_spread += 50
 	return process_fire(target, user, TRUE, params, null, bonus_spread)
 
 /obj/item/gun/proc/check_botched(mob/living/user, atom/target)

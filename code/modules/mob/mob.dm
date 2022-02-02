@@ -1113,7 +1113,6 @@
 			var/obj/item/pda/PDA = A
 			if(PDA.owner == oldname)
 				PDA.owner = newname
-				PDA.update_label()
 				if(!search_id)
 					break
 				search_pda = 0

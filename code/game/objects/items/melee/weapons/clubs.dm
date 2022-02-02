@@ -5,6 +5,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	hitsound = 'sound/weapons/genhit1.ogg'
 	damtype = BEAT
+	combat_skill = /datum/skill/clubs
 
 /obj/item/melee/club/baseball_bat
 	name = "baseball bat"

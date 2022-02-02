@@ -9,6 +9,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	damtype = SLASH
 	charging_slowdown = 0.4
+	combat_skill = /datum/skill/blades
 
 /obj/item/melee/blade/Initialize(mapload)
 	. = ..()

@@ -310,7 +310,6 @@
 	if(istype(PDA))
 		PDA.owner = H.real_name
 		PDA.ownjob = J.title
-		PDA.update_label()
 		if(C && PDA.id_check(H,C))
 			H.equip_to_slot_or_del(PDA,ITEM_SLOT_ID)
 			H.belt = null

@@ -13,6 +13,8 @@
 	wound_bonus = CANT_WOUND // can't wound by default
 	generic_canpass = FALSE
 	blocks_emissive = EMISSIVE_BLOCK_GENERIC
+
+	var/combat_skill = null
 	//The sound this plays on impact.
 	var/hitsound = 'sound/weapons/pierce.ogg'
 	var/hitsound_wall = ""
@@ -286,6 +288,10 @@
 				playsound(src, hitsound, volume, TRUE, -1)
 			L.visible_message(span_danger("[L] is hit by \a [src][organ_hit_text]!"), \
 					span_userdanger("You're hit by \a [src][organ_hit_text]!"), null, COMBAT_MESSAGE_RANGE)
+
+		if (combat_skill && ishuman(firer) && firer:mind && isliving(target) && target:stat != DEAD)
+			firer:mind.adjust_experience(combat_skill, 5)
+
 		L.on_hit(src)
 
 	var/reagent_note

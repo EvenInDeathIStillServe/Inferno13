@@ -208,7 +208,6 @@
 	var/obj/item/pda/heads/pda = H.r_store
 	pda.owner = H.real_name
 	pda.ownjob = "CentCom Official"
-	pda.update_label()
 
 	var/obj/item/card/id/W = H.wear_id
 	W.registered_name = H.real_name

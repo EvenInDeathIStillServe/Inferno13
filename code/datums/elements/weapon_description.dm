@@ -40,7 +40,7 @@
 	SIGNAL_HANDLER
 
 	if(item.force >= 5 || item.throwforce >= 5 || item.override_notes || item.offensive_notes || attached_proc) /// Only show this tag for items that could feasibly be weapons, shields, or those that have special notes
-		examine_texts += span_notice("<a href='?src=[REF(item)];examine=1'>Appraise.</a>")
+		examine_texts += span_notice("<a href='?src=[REF(item)];examine=1'>Appraise</a>")
 
 /**
  *

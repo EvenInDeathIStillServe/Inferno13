@@ -505,11 +505,11 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	var/mob/living/L = arrived
 	if(!L.ckey)
 		return
-
+/*
 	//Ship ambience just loops if turned on.
 	if(L.client?.prefs.toggles & SOUND_SHIP_AMBIENCE)
 		SEND_SOUND(L, sound('sound/ambience/shipambience.ogg', repeat = 1, wait = 0, volume = 35, channel = CHANNEL_BUZZ))
-
+*/
 	if (visit_journal && ishuman(L))
 		L:award_journal(visit_journal)
 

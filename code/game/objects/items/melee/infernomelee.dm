@@ -3,8 +3,8 @@
 /obj/item
 	var/combat_capable = FALSE //Whether it can swing as a weapon.
 	var/attack_range = 3
-	var/combat_skill =  /datum/skill/melee //Combat skill used
-	var/minimum_combat_skill = 0 //If combat skill is lower than this, big damage debuff
+	var/combat_skill = null //Combat skill used (/datum/skill/melee)
+	var/minimum_combat_skill = 0 //If combat skill is lower than this, big damage debuff. for guns, big inaccuracy
 
 /obj/item/afterattack(atom/target, mob/living/user, flag, params)
 	. = ..()
@@ -34,9 +34,10 @@
 	M.def_zone = ran_zone(user.zone_selected)
 	M.range = attack_range
 	if (ishuman(user) && combat_skill)
+		M.combat_skill = combat_skill
 		var/combatant_skill = user.mind.get_skill_level(combat_skill)
 		if (combatant_skill < minimum_combat_skill)
-			M.damage *= 0.25
+			M.damage *= 0.3
 		else
 			M.damage *= 1 + combatant_skill/10
 	playsound(user, 'sound/weapons/punchmiss.ogg', 40, 1)
@@ -212,7 +213,7 @@ obj/item/melee/proc/charge_indicator(force_update = FALSE)
 	def_zone = ran_zone(BODY_ZONE_CHEST,45)
 
 /obj/projectile/melee/on_hit(atom/target, blocked = FALSE)
-	if (ishuman(firer) && firer:mind && isliving(target) && target:stat != DEAD)
+	if (combat_skill && ishuman(firer) && firer:mind && isliving(target) && target:stat != DEAD)
 		if (blocked < 100)
-			firer:mind.adjust_experience(/datum/skill/melee, 5)
+			firer:mind.adjust_experience(combat_skill, 5)
 	. = ..()

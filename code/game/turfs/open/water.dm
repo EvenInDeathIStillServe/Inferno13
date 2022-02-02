@@ -41,7 +41,7 @@
 	if(istype(AM, /mob/living))
 		var/mob/living/L = AM
 //		L.update_water()
-		if(L.check_submerged() <= 0)
+		if(L.check_submerged() > 0)
 			return
 		if(!istype(newloc, /turf/open/water))
 			to_chat(L, "<span class='warning'>You climb out of \the [src].</span>")

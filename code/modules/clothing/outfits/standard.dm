@@ -260,7 +260,6 @@
 	var/obj/item/pda/heads/pda = H.belt
 	pda.owner = H.real_name
 	pda.ownjob = "Reaper"
-	pda.update_label()
 
 	var/obj/item/card/id/W = H.wear_id
 	W.registered_name = H.real_name
