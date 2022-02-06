@@ -9,7 +9,7 @@
 
 	say_purchase = "Uh, enjoy that, I guess."
 	say_cant_afford = "Must be real tough if you can't even afford to eat here."
-	say_sell = "Why do I have to handle meat deliveries? Ugh."
+	say_sell = "Yup, that's chudmeat alright."
 
 /obj/machinery/shop_rack/chudburger
 	store = "Chud Burger"
@@ -31,4 +31,4 @@
 	icon_state = "chudburger_guy"
 	icon_living = "chudburger_guy"
 	icon_dead = "chudburger_guy"
-	say_greet = "Yeah, hey. Welcome to Chudburger and all that."
+	say_greet = "Yeah, hey. Welcome to Chudburger and all that. Are you here to drop off some meat?"

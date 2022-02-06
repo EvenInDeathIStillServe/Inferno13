@@ -391,6 +391,15 @@
 	foodtypes = GRAIN | SUGAR | BREAKFAST
 	w_class = WEIGHT_CLASS_SMALL
 
+/obj/item/food/soylentred
+	name = "soylent red"
+	desc = "A hard, stale bar that is definitely people. Or maybe dog?"
+	icon_state = "soylent_red"
+	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/nutriment/protein = 2)
+	tastes = list("meat" = 7)
+	foodtypes = MEAT
+	obj_value = 20
+
 /obj/item/food/soylentgreen
 	name = "\improper Soylent Green"
 	desc = "Not made of people. Honest." //Totally people.

@@ -151,6 +151,9 @@
 	///A variable to change on a per instance basis on the map that allows the instance to force cost and ID requirements
 	var/onstation_override = FALSE //change this on the object on the map to override the onstation check. DO NOT APPLY THIS GLOBALLY.
 
+	///If true, products are infinite
+	var/auto_stock = TRUE
+
 	///ID's that can load this vending machine wtih refills
 	var/list/canload_access_list
 
@@ -900,11 +903,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 			flick(icon_deny,src)
 			vend_ready = TRUE
 			return
-		else if(!C.registered_account.account_job)
-			say("Departmental accounts have been blacklisted from personal expenses due to embezzlement.")
-			flick(icon_deny, src)
-			vend_ready = TRUE
-			return
 		else if(age_restrictions && R.age_restricted && (!C.registered_age || C.registered_age < AGE_MINOR))
 			say("You are not of legal age to purchase [R.name].")
 			if(!(usr in GLOB.narcd_underages))
@@ -941,7 +939,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 	var/obj/item/vended_item = new R.product_path(get_turf(src))
 	if(greyscale_colors)
 		vended_item.set_greyscale(colors=greyscale_colors)
-	R.amount--
+	if (!auto_stock)
+		R.amount--
 	if(usr.CanReach(src) && usr.put_in_hands(vended_item))
 		to_chat(usr, span_notice("You take [R.name] out of the slot."))
 	else

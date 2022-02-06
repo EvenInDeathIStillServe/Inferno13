@@ -14,7 +14,22 @@
 
 	var/list/drinks = list()
 	var/list/foods = list()
-	var/mob/living/simple_animal/snm/interactible/bartender/barkeep
+	var/mob/living/simple_animal/snm/interactible/bartender/bartender
+	var/bartender_type
+
+	var/speech_time
+	var/say_purchase_drink = "Enjoy."
+	var/say_purchase_food = "Enjoy."
+	var/say_cant_afford = "You can't afford it."
+
+/obj/machinery/menu/Initialize(mapload)
+	. = ..()
+	if (!bartender_type)
+		return
+	for (var/mob/living/simple_animal/snm/interactible/bartender/S in range(5,src))
+		if (istype(S, bartender_type))
+			bartender = S
+			break
 
 /datum/data/bar_drink
 	var/product_name = "generic"
@@ -75,12 +90,14 @@
 			to_chat(H, "<span class='warning'>Error: Invalid choice!</span>")
 			return
 		if (!H.canpay(entry.cost))
-			to_chat(H, "<span class='warning'>Come back when you can actually pay.</span>")
+			speech(say_cant_afford)
+			to_chat(H, "<span class='warning'>You can't afford it.</span>")
 		H.payact(-entry.cost)
 		var/obj/item/reagent_containers/food/drinks/drinkingglass/yourdrinksir = new /obj/item/reagent_containers/food/drinks/drinkingglass(loc)
 		yourdrinksir.reagents.add_reagent (entry.drink_path, 50)
 		H.put_in_active_hand(yourdrinksir)
 		to_chat(H, "<span class='notice'>You receive your drink with extreme expediency.</span>")
+		speech(say_purchase_drink)
 
 	else if (href_list["orderfood"])
 		var/datum/data/bar_food/entry = locate(href_list["orderfood"])
@@ -88,10 +105,19 @@
 			to_chat(H, "<span class='warning'>Error: Invalid choice!</span>")
 			return
 		if (!H.canpay(entry.cost))
-			to_chat(H, "<span class='warning'>Come back when you can actually pay.</span>")
+			speech(say_cant_afford)
+			to_chat(H, "<span class='warning'>You can't afford it.</span>")
 		H.payact(-entry.cost)
 		var/obj/item/reagent_containers/food/yourfoodsir = new entry.food_path(loc)
 		H.put_in_active_hand(yourfoodsir)
 		to_chat(H, "<span class='notice'>You receive your meal with extreme expediency.</span>")
+		speech(say_purchase_food)
 	updateUsrDialog()
 	return
+
+/obj/machinery/menu/proc/speech(speech_line)
+	if (!bartender)
+		return
+	if (speech_time <= world.time)
+		bartender.say(speech_line)
+		speech_time = world.time + 5 SECONDS

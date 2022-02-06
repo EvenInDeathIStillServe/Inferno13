@@ -413,6 +413,56 @@
 	..()
 	. = TRUE
 
+/datum/reagent/consumable/vanguard_cola
+	name = "Cola"
+	description = "A refreshing beverage."
+	color = "#100800" // rgb: 16, 8, 0
+	taste_description = "cola"
+	glass_icon_state = "spacecola"
+	glass_name = "glass of Space Cola"
+	glass_desc = "A glass of refreshing Space Cola."
+	water_factor = 10 * REAGENTS_METABOLISM
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+
+/datum/reagent/consumable/vanguard_cola/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
+	M.adjust_drowsyness(-5 * REM * delta_time)
+	M.adjust_bodytemperature(-5 * REM * TEMPERATURE_DAMAGE_COEFFICIENT * delta_time, M.get_body_temp_normal())
+	..()
+
+/datum/reagent/consumable/crater_gust
+	name = "Crater Gust"
+	description = "Blows right through you like a blastwave."
+	color = "#102000" // rgb: 16, 32, 0
+	taste_description = "sweet citrus soda"
+	glass_icon_state = "Space_mountain_wind_glass"
+	glass_name = "glass of Crater Gust"
+	glass_desc = "Blows right through you like a blastwave."
+	water_factor = 10 * REAGENTS_METABOLISM
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+
+/datum/reagent/consumable/crater_gust/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
+	M.adjust_drowsyness(-7 * REM * delta_time)
+	M.AdjustSleeping(-20 * REM * delta_time)
+	M.adjust_bodytemperature(-5 * REM * TEMPERATURE_DAMAGE_COEFFICIENT * delta_time, M.get_body_temp_normal())
+	M.Jitter(5 * REM * delta_time)
+	..()
+	. = TRUE
+
+/datum/reagent/consumable/delta_delight
+	name = "Delta Delight"
+	description = "Cross the Delta."
+	color = "#f00060" // rgb: 94, 0, 38
+	taste_description = "carbonated metallic soda"
+	glass_icon_state = "shamblerjuice"
+	glass_name = "glass of Delta Delight"
+	glass_desc = "Cross the Delta."
+	water_factor = 10 * REAGENTS_METABOLISM
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+
+/datum/reagent/consumable/delta_delight/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
+	M.adjust_bodytemperature(-8 * REM * TEMPERATURE_DAMAGE_COEFFICIENT * delta_time, M.get_body_temp_normal())
+	..()
+
 /datum/reagent/consumable/space_cola
 	name = "Cola"
 	description = "A refreshing beverage."

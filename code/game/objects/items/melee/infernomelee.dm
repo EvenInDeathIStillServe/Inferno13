@@ -42,6 +42,7 @@
 			M.damage *= 1 + combatant_skill/10
 	playsound(user, 'sound/weapons/punchmiss.ogg', 40, 1)
 	M.fire()
+	user.Immobilize(2)
 	after_melee_attack()
 	return
 

@@ -21,7 +21,7 @@
 	add_overlay("grjam")
 
 /obj/machinery/gibber/RefreshParts()
-	gibtime = 40
+	gibtime = initial(gibtime)
 	meat_produced = initial(meat_produced)
 	for(var/obj/item/stock_parts/matter_bin/B in component_parts)
 		meat_produced += B.rating
@@ -29,6 +29,7 @@
 		gibtime -= 5 * M.rating
 		if(M.rating >= 2)
 			ignore_clothing = TRUE
+	gibtime = max(gibtime, 0)
 
 /obj/machinery/gibber/examine(mob/user)
 	. = ..()
@@ -222,7 +223,6 @@
 				new gibtype(gibturf,i,diseases)
 
 	pixel_x = base_pixel_x //return to its spot after shaking
-	operating = FALSE
 	update_appearance()
 
 //auto-gibs anything that bumps into it
@@ -237,3 +237,50 @@
 		if(victim.loc == input)
 			victim.forceMove(src)
 			victim.gib()
+
+/obj/machinery/rdcd
+	name = "\improper RDCD machine"
+	desc = "A hulking mass of machinery. This thing will absolutely pulverize flesh."
+	icon = 'icons/obj/recycling.dmi'
+	icon_state = "grinder-o1bld"
+	density = TRUE
+	use_power = IDLE_POWER_USE
+	idle_power_usage = 2
+	active_power_usage = 500
+
+	var/input_dir = WEST
+
+/obj/machinery/rdcd/Bumped(atom/movable/AM)
+	if (occupant)
+		return
+	var/atom/input = get_step(src, input_dir)
+	if(isanimal(AM))
+		var/mob/living/simple_animal/victim = AM
+		if (victim.loc != input)
+			return
+		victim.forceMove(src)
+		set_occupant(victim)
+
+		for (var/mob/living/carbon/human/H in viewers(world.view, loc))
+			if (H in victim.player_attackers)
+				H.award_journal(/datum/journal/soylentred)
+				H.award_duty(/datum/duty/corpsegrinder)
+
+		gib()
+
+/obj/machinery/rdcd/proc/gib()
+	if(!occupant)
+		audible_message(span_hear("You hear a loud metallic grinding sound."))
+		return
+
+	var/mob/living/mob_occupant = occupant
+
+	use_power(1000)
+	playsound(loc, 'sound/machines/juicer.ogg', 50, TRUE)
+
+	new /obj/item/food/soylentred(get_turf(src))
+
+	mob_occupant.death(1)
+	mob_occupant.ghostize()
+	set_occupant(null)
+	qdel(mob_occupant)

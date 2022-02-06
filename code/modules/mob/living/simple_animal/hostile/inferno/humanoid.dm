@@ -37,6 +37,7 @@
 	melee_damage_lower = 10
 	melee_damage_upper = 10
 	experience_on_kill = 10
+	aggro_chance = 20
 
 /mob/living/simple_animal/hostile/humanoid/clone/female
 	gender = FEMALE

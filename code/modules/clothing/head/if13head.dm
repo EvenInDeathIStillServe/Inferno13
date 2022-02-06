@@ -30,3 +30,11 @@
 	strip_delay = 50
 	armor = list("beat" = 16, "slash" = 12, "stab" = 12, "shot" = 12, "enflame" = 5, "electric" = 8, "acid" = 4, "irradiation" = 3, "cold" = 12)
 	obj_value = 400
+
+/obj/item/clothing/head/helmet/if13/ronin
+	name = "ronin helmet"
+	desc = "Buhh."
+	icon_state = "ronin"
+	flags_inv = HIDEEARS|HIDEHAIR
+	armor = list("beat" = 22, "slash" = 22, "stab" = 22, "shot" = 22, "enflame" = 15, "electric" = 12, "acid" = 8, "irradiation" = 3, "cold" = 5)
+	obj_value = 800

@@ -8,6 +8,7 @@
 	status_flags = GODMODE
 //	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/human = 2)
 	stop_automated_movement = 1
+	anchored = TRUE
 
 /mob/living/simple_animal/snm/interactible
 	var/interacting = FALSE
@@ -109,8 +110,8 @@
 		interacting = FALSE
 
 /mob/living/simple_animal/snm/interactible/vanguard_graphic
-	name = "\improper Vanguard graphic designer"
-	desc = "A graphic designer working for the Vanguard corporation. He looks stuck."
+	name = "\improper VanGuard graphic designer"
+	desc = "A graphic designer working for the VanGuard corporation. He looks stuck."
 	icon_state = "vanguard_graphic"
 	icon_living = "vanguard_graphic"
 	icon_dead = "vanguard_graphic"
@@ -119,7 +120,7 @@
 	if (interacting)
 		return
 	interacting = TRUE
-	say("Oh, hello. I'm kind of in the middle of designing a logo for Vanguard's new video player software.")
+	say("Oh, hello. I'm kind of in the middle of designing a logo for VanGuard's new video player software.")
 	spawn (50)
 		say("Argh, who am I kidding. This isn't going anywhere. Hey, if you get me some kind of inspiration, I'd be real grateful.")
 		interacting = FALSE
@@ -139,4 +140,5 @@
 /mob/living/simple_animal/snm/interactible/shopkeeper
 	anchored = TRUE
 
-/mob/living/simple_animal/snm/interactible/bartender/lechuck
+/mob/living/simple_animal/snm/interactible/bartender
+	anchored = TRUE

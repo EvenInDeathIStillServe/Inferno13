@@ -242,7 +242,7 @@
 // Formatting is the same as food.
 
 /obj/item/reagent_containers/food/drinks/coffee
-	name = "robust coffee"
+	name = "coffee"
 	desc = "Careful, the beverage you're about to enjoy is extremely hot."
 	icon_state = "coffee"
 	list_reagents = list(/datum/reagent/consumable/coffee = 30)
@@ -301,7 +301,7 @@
 
 /obj/item/reagent_containers/food/drinks/waterbottle
 	name = "bottle of water"
-	desc = "A bottle of water filled at an old Earth bottling facility."
+	desc = "A bottle of water."
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "smallbottle"
 	inhand_icon_state = "bottle"
@@ -904,3 +904,24 @@
 	desc = "There is no air shortage. Do not drink."
 	icon_state = "air"
 	list_reagents = list(/datum/reagent/nitrogen = 24, /datum/reagent/oxygen = 6)
+
+/obj/item/reagent_containers/food/drinks/soda_cans/vanguard_cola
+	name = "VanGuard Cola"
+	desc = "May contain trace amounts of Phosphate Zenith."
+	icon_state = "cola"
+	list_reagents = list(/datum/reagent/consumable/vanguard_cola = 30)
+	foodtype = SUGAR
+
+/obj/item/reagent_containers/food/drinks/soda_cans/crater_gust
+	name = "Crater Gust"
+	desc = "Blows right through you like a blastwave."
+	icon_state = "crater_gust"
+	list_reagents = list(/datum/reagent/consumable/crater_gust = 30)
+	foodtype = SUGAR | JUNKFOOD
+
+/obj/item/reagent_containers/food/drinks/soda_cans/delta_delight
+	name = "Delta Delight"
+	desc = "Cross the Delta."
+	icon_state = "deltadelight"
+	list_reagents = list(/datum/reagent/consumable/delta_delight = 30)
+	foodtype = SUGAR | JUNKFOOD

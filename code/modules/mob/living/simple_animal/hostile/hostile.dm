@@ -21,11 +21,13 @@
 	var/casingtype //set ONLY it and NULLIFY projectiletype, if we have projectile IN CASING
 	var/move_to_delay = 3 //delay for the automated movement.
 	var/list/friends = list()
+	var/list/enemies = list()
 	var/list/emote_taunt = list()
 	var/list/say_taunt = list()
 	var/last_taunt = 0
 	var/taunt_cooldown = 10 SECONDS
 	var/taunt_chance = 0
+	var/aggro_chance = 100 //Chance to consider a valid target as an enemy
 
 	var/rapid_melee = 1  //Number of melee attacks between each npc pool tick. Spread evenly.
 	var/melee_queue_distance = 4 //If target is close enough start preparing to hit them if we have rapid_melee enabled
@@ -135,6 +137,7 @@
 
 /mob/living/simple_animal/hostile/attacked_by(obj/item/I, mob/living/user)
 	if(stat == CONSCIOUS && !target && AIStatus != AI_OFF && !client && user)
+		enemies += user
 		FindTarget(list(user), 1)
 		MoveToTarget(list(user))
 	return ..()
@@ -142,6 +145,7 @@
 /mob/living/simple_animal/hostile/bullet_act(obj/projectile/P)
 	if(stat == CONSCIOUS && !target && AIStatus != AI_OFF && !client)
 		if(P.firer && get_dist(src, P.firer) <= aggro_vision_range)
+			enemies += P.firer
 			FindTarget(list(P.firer), 1)
 			MoveToTarget(list(P.firer))
 		Goto(P.starting, move_to_delay, 3)
@@ -227,15 +231,24 @@
 			var/mob/living/L = the_target
 			var/faction_check = faction_check_mob(L)
 			if(robust_searching)
+				if (L in enemies)
+					return TRUE
 				if(faction_check && !attack_same)
 					return FALSE
 				if(L.stat > stat_attack)
 					return FALSE
 				if(L in friends)
 					return FALSE
+				if (!(L in player_attackers) && !prob(aggro_chance)) //If the player has not attacked it, has a chance to be ignored.
+					return FALSE
 			else
+				if (L in enemies)
+					return TRUE
+				if (!(L in player_attackers) && !prob(aggro_chance))
+					return FALSE
 				if((faction_check && !attack_same) || L.stat)
 					return FALSE
+			enemies += L
 			return TRUE
 
 		if(ismecha(the_target))
@@ -422,6 +435,7 @@
 	if(!(simple_mob_flags & SILENCE_RANGED_MESSAGE))
 		visible_message(span_danger("<b>[src]</b> [ranged_message] at [A]!"))
 
+	Stun(2, ignore_canstun = TRUE)
 
 	if(rapid > 1)
 		var/datum/callback/cb = CALLBACK(src, .proc/Shoot, A)
@@ -430,7 +444,6 @@
 	else
 		Shoot(A)
 	ranged_cooldown = world.time + ranged_cooldown_time
-
 
 /mob/living/simple_animal/hostile/proc/Shoot(atom/targeted_atom)
 	var/atom/target_from = GET_TARGETS_FROM(src)

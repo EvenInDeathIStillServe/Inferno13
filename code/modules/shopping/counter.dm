@@ -35,7 +35,7 @@
 	for (var/mob/living/simple_animal/snm/interactible/shopkeeper/S in range(5,src))
 		if (istype(S, shopkeeper_type))
 			shopkeeper = S
-			return
+			break
 
 /obj/machinery/shop_counter/attackby(obj/item/W, mob/living/carbon/human/user, params)
 	if (!user)

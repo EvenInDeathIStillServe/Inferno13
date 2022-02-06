@@ -50,6 +50,8 @@
 		to_chat(user, span_danger("You [response_harm_simple] [src]!"))
 		playsound(loc, attacked_sound, 25, TRUE, -1)
 		attack_threshold_check(harm_intent_damage)
+		if (stat != DEAD && ishuman(user))
+			player_attackers |= user
 		log_combat(user, src, "attacked")
 		updatehealth()
 		return TRUE
@@ -140,11 +142,13 @@
 		return FALSE
 	else
 		if(actuallydamage)
+			if (IS_PHYSICAL_DAMAGE(damagetype) && prob(damage))
+				add_splatter_floor(getturf(src))
 			apply_damage(damage, damagetype, null, getarmor(null, armorcheck))
 		return TRUE
 
 /mob/living/simple_animal/bullet_act(obj/projectile/Proj, def_zone, piercing_hit = FALSE)
-	if (ishuman(Proj.firer))
+	if (stat != DEAD && ishuman(Proj.firer))
 		player_attackers |= Proj.firer
 	attack_threshold_check(Proj.damage, Proj.damage_type, Proj.damage_type)
 	Proj.on_hit(src, 0, piercing_hit)

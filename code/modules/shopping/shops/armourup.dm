@@ -39,3 +39,12 @@
 		new /datum/data/shopping_good("Leather Gloves",			/obj/item/clothing/gloves/if13/leather,					200),
 		new /datum/data/shopping_good("Leather Boots",			/obj/item/clothing/shoes/if13/leather,					200)
 		)
+
+/obj/machinery/shop_rack/armourup/ronin
+	icon_state = "ronin"
+	goods = list(
+		new /datum/data/shopping_good("Ronin Armour",			/obj/item/clothing/suit/armor/if13/ronin,				1200),
+		new /datum/data/shopping_good("Ronin Helmet",			/obj/item/clothing/head/helmet/if13/ronin,				800),
+		new /datum/data/shopping_good("Ronin Vambraces",		/obj/item/clothing/gloves/if13/ronin,					500),
+		new /datum/data/shopping_good("Ronin Tabi",				/obj/item/clothing/shoes/if13/ronin,					500)
+		)

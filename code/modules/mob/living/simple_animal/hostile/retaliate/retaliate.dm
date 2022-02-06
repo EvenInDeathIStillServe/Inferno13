@@ -1,6 +1,4 @@
 /mob/living/simple_animal/hostile/retaliate
-	///A list of weakrefs pointing at things that we consider targets
-	var/list/enemies = list()
 
 /mob/living/simple_animal/hostile/retaliate/Found(atom/A)
 	if(isliving(A))

@@ -13,6 +13,14 @@
 	var/mob/dead/observer/observer = usr
 	observer.open_spawners_menu()
 
+/atom/movable/screen/ghost/reclone
+	name = "Reclone"
+	icon_state = "reclone"
+
+/atom/movable/screen/ghost/reclone/Click()
+	var/mob/dead/observer/G = usr
+	G.reclone()
+
 /atom/movable/screen/ghost/orbit
 	name = "Orbit"
 	icon_state = "orbit"
@@ -48,7 +56,7 @@
 /atom/movable/screen/ghost/minigames_menu
 	name ="Minigames"
 	icon_state = "minigames"
-	
+
 /atom/movable/screen/ghost/minigames_menu/Click()
 	var/mob/dead/observer/observer = usr
 	observer.open_minigames_menu()
@@ -59,6 +67,11 @@
 
 	using = new /atom/movable/screen/ghost/spawners_menu()
 	using.screen_loc = ui_ghost_spawners_menu
+	using.hud = src
+	static_inventory += using
+
+	using = new /atom/movable/screen/ghost/reclone()
+	using.screen_loc = ui_ghost_reclone
 	using.hud = src
 	static_inventory += using
 
@@ -74,11 +87,6 @@
 
 	using = new /atom/movable/screen/ghost/teleport()
 	using.screen_loc = ui_ghost_teleport
-	using.hud = src
-	static_inventory += using
-
-	using = new /atom/movable/screen/ghost/pai()
-	using.screen_loc = ui_ghost_pai
 	using.hud = src
 	static_inventory += using
 

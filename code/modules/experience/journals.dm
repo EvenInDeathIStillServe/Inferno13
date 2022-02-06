@@ -40,6 +40,11 @@ GLOBAL_LIST_INIT(journal_types, subtypesof(/datum/journal))
 	desc = "Appraised an item."
 	experience_value = 50
 
+/datum/journal/soylentred
+	name = "Soylent Red"
+	desc = "Found the 'secret' behind soylent red. Everyone already knows about it, come on."
+	experience_value = 200
+
 /datum/journal/visit
 	name = "Visit: Base"
 	desc = "This is the base visit journal. How the fuck did you get this?"

@@ -36,3 +36,14 @@
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	armor = list("beat" = 14, "slash" = 14, "stab" = 12, "shot" = 12, "enflame" = 5, "electric" = 8, "acid" = 4, "irradiation" = 3, "cold" = 12)
 	obj_value = 200
+
+/obj/item/clothing/gloves/if13/ronin
+	name = "ronin bracers"
+	desc = "Buhh."
+	icon_state = "ronin"
+	cold_protection = HANDS
+	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
+	heat_protection = HANDS
+	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
+	armor = list("beat" = 22, "slash" = 22, "stab" = 22, "shot" = 22, "enflame" = 15, "electric" = 12, "acid" = 8, "irradiation" = 3, "cold" = 5)
+	obj_value = 500

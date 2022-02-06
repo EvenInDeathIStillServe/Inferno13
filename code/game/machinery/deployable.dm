@@ -217,6 +217,13 @@
 	. = ..()
 	AddComponent(/datum/component/deployable, 5 SECONDS, /obj/machinery/deployable_turret/hmg, delete_on_use = TRUE)
 
+/obj/structure/barricade/construction
+	name = "construction barrier"
+	desc = "Attention! Construction ahead."
+	icon = 'icons/obj/structures.dmi'
+	icon_state = "construction_barrier"
+	resistance_flags = INDESTRUCTIBLE
+
 #undef SINGLE
 #undef VERTICAL
 #undef HORIZONTAL

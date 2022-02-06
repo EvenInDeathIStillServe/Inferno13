@@ -8,7 +8,8 @@
 		/obj/item/reagent_containers/syringe,
 		/obj/item/toy,
 		/obj/item/geiger_counter,
-		/obj/item/clothing/head/cone
+		/obj/item/clothing/head/cone,
+		/obj/item/food/soylentred
 		)
 
 	shopkeeper_type = /mob/living/simple_animal/snm/interactible/shopkeeper/junkmanjim
