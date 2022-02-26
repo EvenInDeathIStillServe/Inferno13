@@ -538,6 +538,14 @@ SUBSYSTEM_DEF(job)
 		new_character.experience_level = player_client.prefs.experience_level
 		new_character.total_experience = player_client.prefs.total_experience
 		new_character.free_experience = player_client.prefs.free_experience
+		new_character.free_points = player_client.prefs.free_points
+
+		new_character.muscles = player_client.prefs.muscles
+		new_character.neurons = player_client.prefs.neurons
+		new_character.heart = player_client.prefs.heart
+		new_character.sinews = player_client.prefs.sinews
+		new_character.senses = player_client.prefs.senses
+		new_character.ego = player_client.prefs.ego
 
 
 	job.after_spawn(equipping, player_client)

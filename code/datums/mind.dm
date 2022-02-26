@@ -256,6 +256,14 @@
 	var/level = get_skill_level(skill)
 	return SSskills.level_names[level]
 
+///Gets the player's current effective skill total, taking into account stats
+/datum/mind/proc/get_effective_skill(skill)
+	var/datum/skill/S = GetSkillRef(skill)
+	var/effective = get_skill_level(skill)
+	for (var/stat in S.stats)
+		effective += current.vars[stat]/S.stats.len
+	return round(effective)
+
 /datum/mind/proc/print_levels(user)
 	var/list/shown_skills = list()
 	for(var/i in known_skills)
@@ -267,7 +275,7 @@
 	var/msg = "[span_info("*---------*\n<EM>Your skills</EM>")]\n<span class='notice'>"
 	for(var/i in shown_skills)
 		var/datum/skill/the_skill = i
-		msg += "[initial(the_skill.name)] - [get_skill_level_name(the_skill)]\n"
+		msg += "[initial(the_skill.name)] - [get_skill_level_name(the_skill)] ([get_effective_skill(the_skill)])\n"
 	msg += "</span>"
 	to_chat(user, msg)
 

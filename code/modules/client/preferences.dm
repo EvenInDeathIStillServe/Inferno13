@@ -57,6 +57,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/total_experience = 0
 	///Available experience
 	var/free_experience = 0
+	///Free points (for stats or mutations)
+	var/free_points = 6
+
+	//Stats
+	var/muscles = 8
+	var/neurons = 8
+	var/heart = 8
+	var/sinews = 8
+	var/senses = 8
+	var/ego = 8
 
 	/// The current window, PREFERENCE_TAB_* in [`code/__DEFINES/preferences.dm`]
 	var/current_window = PREFERENCE_TAB_CHARACTER_PREFERENCES

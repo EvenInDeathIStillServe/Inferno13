@@ -18,5 +18,11 @@
 			return
 		playsound_local(src, 'sound/effects/drums.ogg', 50, TRUE)
 		to_chat(src, span_nicegreen("<b>Level Up!</b> You are now level [experience_level]."))
+		free_points++
+		if (ISEVEN(experience_level))
+			to_chat(src, span_nicegreen("<b>2</b> developments gained."))
+			free_points++
+		else
+			to_chat(src, span_nicegreen("<b>1</b> development gained."))
 		save_clone_data()
 		return TRUE

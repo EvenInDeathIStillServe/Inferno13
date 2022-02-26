@@ -39,7 +39,7 @@
 		if (combatant_skill < minimum_combat_skill)
 			M.damage *= 0.3
 		else
-			M.damage *= 1 + combatant_skill/10
+			M.damage *= 1 + (user.mind.get_effective_skill(combat_skill)-10)/50
 	playsound(user, 'sound/weapons/punchmiss.ogg', 40, 1)
 	M.fire()
 	user.Immobilize(2)

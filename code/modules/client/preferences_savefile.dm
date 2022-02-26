@@ -338,6 +338,27 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["total_experience"] , total_experience)
 	//Available XP
 	READ_FILE(S["free_experience"] , free_experience)
+	//Development points
+	READ_FILE(S["free_points"] , free_points)
+
+	READ_FILE(S["muscles"] , muscles)
+	if (muscles < 1)
+		muscles = 8
+	READ_FILE(S["neurons"] , neurons)
+	if (neurons < 1)
+		neurons = 8
+	READ_FILE(S["heart"] , heart)
+	if (heart < 1)
+		heart = 8
+	READ_FILE(S["sinews"] , sinews)
+	if (sinews < 1)
+		sinews = 8
+	READ_FILE(S["senses"] , senses)
+	if (senses < 1)
+		senses = 8
+	READ_FILE(S["ego"] , ego)
+	if (ego < 1)
+		ego = 8
 
 	//try to fix any outdated data if necessary
 	//preference updating will handle saving the updated data for us.
@@ -415,6 +436,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Available XP
 	WRITE_FILE(S["free_experience"] , free_experience)
 
+	//Stats
+	WRITE_FILE(S["muscles"] , muscles)
+	WRITE_FILE(S["neurons"] , neurons)
+	WRITE_FILE(S["heart"] , heart)
+	WRITE_FILE(S["sinews"] , sinews)
+	WRITE_FILE(S["senses"] , senses)
+	WRITE_FILE(S["ego"] , ego)
 
 	return TRUE
 

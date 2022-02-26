@@ -88,3 +88,12 @@
 	var/experience_level = 1
 	var/total_experience = 0
 	var/free_experience = 0
+	var/free_points = 6
+
+	//Stats
+	var/muscles = 8
+	var/neurons = 8
+	var/heart = 8
+	var/sinews = 8
+	var/senses = 8
+	var/ego = 8

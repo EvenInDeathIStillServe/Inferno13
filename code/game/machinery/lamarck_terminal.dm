@@ -21,5 +21,12 @@
 		preferences.experience_level = experience_level
 		preferences.total_experience = total_experience
 		preferences.free_experience = free_experience
+		preferences.free_points = free_points
+		preferences.muscles = muscles
+		preferences.neurons = neurons
+		preferences.heart = heart
+		preferences.sinews = sinews
+		preferences.senses = senses
+		preferences.ego = ego
 		preferences.save_character()
 		to_chat(src, span_notice("Clone data saved."))

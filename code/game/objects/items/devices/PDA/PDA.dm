@@ -272,7 +272,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	else
 		switch (ui_mode)
 			if (PDA_UI_HUB)
-				dat += "<h2>CC WRIST-BUD v1.39</h2>"
+				dat += "<h2>VG WRIST-BUD v1.39</h2>"
 				dat += "Owner: [owner], [ownjob]<br>"
 				dat += "Level: [H.experience_level]<br>"
 				dat += "XP: [H.free_experience] available out of [H.total_experience]<br>"

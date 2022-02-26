@@ -72,6 +72,15 @@
 
 /mob/living/carbon/human/get_status_tab_items()
 	. = ..()
+	. += "Muscles : [muscles]"
+	. += "Neurons : [neurons]"
+	. += "Heart : [heart]"
+	. += "Sinews : [sinews]"
+	. += "Senses : [senses]"
+	. += "Ego : [ego]"
+	if (free_points)
+		. += "Developments available to spend: [free_points]"
+	. += ""
 	. += "Combat mode: [combat_mode ? "On" : "Off"]"
 	. += "Move Mode: [m_intent]"
 	if (internal)

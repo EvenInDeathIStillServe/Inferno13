@@ -49,7 +49,7 @@
 						span_userdanger("[user] [response_harm_continuous] you!"), null, COMBAT_MESSAGE_RANGE, user)
 		to_chat(user, span_danger("You [response_harm_simple] [src]!"))
 		playsound(loc, attacked_sound, 25, TRUE, -1)
-		attack_threshold_check(harm_intent_damage)
+		attack_threshold_check(rand(user.dna.species.punchdamagelow, user.dna.species.punchdamagehigh), user.dna.species.attack_type, user.dna.species.attack_type)
 		if (stat != DEAD && ishuman(user))
 			player_attackers |= user
 		log_combat(user, src, "attacked")
@@ -143,7 +143,7 @@
 	else
 		if(actuallydamage)
 			if (IS_PHYSICAL_DAMAGE(damagetype) && prob(damage))
-				add_splatter_floor(getturf(src))
+				add_splatter_floor(get_turf(src))
 			apply_damage(damage, damagetype, null, getarmor(null, armorcheck))
 		return TRUE
 
