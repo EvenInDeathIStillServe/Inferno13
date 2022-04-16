@@ -530,22 +530,24 @@ SUBSYSTEM_DEF(job)
 		var/mob/living/carbon/human/new_character = equipping
 		new_character.mind.add_memory(MEMORY_ACCOUNT, list(DETAIL_ACCOUNT_ID = new_character.account_id), story_value = STORY_VALUE_SHIT, memory_flags = MEMORY_FLAG_NOLOCATION)
 
-		for (var/saved_skill in player_client.prefs.skills)
+		var/list/saved_skills = player_client.prefs.read_preference(/datum/preference/progress/skills)
+		for (var/saved_skill in saved_skills)
 			for (var/skillpath in SSskills.all_skills)
 				if (saved_skill == SSskills.all_skills[skillpath].name)
-					new_character.mind.set_level(skillpath, player_client.prefs.skills[saved_skill], TRUE)
+					new_character.mind.set_level(skillpath, saved_skills.[saved_skill], TRUE)
 
-		new_character.experience_level = player_client.prefs.experience_level
-		new_character.total_experience = player_client.prefs.total_experience
-		new_character.free_experience = player_client.prefs.free_experience
-		new_character.free_points = player_client.prefs.free_points
 
-		new_character.muscles = player_client.prefs.muscles
-		new_character.neurons = player_client.prefs.neurons
-		new_character.heart = player_client.prefs.heart
-		new_character.sinews = player_client.prefs.sinews
-		new_character.senses = player_client.prefs.senses
-		new_character.ego = player_client.prefs.ego
+		new_character.experience_level = player_client.prefs.read_preference(/datum/preference/numeric/stat/experience_level)
+		new_character.total_experience = player_client.prefs.read_preference(/datum/preference/numeric/stat/total_experience)
+		new_character.free_experience = player_client.prefs.read_preference(/datum/preference/numeric/stat/free_experience)
+		new_character.free_points = player_client.prefs.read_preference(/datum/preference/numeric/stat/free_points)
+
+		new_character.muscles = player_client.prefs.read_preference(/datum/preference/numeric/stat/muscles)
+		new_character.neurons = player_client.prefs.read_preference(/datum/preference/numeric/stat/neurons)
+		new_character.heart = player_client.prefs.read_preference(/datum/preference/numeric/stat/heart)
+		new_character.sinews = player_client.prefs.read_preference(/datum/preference/numeric/stat/sinews)
+		new_character.senses = player_client.prefs.read_preference(/datum/preference/numeric/stat/senses)
+		new_character.ego = player_client.prefs.read_preference(/datum/preference/numeric/stat/ego)
 
 
 	job.after_spawn(equipping, player_client)

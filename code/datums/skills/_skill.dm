@@ -51,7 +51,9 @@ GLOBAL_LIST_INIT(skill_types, subtypesof(/datum/skill))
  */
 /datum/skill/proc/level_gained(datum/mind/mind, new_level, old_level)//just for announcements (doesn't go off if the xp gain is silent)
 	to_chat(mind.current, levelUpMessages[new_level]) //new_level will be a value from 1 to 6, so we get appropriate message from the 6-element levelUpMessages list
-	mind.current.client.prefs.skills[src.name] = new_level
+	var/list/saved_skills = mind.current.client.prefs.read_preference(/datum/preference/progress/skills)
+	saved_skills[src.name] = new_level
+	mind.current.client.prefs.update_preference(/datum/preference/progress/skills, saved_skills)
 /**
  * level_lost: See level_gained, same idea but fires on skill level-down
  */

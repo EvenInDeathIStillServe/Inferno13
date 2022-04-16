@@ -12,11 +12,12 @@ GLOBAL_LIST_INIT(journal_types, subtypesof(/datum/journal))
 /datum/journal/proc/award(mob/living/carbon/human/M)
 	if (!M.client)
 		return
-	if (name in M.client.prefs.journals)
+	var/saved_journals = M.client.prefs.read_preference(/datum/preference/progress/journals)
+	if (name in saved_journals)
 		return
 	to_chat(M, span_nicegreen("Journal unlocked: <b>[name]</b>. [desc]"))
 	M.grant_experience(experience_value)
-	M.client.prefs.journals += name
+	M.client.prefs.update_preference(/datum/preference/progress/journals, saved_journals + name)
 	M.save_clone_data()
 	return TRUE
 

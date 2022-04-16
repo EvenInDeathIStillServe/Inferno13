@@ -91,6 +91,10 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 	/// is for PREFERENCE_CHARACTER.
 	var/can_randomize = TRUE
 
+	///If true, player should be able to interact with it.
+	///If not, only the game can
+	var/player_modifiable = TRUE
+
 	/// If randomizable (PREFERENCE_CHARACTER and can_randomize), whether
 	/// or not to enable randomization by default.
 	/// This doesn't mean it'll always be random, but rather if a player
@@ -271,7 +275,9 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /// This will, for instance, update the character preference view.
 /// Performs sanity checks.
 /datum/preferences/proc/update_preference(datum/preference/preference, preference_value)
-	if (!preference.is_accessible(src))
+	if (ispath(preference))
+		preference = GLOB.preference_entries[preference]
+	if (!preference.is_accessible(src) && preference.player_modifiable)
 		return FALSE
 
 	var/new_value = preference.deserialize(preference_value, src)

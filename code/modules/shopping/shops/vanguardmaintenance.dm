@@ -9,7 +9,7 @@
 	say_sell = "Seems I'm authorized to buy that, alright."
 
 /obj/machinery/shop_rack/vanguard_maintenance
-	store = "Vanguard Maintenance Division"
+	store = "VanGuard Maintenance Division"
 	icon_state = "vanguard_tools"
 	goods = list(
 		new /datum/data/shopping_good("VanGuard Standard Screwdriver",				/obj/item/screwdriver,		75)

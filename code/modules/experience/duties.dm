@@ -15,21 +15,25 @@ GLOBAL_LIST_INIT(duty_types, subtypesof(/datum/duty))
 	if (!M.client)
 		return
 	var/tasks_completed
-	if (!(name in M.client.prefs.duties))
-		M.client.prefs.duties[name] = 0
-	tasks_completed = M.client.prefs.duties[name]
+	var/saved_duties = M.client.prefs.read_preference(/datum/preference/progress/duties)
+	if (!(name in saved_duties))
+		saved_duties[name] = 0
+
+	tasks_completed = saved_duties[name]
 
 	if (tasks && (tasks_completed < tasks))
 		tasks_completed++
 		if (tasks_completed < tasks)
 			to_chat(M, span_nicegreen("Task completed: [name]. [tasks - tasks_completed] left."))
-			M.client.prefs.duties[name] = tasks_completed
+			saved_duties[name] = tasks_completed
+			M.client.prefs.update_preference(/datum/preference/progress/duties, saved_duties)
 			return TRUE
 
 	to_chat(M, span_nicegreen("Duty completed: <b>[name]</b>. [desc]"))
 	M.grant_experience(experience_value)
 	M.payact(money_value)
-	M.client.prefs.duties[name] = 0
+	saved_duties[name] = 0
+	M.client.prefs.update_preference(/datum/preference/progress/duties, saved_duties)
 	M.save_clone_data()
 	return TRUE
 
@@ -42,7 +46,7 @@ GLOBAL_LIST_INIT(duty_types, subtypesof(/datum/duty))
 
 /datum/duty/chudhunter
 	name = "Chud Hunter"
-	desc = "Supply a fast-food place with delectable 'meat'."
+	desc = "Supply a fast-food place with delectable meat."
 	tasks = 5
 	experience_value = 300
 	money_value = 300

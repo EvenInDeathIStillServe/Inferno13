@@ -18,15 +18,15 @@
 
 /mob/living/carbon/human/proc/save_clone_data()
 		var/datum/preferences/preferences = client.prefs
-		preferences.experience_level = experience_level
-		preferences.total_experience = total_experience
-		preferences.free_experience = free_experience
-		preferences.free_points = free_points
-		preferences.muscles = muscles
-		preferences.neurons = neurons
-		preferences.heart = heart
-		preferences.sinews = sinews
-		preferences.senses = senses
-		preferences.ego = ego
+		preferences.update_preference(/datum/preference/numeric/stat/experience_level, experience_level)
+		preferences.update_preference(/datum/preference/numeric/stat/total_experience, total_experience)
+		preferences.update_preference(/datum/preference/numeric/stat/free_experience, free_experience)
+		preferences.update_preference(/datum/preference/numeric/stat/free_points, free_points)
+		preferences.update_preference(/datum/preference/numeric/stat/muscles, muscles)
+		preferences.update_preference(/datum/preference/numeric/stat/neurons, neurons)
+		preferences.update_preference(/datum/preference/numeric/stat/heart, heart)
+		preferences.update_preference(/datum/preference/numeric/stat/sinews, sinews)
+		preferences.update_preference(/datum/preference/numeric/stat/senses, senses)
+		preferences.update_preference(/datum/preference/numeric/stat/ego, ego)
 		preferences.save_character()
 		to_chat(src, span_notice("Clone data saved."))
