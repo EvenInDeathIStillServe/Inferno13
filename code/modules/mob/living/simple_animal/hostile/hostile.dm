@@ -232,6 +232,7 @@
 			var/faction_check = faction_check_mob(L)
 			if(robust_searching)
 				if(L.stat > stat_attack)
+					enemies -= L
 					return FALSE
 				if (L in enemies)
 					return TRUE
@@ -242,12 +243,13 @@
 				if (!(L in player_attackers) && !prob(aggro_chance)) //If the player has not attacked it, has a chance to be ignored.
 					return FALSE
 			else
-				if (L in enemies)
-					return TRUE
 				if (!(L in player_attackers) && !prob(aggro_chance))
 					return FALSE
 				if((faction_check && !attack_same) || L.stat)
+					enemies -= L
 					return FALSE
+				if (L in enemies)
+					return TRUE
 			enemies += L
 			return TRUE
 
