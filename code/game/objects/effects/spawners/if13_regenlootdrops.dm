@@ -42,3 +42,24 @@
 				/obj/item/flashlight = 10,
 				/obj/item/clothing/head/cone = 10,
 				/obj/item/storage/fancy/cigarettes = 10)
+
+/obj/effect/spawner/regenlootdrop/if13/grave
+	loot = list(
+				/obj/item/treasure/watch = 3,
+				/obj/item/treasure/rubberducky = 1,
+				/obj/item/instrument/violin = 1,
+				/obj/item/instrument/banjo = 1,
+				/obj/item/instrument/guitar = 1,
+				/obj/item/instrument/eguitar = 1,
+				/obj/item/instrument/accordion = 1,
+				/obj/item/instrument/trumpet = 1,
+				/obj/item/instrument/harmonica = 1,
+				/obj/item/storage/belt/holster = 2,
+				/obj/item/treasure/documents = 3,
+				/obj/item/clothing/under/suit/charcoal = 1,
+				/obj/item/clothing/under/suit/navy = 1,
+				/obj/item/clothing/under/suit/burgundy = 1,
+				/obj/item/clothing/under/suit/checkered = 1,
+				/obj/item/treasure/economy/coin/copper = 25,
+				/obj/item/treasure/economy/coin/silver = 10,
+				/obj/item/treasure/economy/coin/gold = 5)

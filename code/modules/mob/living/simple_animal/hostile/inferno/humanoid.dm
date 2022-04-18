@@ -34,8 +34,8 @@
 	maxHealth = 60
 	health = 60
 	harm_intent_damage = 8
-	melee_damage_lower = 10
-	melee_damage_upper = 10
+	melee_damage_lower = 8
+	melee_damage_upper = 12
 	experience_on_kill = 10
 	aggro_chance = 20
 
@@ -61,8 +61,8 @@
 	maxHealth = 100
 	health = 100
 	harm_intent_damage = 20
-	melee_damage_lower = 20
-	melee_damage_upper = 20
+	melee_damage_lower = 18
+	melee_damage_upper = 22
 	cash_loot_min = 0
 	cash_loot_max = 50
 	experience_on_kill = 20
@@ -104,8 +104,8 @@
 	maxHealth = 120
 	health = 120
 	harm_intent_damage = 22
-	melee_damage_lower = 22
-	melee_damage_upper = 22
+	melee_damage_lower = 18
+	melee_damage_upper = 24
 	melee_damage_type = SLASH
 	ranged_message = "claws"
 	projectile_name = "claws"
@@ -131,8 +131,8 @@
 	taunt_chance = 70
 	say_taunt = list("Who the fuck are you?!", "Arsonist!", "Get some!", "GAAAAAAAAH!!!", "Get 'em!")
 	armor = list("beat" = 8, "slash" = 8, "stab" = 8, "shot" = 4, "enflame" = 20, "electric" = 12, "acid" = 12, "irradiation" = 5, "cold" = 14)
-	harm_intent_damage = 40
-	melee_damage_lower = 40
+	harm_intent_damage = 35
+	melee_damage_lower = 30
 	melee_damage_upper = 40
 	melee_damage_type = SLASH
 	ranged_message = "swings an axe"
@@ -168,9 +168,9 @@
 	armor = list("beat" = 8, "slash" = 8, "stab" = 8, "shot" = 4, "enflame" = 20, "electric" = 12, "acid" = 12, "irradiation" = 5, "cold" = 14)
 	retreat_distance = 2
 	minimum_distance = 2
-	harm_intent_damage = 40
-	melee_damage_lower = 40
-	melee_damage_upper = 40
+	harm_intent_damage = 35
+	melee_damage_lower = 30
+	melee_damage_upper = 38
 	projectiletype = /obj/projectile/energy/flame
 	ranged_message = "flames away"
 	projectile_name = "flame blast"
@@ -184,3 +184,45 @@
 				/obj/item/clothing/gloves/if13/turnout = 100,
 				/obj/item/clothing/shoes/if13/turnout = 100)
 	experience_on_kill = 300
+
+/mob/living/simple_animal/hostile/humanoid/graverobber
+	name = "graverobber"
+	desc = "An economically-minded individual, taking part in a radical recycling initiative."
+	icon_state = "graverobber_1"
+	icon_living = "graverobber_1"
+	icon_dead = "graverobber_1"
+	maxHealth = 120
+	health = 120
+	taunt_chance = 70
+	say_taunt = list("You're digging your own grave!", "Got a death wish?!", "Plenty of graves to choose from!", "Wanna die?!", "Bury you six feet under!")
+	armor = list("beat" = 10, "slash" = 10, "stab" = 10, "shot" = 6, "enflame" = 4, "electric" = 4, "acid" = 4, "irradiation" = 5, "cold" = 5)
+	harm_intent_damage = 30
+	melee_damage_lower = 25
+	melee_damage_upper = 35
+	cash_loot_min = 100
+	cash_loot_max = 200
+	experience_on_kill = 100
+	aggro_chance = 10
+
+/mob/living/simple_animal/hostile/humanoid/graverobber/shovel
+	ranged_message = "swings a shovel"
+	projectile_name = "serrated shovel"
+	weapon_overlay = "shovel_serr"
+	attack_sound = 'sound/weapons/bladeslice.ogg'
+	loot = list(/obj/item/melee/club/shovel/serrated)
+	melee_damage_type = SLASH
+
+/mob/living/simple_animal/hostile/humanoid/graverobber/baton
+	ranged_message = "swings a baton"
+	projectile_name = "baton"
+	weapon_overlay = "baton"
+	attack_sound = 'sound/weapons/genhit1.ogg'
+	loot = list(/obj/item/melee/club/baton)
+
+/mob/living/simple_animal/hostile/humanoid/graverobber/machete
+	ranged_message = "swings a machete"
+	projectile_name = "scrap machete"
+	weapon_overlay = "scrap_machete"
+	attack_sound = 'sound/weapons/bladeslice.ogg'
+	loot = list(/obj/item/melee/blade/scrap_machete)
+	melee_damage_type = SLASH

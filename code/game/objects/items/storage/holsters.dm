@@ -6,6 +6,7 @@
 	inhand_icon_state = "holster"
 	worn_icon_state = "holster"
 	alternate_worn_layer = UNDER_SUIT_LAYER
+	obj_value = 400
 
 /obj/item/storage/belt/holster/equipped(mob/user, slot)
 	. = ..()

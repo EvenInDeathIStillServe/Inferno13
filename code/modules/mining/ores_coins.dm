@@ -135,6 +135,13 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	if(severity)
 		qdel(src)
 
+/obj/item/stack/ore/dirt
+	name = "dirt"
+	icon_state = "dirt"
+	singular_name = "dirt"
+	mine_experience = 0
+	merge_type = /obj/item/stack/ore/dirt
+
 /obj/item/stack/ore/glass/basalt
 	name = "volcanic ash"
 	icon_state = "volcanic_sand"

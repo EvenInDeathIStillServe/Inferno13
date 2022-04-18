@@ -231,11 +231,11 @@
 			var/mob/living/L = the_target
 			var/faction_check = faction_check_mob(L)
 			if(robust_searching)
+				if(L.stat > stat_attack)
+					return FALSE
 				if (L in enemies)
 					return TRUE
 				if(faction_check && !attack_same)
-					return FALSE
-				if(L.stat > stat_attack)
 					return FALSE
 				if(L in friends)
 					return FALSE

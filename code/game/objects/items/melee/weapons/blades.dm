@@ -42,3 +42,18 @@
 	tool_behaviour = TOOL_KNIFE
 	charge_time = 1.5 SECONDS
 	obj_value = 75
+
+/obj/item/melee/blade/scrap_machete
+	name = "scrap machete"
+	icon_state = "scrap_machete"
+	worn_icon_state = "knife"
+	desc = "It's just a rusty lawnmower blade with a handle, but it'll do the job."
+	flags_1 = CONDUCT_1
+	force = 27
+	throwforce = 25
+	wound_bonus = 5
+	bare_wound_bonus = 20
+	tool_behaviour = TOOL_KNIFE
+	charge_time = 1.8 SECONDS
+	minimum_combat_skill = 4
+	obj_value = 300

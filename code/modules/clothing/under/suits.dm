@@ -2,6 +2,7 @@
 	icon = 'icons/obj/clothing/under/suits.dmi'
 	worn_icon = 'icons/mob/clothing/under/suits.dmi'
 	can_adjust = FALSE
+	obj_value = 1000
 
 /obj/item/clothing/under/suit/white_on_white
 	name = "white suit"
@@ -90,7 +91,7 @@
 
 /obj/item/clothing/under/suit/navy
 	name = "navy suit"
-	desc = "A navy suit and red tie, intended for the station's finest."
+	desc = "A navy suit and red tie, intended for society's finest."
 	icon_state = "navy_suit"
 	inhand_icon_state = "navy_suit"
 

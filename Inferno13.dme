@@ -1684,6 +1684,7 @@
 #include "code\game\objects\structures\crates_lockers\closets\secure\security.dm"
 #include "code\game\objects\structures\crates_lockers\crates\bins.dm"
 #include "code\game\objects\structures\crates_lockers\crates\critter.dm"
+#include "code\game\objects\structures\crates_lockers\crates\grave.dm"
 #include "code\game\objects\structures\crates_lockers\crates\large.dm"
 #include "code\game\objects\structures\crates_lockers\crates\secure.dm"
 #include "code\game\objects\structures\crates_lockers\crates\wooden.dm"

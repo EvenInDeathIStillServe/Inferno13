@@ -79,3 +79,9 @@
 /obj/structure/nest/hidden/hardplace
 	mob_types = list(/mob/living/simple_animal/hostile/humanoid/hardplace = 1)
 	spawn_time = 7 MINUTES
+
+/obj/structure/nest/hidden/graverobber
+	mob_types = list(/mob/living/simple_animal/hostile/humanoid/graverobber/shovel = 1,
+					/mob/living/simple_animal/hostile/humanoid/graverobber/baton = 1,
+					/mob/living/simple_animal/hostile/humanoid/graverobber/machete = 1)
+	spawn_time = 5 MINUTES

@@ -47,16 +47,17 @@
 	song.ui_interact(user)
 
 /obj/item/instrument/violin
-	name = "space violin"
-	desc = "A wooden musical instrument with four strings and a bow. \"The devil went down to space, he was looking for an assistant to grief.\""
+	name = "violin"
+	desc = "A wooden musical instrument with four strings and a bow."
 	icon_state = "violin"
 	inhand_icon_state = "violin"
 	hitsound = "swing_hit"
 	allowed_instrument_ids = "violin"
+	obj_value = 250
 
 /obj/item/instrument/violin/golden
 	name = "golden violin"
-	desc = "A golden musical instrument with four strings and a bow. \"The devil went down to space, he was looking for an assistant to grief.\""
+	desc = "A golden musical instrument with four strings and a bow."
 	icon_state = "golden_violin"
 	inhand_icon_state = "golden_violin"
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
@@ -127,6 +128,7 @@
 	attack_verb_simple = list("scruggs-style", "hum-diggity", "shin-dig", "clawhammer")
 	hitsound = 'sound/weapons/banjoslap.ogg'
 	allowed_instrument_ids = "banjo"
+	obj_value = 150
 
 /obj/item/instrument/guitar
 	name = "guitar"
@@ -137,6 +139,7 @@
 	attack_verb_simple = list("play metal on", "serenade", "crash", "smash")
 	hitsound = 'sound/weapons/stringsmash.ogg'
 	allowed_instrument_ids = list("guitar","csteelgt","cnylongt", "ccleangt", "cmutedgt")
+	obj_value = 200
 
 /obj/item/instrument/eguitar
 	name = "electric guitar"
@@ -148,6 +151,7 @@
 	attack_verb_simple = list("play metal on", "shred", "crash", "smash")
 	hitsound = 'sound/weapons/stringsmash.ogg'
 	allowed_instrument_ids = "eguitar"
+	obj_value = 300
 
 /obj/item/instrument/glockenspiel
 	name = "glockenspiel"
@@ -158,10 +162,11 @@
 
 /obj/item/instrument/accordion
 	name = "accordion"
-	desc = "Pun-Pun not included."
+	desc = "Monkey not included."
 	icon_state = "accordion"
 	allowed_instrument_ids = list("crack", "crtango", "accordion")
 	inhand_icon_state = "accordion"
+	obj_value = 200
 
 /obj/item/instrument/trumpet
 	name = "trumpet"
@@ -169,6 +174,7 @@
 	icon_state = "trumpet"
 	allowed_instrument_ids = "crtrumpet"
 	inhand_icon_state = "trumpet"
+	obj_value = 175
 
 /obj/item/instrument/trumpet/spectral
 	name = "spectral trumpet"
@@ -253,6 +259,7 @@
 	force = 5
 	w_class = WEIGHT_CLASS_SMALL
 	actions_types = list(/datum/action/item_action/instrument)
+	obj_value = 100
 
 /obj/item/instrument/harmonica/proc/handle_speech(datum/source, list/speech_args)
 	SIGNAL_HANDLER

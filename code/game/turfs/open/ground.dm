@@ -16,13 +16,22 @@
 /turf/open/indestructible/ground/outside/dirt
 	name = "dirt"
 	icon_state = "dirtfull"
-	slowdown = 0.3
+	slowdown = 0.1
+	footstep = FOOTSTEP_SAND
+	barefootstep = FOOTSTEP_SAND
+	clawfootstep = FOOTSTEP_SAND
+
+/turf/open/indestructible/ground/outside/grass
+	name = "grass"
+	desc = "Some dead grass."
+	icon_state = "savannahcenter"
+	slowdown = 0.1
 	footstep = FOOTSTEP_SAND
 	barefootstep = FOOTSTEP_SAND
 	clawfootstep = FOOTSTEP_SAND
 
 /turf/open/indestructible/ground/outside/dirt/MakeSlippery(wet_setting, min_wet_time, wet_time_to_add, max_wet_time, permanent)
-	return //same thing here, dirt absorbs the liquid... :(
+	return
 
 /turf/open/floor/plating/inferno/outside
 	name = "What the fuck mappers? why is this here"

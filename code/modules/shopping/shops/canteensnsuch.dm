@@ -19,12 +19,7 @@
 /obj/machinery/shop_rack/canteensnsuch/tools
 	icon_state = "tools"
 	goods = list(
-		new /datum/data/shopping_good("Pickaxe",			/obj/item/pickaxe,						150),
-		new /datum/data/shopping_good("Compact Pickaxe",	/obj/item/pickaxe/mini,					100),
-		new /datum/data/shopping_good("Shovel",				/obj/item/shovel,						100),
-		new /datum/data/shopping_good("Spade",				/obj/item/shovel/spade,					60),
-		new /datum/data/shopping_good("Mining Scanner",		/obj/item/mining_scanner,				210),
-		new /datum/data/shopping_good("Mining Bag",			/obj/item/storage/bag/ore,				50)
+		new /datum/data/shopping_good("Shovel",				/obj/item/melee/club/shovel,			220)
 		)
 
 /obj/machinery/shop_rack/canteensnsuch/survival
