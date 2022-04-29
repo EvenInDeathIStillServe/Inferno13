@@ -210,9 +210,17 @@ obj/item/melee/proc/charge_indicator(force_update = FALSE)
 		return FALSE
 	if (istype(hitby,/obj/projectile))
 		var/obj/projectile/projectile = hitby
-		if (projectile.parry_class && (parry_class >= projectile.parry_class))
+		if (!projectile.parry_class)
+			return FALSE
+		var/dodge_skill = owner.mind.get_effective_skill(/datum/skill/dodge)
+		final_block_chance = 15 * dodge_skill / max(8,projectile.attack_skill)
+		if (prob(final_block_chance))
+			owner.visible_message(span_danger("[owner] dodges [attack_text]!"))
+			playsound(src, pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 75, TRUE)
+			return TRUE
+		if (parry_class >= projectile.parry_class)
 			var/combatant_skill = owner.mind.get_effective_skill(combat_skill)
-			final_block_chance = 20 * (parry_class / projectile.parry_class) * (combatant_skill / max(10,projectile.attack_skill))
+			final_block_chance = 15 * (parry_class / projectile.parry_class) * (combatant_skill / max(8,projectile.attack_skill))
 			if (prob(final_block_chance))
 				owner.visible_message(span_danger("[owner] parries [attack_text] with [src]!"))
 				playsound(src, pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 75, TRUE)

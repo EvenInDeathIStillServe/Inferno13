@@ -6,6 +6,13 @@
 	skill_experience_list = list(0, 100, 300, 750, 2000, 4000, 7000, 12000, 20000, 35000, 60000)
 */
 
+/datum/skill/dodge
+	name = "Dodge"
+	title = "Dodger"
+	desc = "Skillfully bobbing and weaving out of the way of people on the sidewalk."
+	skill_experience_list = list(0, 100, 300, 750, 2000, 4000, 7000, 12000, 20000, 35000, 60000)
+	stats = list(STAT_SENSES, STAT_SINEWS)
+
 /datum/skill/clubs
 	name = "Clubs"
 	title = "Clubber"

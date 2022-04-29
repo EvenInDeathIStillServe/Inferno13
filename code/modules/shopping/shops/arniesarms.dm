@@ -52,7 +52,7 @@
 	icon_state = "arnie"
 	icon_living = "arnie"
 	icon_dead = "arnie"
-	taught_skills = list("Clubs" = 5, "Blades" = 5, "Guns" = 5)
+	taught_skills = list("Clubs" = 5, "Blades" = 5, "Guns" = 5, "Dodge" = 5)
 	say_greet = "What do you want?"
 	say_no_money = "Bullshit. Come back when you have money."
 	say_no_exp = "The hell with you."
