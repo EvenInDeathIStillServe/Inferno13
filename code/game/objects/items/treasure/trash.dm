@@ -28,33 +28,39 @@
 	desc = "Rubber ducky you're so fine, you make bathtime lots of fuuun. Rubber ducky I'm awfully fooooond of yooooouuuu~"
 	icon_state = "rubberducky"
 	obj_value = 75
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/treasure/watch
 	name = "pocket watch"
 	desc = "A golden pocket watch. It's not ticking anymore, but who cares?"
-	icon_state = "rubberducky"
+	icon_state = "watch"
 	obj_value = 350
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/treasure/documents
 	name = "pre-Calamity documents"
 	desc = "Ancient documents of some kind. Might be of value to historians."
 	icon_state = "docs"
 	obj_value = 200
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/treasure/economy/coin/copper
 	name = "copper coin"
 	desc = "A pre-Calamity copper coin. Not really worth anything apart from collection value."
 	icon_state = "coin_copper"
 	obj_value = 25
+	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/treasure/economy/coin/silver
 	name = "silver coin"
 	desc = "A pre-Calamity silver coin. Might fetch a pretty penny."
 	icon_state = "coin_silver"
 	obj_value = 100
+	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/treasure/economy/coin/gold
 	name = "gold coin"
 	desc = "A pre-Calamity gold coin. Now THIS is worth money."
 	icon_state = "coin_gold"
 	obj_value = 250
+	w_class = WEIGHT_CLASS_TINY

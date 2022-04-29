@@ -24,6 +24,7 @@
 	projectilesound = 'sound/weapons/punchmiss.ogg'
 	footstep_type = FOOTSTEP_MOB_SHOE
 	flip_on_death = TRUE
+	blood_volume = BLOOD_VOLUME_NORMAL
 
 /mob/living/simple_animal/hostile/humanoid/clone
 	name = "defective clone"
@@ -36,6 +37,7 @@
 	harm_intent_damage = 8
 	melee_damage_lower = 8
 	melee_damage_upper = 12
+	attack_skill = 8
 	experience_on_kill = 10
 	aggro_chance = 20
 
@@ -63,6 +65,7 @@
 	harm_intent_damage = 20
 	melee_damage_lower = 18
 	melee_damage_upper = 22
+	attack_skill = 10
 	cash_loot_min = 0
 	cash_loot_max = 50
 	experience_on_kill = 20
@@ -79,6 +82,7 @@
 	weapon_overlay = "baseball"
 	attack_sound = 'sound/weapons/genhit1.ogg'
 	loot = list(/obj/item/melee/club/baseball_bat)
+	parry_class = 2
 
 /mob/living/simple_animal/hostile/humanoid/crackhead/crowbar
 	ranged_message = "swings a crowbar"
@@ -86,6 +90,7 @@
 	weapon_overlay = "crowbar"
 	attack_sound = 'sound/weapons/genhit1.ogg'
 	loot = list(/obj/item/melee/club/crowbar)
+	parry_class = 2
 
 /mob/living/simple_animal/hostile/humanoid/crackhead/knife
 	ranged_message = "thrusts a knife"
@@ -107,6 +112,7 @@
 	melee_damage_lower = 18
 	melee_damage_upper = 24
 	melee_damage_type = SLASH
+	attack_skill = 14
 	ranged_message = "claws"
 	projectile_name = "claws"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
@@ -134,6 +140,8 @@
 	harm_intent_damage = 35
 	melee_damage_lower = 30
 	melee_damage_upper = 40
+	attack_skill = 16
+	parry_class = 3
 	melee_damage_type = SLASH
 	ranged_message = "swings an axe"
 	projectile_name = "fire axe"
@@ -171,6 +179,8 @@
 	harm_intent_damage = 35
 	melee_damage_lower = 30
 	melee_damage_upper = 38
+	attack_skill = 20
+	parry_class = 0
 	projectiletype = /obj/projectile/energy/flame
 	ranged_message = "flames away"
 	projectile_name = "flame blast"
@@ -199,10 +209,12 @@
 	harm_intent_damage = 30
 	melee_damage_lower = 25
 	melee_damage_upper = 35
+	attack_skill = 18
+	parry_class = 2
 	cash_loot_min = 100
 	cash_loot_max = 200
 	experience_on_kill = 100
-	aggro_chance = 10
+	aggro_chance = 5
 
 /mob/living/simple_animal/hostile/humanoid/graverobber/shovel
 	ranged_message = "swings a shovel"

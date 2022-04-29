@@ -15,6 +15,8 @@
 	var/dodge_prob = 30
 	var/sidestep_per_cycle = 1 //How many sidesteps per npcpool cycle when in melee
 
+	var/attack_skill = 10
+	var/parry_class = 1
 	var/projectiletype //set ONLY it and NULLIFY casingtype var, if we have ONLY projectile
 	var/projectilesound
 	var/projectile_name = "attack" //For ranged melee.
@@ -469,6 +471,8 @@
 			newtonian_move(get_dir(targeted_atom, target_from))
 		P.no_friendly_fire = check_friendly_fire
 		P.faction = faction
+		P.attack_skill = attack_skill
+		P.parry_class = parry_class
 		if (projectiletype == /obj/projectile/melee)
 			P.damage = melee_damage_upper
 			P.armour_penetration = armour_penetration

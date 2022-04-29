@@ -14,6 +14,7 @@
 	force = 20
 	wound_bonus = -10
 	throwforce = 12
+	parry_class = 2
 	attack_verb_continuous = list("beats", "smacks")
 	attack_verb_simple = list("beat", "smack")
 	custom_materials = list(/datum/material/wood = MINERAL_MATERIAL_AMOUNT * 3.5)
@@ -27,6 +28,7 @@
 	charge_time = 2.2 SECONDS
 	throw_speed = 3
 	throw_range = 3
+	parry_class = 2
 	obj_value = 120
 
 /obj/item/melee/club/fireaxe
@@ -35,6 +37,7 @@
 	icon_state = "fireaxe0"
 	force = 25
 	throwforce = 30
+	parry_class = 3
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
 	attack_verb_continuous = list("attacks", "chops", "cleaves", "tears", "lacerates", "cuts")
@@ -62,6 +65,7 @@
 	force = 27
 	wound_bonus = -10
 	throwforce = 15
+	parry_class = 2
 	attack_verb_continuous = list("beats", "smacks")
 	attack_verb_simple = list("beat", "smack")
 	minimum_combat_skill = 3
@@ -74,6 +78,7 @@
 	flags_1 = CONDUCT_1
 	force = 21
 	throwforce = 15
+	parry_class = 2
 	tool_behaviour = TOOL_SHOVEL
 	toolspeed = 1
 	usesound = 'sound/effects/shovel_dig.ogg'
@@ -88,7 +93,7 @@
 
 /obj/item/melee/club/shovel/serrated
 	name = "serrated bone shovel"
-	desc = "A wicked tool that cleaves through dirt just as easily as it does flesh. Serves a graverobber well in taking care of nosy people who care about petty concepts like respecting the dead."
+	desc = "A wicked tool that cleaves through dirt just as easily as it does flesh. Serves a graverobber well in taking care of nosy people who are concerned with petty concepts like respecting the dead."
 	icon_state = "shovel_serr"
 	force = 30
 	throwforce = 20

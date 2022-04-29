@@ -5,6 +5,7 @@
 	var/attack_range = 3
 	var/combat_skill = null //Combat skill used (/datum/skill/melee)
 	var/minimum_combat_skill = 0 //If combat skill is lower than this, big damage debuff. for guns, big inaccuracy
+	var/parry_class = 1
 
 /obj/item/afterattack(atom/target, mob/living/user, flag, params)
 	. = ..()
@@ -33,13 +34,16 @@
 	M.hitsound = hitsound
 	M.def_zone = ran_zone(user.zone_selected)
 	M.range = attack_range
+	M.parry_class = parry_class
 	if (ishuman(user) && combat_skill)
 		M.combat_skill = combat_skill
 		var/combatant_skill = user.mind.get_skill_level(combat_skill)
+		var/effective_skill = user.mind.get_effective_skill(combat_skill)
 		if (combatant_skill < minimum_combat_skill)
 			M.damage *= 0.3
 		else
-			M.damage *= 1 + (user.mind.get_effective_skill(combat_skill)-10)/50
+			M.damage *= 1 + (effective_skill-10)/50
+		M.attack_skill = effective_skill
 	playsound(user, 'sound/weapons/punchmiss.ogg', 40, 1)
 	M.fire()
 	user.Immobilize(2)
@@ -66,6 +70,7 @@
 	var/last_process = 0
 	var/list/obj/effect/projectile/tracer/current_indicators
 	var/mob/current_user = null
+	parry_class = 1
 
 /obj/item/melee/apply_damage_modifier()
 	if (charging)
@@ -120,8 +125,9 @@
 		return ..()
 	if(istype(object, /atom/movable/screen))// && !istype(object, /obj/screen/click_catcher))
 		return
-	melee_attack(object, M, M.CanReach(object,src), M.client.mouseParams)
-	set_user(null)
+	if(!M.throw_mode)
+		melee_attack(object, M, M.CanReach(object,src), M.client.mouseParams)
+		set_user(null)
 	return ..()
 
 obj/item/melee/onMouseDrag(src_object, over_object, src_location, over_location, params, mob)
@@ -198,6 +204,20 @@ obj/item/melee/proc/charge_indicator(force_update = FALSE)
 	if(istype(user))
 		current_user = user
 		RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/on_mob_move)
+
+/obj/item/melee/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
+	if (!owner.combat_mode)
+		return FALSE
+	if (istype(hitby,/obj/projectile))
+		var/obj/projectile/projectile = hitby
+		if (projectile.parry_class && (parry_class >= projectile.parry_class))
+			var/combatant_skill = owner.mind.get_effective_skill(combat_skill)
+			final_block_chance = 20 * (parry_class / projectile.parry_class) * (combatant_skill / max(10,projectile.attack_skill))
+			if (prob(final_block_chance))
+				owner.visible_message(span_danger("[owner] parries [attack_text] with [src]!"))
+				playsound(src, pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 75, TRUE)
+				return TRUE
+	return FALSE
 
 //pseudo-ranged melee attack
 /obj/projectile/melee

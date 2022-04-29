@@ -22,8 +22,10 @@
 /obj/structure/closet/crate/grave/tool_interact(obj/item/S, mob/living/carbon/user)
 	if(!opened)
 		if(istype(S,cutting_tool) && S.tool_behaviour == TOOL_SHOVEL)
+			playsound(src, 'sound/effects/shovel_dig.ogg', 50, TRUE)
 			to_chat(user, span_notice("You start start to dig open \the [src]  with \the [S]..."))
 			if (do_after(user,20, target = src))
+				playsound(src, 'sound/effects/shovel_dig.ogg', 50, TRUE)
 				opened = TRUE
 				dump_contents()
 				update_appearance()

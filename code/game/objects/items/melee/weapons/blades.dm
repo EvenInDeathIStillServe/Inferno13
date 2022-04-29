@@ -56,4 +56,5 @@
 	tool_behaviour = TOOL_KNIFE
 	charge_time = 1.8 SECONDS
 	minimum_combat_skill = 4
+	parry_class = 2
 	obj_value = 300
