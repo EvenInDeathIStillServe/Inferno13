@@ -2446,6 +2446,7 @@
 #include "code\modules\clothing\under\jobs\Plasmaman\engineering.dm"
 #include "code\modules\clothing\under\jobs\Plasmaman\medsci.dm"
 #include "code\modules\clothing\under\jobs\Plasmaman\security.dm"
+#include "code\modules\corporation\contracts.dm"
 #include "code\modules\corporation\corporation.dm"
 #include "code\modules\detectivework\detective_work.dm"
 #include "code\modules\detectivework\evidence.dm"

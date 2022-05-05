@@ -181,6 +181,8 @@
 	var/experience_on_kill = 0
 	///Players that have hit this mob.
 	var/list/player_attackers = list()
+	///Last player to hit this mob
+	var/mob/living/carbon/human/last_attacker
 
 
 /mob/living/simple_animal/Initialize(mapload)
@@ -475,6 +477,12 @@
 		for (var/mob/living/carbon/human/attacker in player_attackers)
 			attacker.grant_experience(experience_on_kill)
 		experience_on_kill = 0
+	if (last_attacker && last_attacker.mind.corp)
+		for (var/datum/contract/extermination/ex_contract in last_attacker.mind.corp.contracts)
+			for (var/target_type in ex_contract.targets)
+				if (istype(src, target_type))
+					last_attacker.payact(ex_contract.targets[target_type])
+					break
 	if(dextrous)
 		drop_all_held_items()
 	if(!gibbed)

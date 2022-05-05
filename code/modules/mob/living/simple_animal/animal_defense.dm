@@ -52,6 +52,7 @@
 		attack_threshold_check(rand(user.dna.species.punchdamagelow, user.dna.species.punchdamagehigh), user.dna.species.attack_type, user.dna.species.attack_type)
 		if (stat != DEAD && ishuman(user))
 			player_attackers |= user
+			last_attacker = user
 		log_combat(user, src, "attacked")
 		updatehealth()
 		return TRUE
@@ -150,6 +151,7 @@
 /mob/living/simple_animal/bullet_act(obj/projectile/Proj, def_zone, piercing_hit = FALSE)
 	if (stat != DEAD && ishuman(Proj.firer))
 		player_attackers |= Proj.firer
+		last_attacker = Proj.firer
 	attack_threshold_check(Proj.damage, Proj.damage_type, Proj.damage_type)
 	Proj.on_hit(src, 0, piercing_hit)
 	return BULLET_ACT_HIT

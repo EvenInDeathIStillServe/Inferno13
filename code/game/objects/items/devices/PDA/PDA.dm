@@ -417,25 +417,35 @@ GLOBAL_LIST_EMPTY(PDAs)
 							dat += "<br>PROGRESS TO NEXT SKILL LEVEL: [xp_req_to_level+xp_prog_to_level] XP LEFT"
 							dat += "<br>" + num2loadingbar(progress_percent) + "([progress_percent*100])%"
 							dat += "</li></ul>"
-			if(PDA_UI_CORPORATION_MENU)
+			if (PDA_UI_CORPORATION_MENU)
 				dat += "<h4>[PDAIMG(corporation)] WG-SLV CorpLink (TM)</h4>"
 				var/datum/corporation/targetcorp = user.mind.corp
 				if(targetcorp)
 					dat += "Corporation: [targetcorp.name]<br>"
 					dat += "Stock Symbol: [targetcorp.stock_symbol]<br>"
-					var/datum/mind/corpowner = targetcorp.members_by_code["[targetcorp.owner]"]
+					var/datum/mind/corpowner = targetcorp.get_owner()
 					dat += "Owner: [corpowner.name]<br>"
-					dat += "Funds: $[targetcorp.funds]<br>"
-					dat += "<h4>[PDAIMG(notes)] Employee List</h4>"
+					dat += "Funds: $[targetcorp.funds] ("
+					dat += "<a href='byond://?src=[REF(src)];choice=AddFunds'>Add</a>/"
+					dat += "<a href='byond://?src=[REF(src)];choice=WithdrawFunds'>Withdraw</a>)<br>"
+					dat += "<a href='byond://?src=[REF(src)];choice=[PDA_UI_CONTRACTS]'>Contracts</a><br>"
+					dat += "<a href='byond://?src=[REF(src)];choice=Hire'>Print Hiring Slip</a>"
+					dat += "<h4>[PDAIMG(notes)] Employee List ([targetcorp.members_by_code.len])</h4>"
 					for (var/corpie_tag in targetcorp.members_by_code)
 						var/datum/mind/corpie_mind = targetcorp.members_by_code[corpie_tag]
 						dat += "[corpie_mind.name]<br>"
+			if (PDA_UI_CONTRACTS)
+				dat += "<h4>[PDAIMG(notes)] Active Contracts</h4>"
+				for (var/datum/contract/contract in user.mind.corp.contracts)
+					dat += "<h5>[contract.name]</h5>"
+					dat += "[contract.get_contract_info()]<br>"
+
 			if(PDA_UI_READ_MESSAGES)
 				if(icon_alert && !istext(icon_alert))
 					cut_overlay(icon_alert)
 					icon_alert = initial(icon_alert)
 
-				dat += "<h4>[PDAIMG(mail)] SpaceMessenger V3.9.6</h4>"
+				dat += "<h4>[PDAIMG(mail)] Messenger V3.9.6</h4>"
 				dat += "<a href='byond://?src=[REF(src)];choice=Clear'>[PDAIMG(blank)]Clear Messages</a>"
 
 				dat += "<h4>[PDAIMG(mail)] Messages</h4>"
@@ -481,7 +491,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 /obj/item/pda/Topic(href, href_list)
 	..()
-	var/mob/living/U = usr
+//	var/mob/living/U = usr
+	var/mob/living/carbon/human/U = usr
 	//Looking for master was kind of pointless since PDAs don't appear to have one.
 
 	if(!href_list["close"] && usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
@@ -701,6 +712,45 @@ GLOBAL_LIST_EMPTY(PDAs)
 				var/datum/mind/mind = U.mind
 				var/new_level = mind.get_skill_level(type)
 				S.try_skill_reward(mind, new_level)
+
+//CORPORATION FUNCTIONS=============================
+
+			if ("AddFunds")
+				var/amount_to_add = FLOOR(input(U, "How much do you want to add to the corporate account?", "Add Funds", 0) as num|null, 1)
+
+				if(!amount_to_add || amount_to_add < 0)
+					return
+				if (U.payact(-amount_to_add))
+					U.mind.corp.funds += amount_to_add
+					to_chat(U, span_notice("You deposit $[amount_to_add] into the [U.mind.corp.name] corporate account."))
+				else
+					to_chat(U,span_warning("You don't have enough money."))
+			if ("WithdrawFunds")
+				if (U.mind != U.mind.corp.get_owner())
+					to_chat(U,span_warning("You're not authorized to withdraw from the corporate account."))
+					return
+				var/amount_to_withdraw = FLOOR(input(U, "How much do you want to withdraw to the corporate account?", "Withdraw Funds", 0) as num|null, 1)
+
+				if (!amount_to_withdraw || amount_to_withdraw < 0)
+					return
+				if (U.mind.corp.funds >= amount_to_withdraw)
+					U.payact(amount_to_withdraw)
+					U.mind.corp.funds -= amount_to_withdraw
+					to_chat(U, span_notice("You withdraw $[amount_to_withdraw] from the [U.mind.corp.name] corporate account."))
+				else
+					to_chat(U,span_warning("The corporate account does not have this much funds."))
+					return
+			if ("Hire")
+				if (U.mind != U.mind.corp.get_owner())
+					to_chat(U,span_warning("You're not authorized to hire anyone."))
+					return
+				var/obj/item/hiring_slip/slip = new(U.loc)
+				slip.corp = U.mind.corp
+				slip.update_information()
+				U.put_in_hands(slip)
+				playsound(loc, 'sound/effects/punchcard.ogg', 50, 1)
+				to_chat(U, span_notice("You print a hiring slip. Give it to someone to put into their wristpad in order for them to be hired."))
+
 
 //LINK FUNCTIONS===================================
 

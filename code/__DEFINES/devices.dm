@@ -45,6 +45,7 @@
 #define PDA_UI_NEWSCASTER 52
 #define PDA_UI_NEWSCASTER_ERROR 53
 #define PDA_UI_CORPORATION_MENU 54
+#define PDA_UI_CONTRACTS 55
 
 
 // Used by PDA and cartridge code to reduce repetitiveness of spritesheets

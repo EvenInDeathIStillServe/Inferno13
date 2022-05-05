@@ -8,6 +8,7 @@
 			account.bank_card_talk("<b>$[-value]</b> has been deducted from your credit chip.")
 		else
 			account.bank_card_talk("Your credit implant beeps for a deposit of <b>$[value]</b>.")
+		return TRUE
 
 /mob/living/carbon/human/proc/canpay(var/value)
 	var/datum/bank_account/account = get_bank_account()

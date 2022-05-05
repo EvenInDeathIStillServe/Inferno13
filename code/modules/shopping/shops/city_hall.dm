@@ -14,7 +14,8 @@
 	icon = 'icons/obj/economy.dmi'
 	icon_state = "menu"
 	goods = list(
-		new /datum/data/shopping_good("Business License",			/obj/item/business_license,			1000)
+		new /datum/data/shopping_good("Business License",							/obj/item/business_license,								1000),
+		new /datum/data/shopping_good("Contract: Catharsis City Cleansing",			/obj/item/contract/extermination/catharsis_city,		300)
 		)
 
 /mob/living/simple_animal/snm/interactible/shopkeeper/city_clerk
