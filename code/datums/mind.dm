@@ -93,6 +93,8 @@
 	///List of objective-specific equipment that couldn't properly be given to the mind
 	var/list/failed_special_equipment
 
+	var/datum/corporation/corp //The corporation they belong to.
+
 /datum/mind/New(_key)
 	key = _key
 	martial_art = default_martial_art

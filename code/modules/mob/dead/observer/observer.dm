@@ -290,6 +290,8 @@ Works together with spawning an observer, noted above.
 			ghost.client?.init_verbs()
 			if(!can_reenter_corpse)// Disassociates observer mind from the body mind
 				ghost.mind = null
+			if (clone_tag)
+				ghost.mind = SSclone_database.coded_minds["[clone_tag]"]
 			return ghost
 
 /mob/living/ghostize(can_reenter_corpse = TRUE)

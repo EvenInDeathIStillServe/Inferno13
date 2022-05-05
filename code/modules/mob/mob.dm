@@ -1431,11 +1431,16 @@
 	client.prefs.safe_transfer_prefs_to(new_character)
 	new_character.dna.update_dna_identity()
 	new_character.key = key
+	new_character.clone_tag = clone_tag
 
 	if(mind && !mind.active)
 		mind.transfer_to(new_character)
 	else
-		new_character.mind_initialize()
+		var/datum/mind/tagged_mind = SSclone_database.coded_minds["[clone_tag]"]
+		if (tagged_mind)
+			tagged_mind.transfer_to(new_character)
+		else
+			new_character.mind_initialize()
 	if(!new_character.mind.assigned_role)
 		new_character.mind.assigned_role = "Clone"//If they somehow got a null assigned role.
 

@@ -518,6 +518,11 @@ SUBSYSTEM_DEF(job)
 
 	equipping.on_job_equipping(job)
 
+	if (!equipping.clone_tag)
+		var/rand_number = rand(1,99999)
+		SSclone_database.coded_minds["[rand_number]"] = equipping.mind
+		equipping.clone_tag = rand_number
+
 	job.announce_job(equipping)
 
 	if(player_client?.holder)

@@ -91,6 +91,7 @@
 		"dronephone" = 'icons/pda_icons/pda_dronephone.png',
 		"emoji" = 'icons/pda_icons/pda_emoji.png',
 		"droneblacklist" = 'icons/pda_icons/pda_droneblacklist.png',
+		"corporation" = 'icons/pda_icons/pda_corporation.png',
 	)
 
 /datum/asset/spritesheet/simple/paper

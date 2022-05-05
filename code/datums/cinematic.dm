@@ -74,12 +74,19 @@
 		toggle_ooc(FALSE)
 
 	//Place /atom/movable/screen/cinematic into everyone's screens, prevent them from moving
-	for(var/MM in watchers)
-		var/mob/M = MM
-		show_to(M, M.client)
-		RegisterSignal(M, COMSIG_MOB_CLIENT_LOGIN, .proc/show_to)
+	if (islist(watchers))
+		for(var/MM in watchers)
+			var/mob/M = MM
+			show_to(M, M.client)
+			RegisterSignal(M, COMSIG_MOB_CLIENT_LOGIN, .proc/show_to)
+			//Close watcher ui's
+			SStgui.close_user_uis(M)
+	else
+		var/mob/single = watchers
+		show_to(single, single.client)
+		RegisterSignal(single, COMSIG_MOB_CLIENT_LOGIN, .proc/show_to)
 		//Close watcher ui's
-		SStgui.close_user_uis(M)
+		SStgui.close_user_uis(single)
 
 	//Actually play it
 	content()
@@ -274,6 +281,15 @@
 	cinematic_sound(sound('sound/items/airhorn.ogg'))
 	flick("summary_selfdes",screen) //???
 	special()
+
+/datum/cinematic/cloning
+	id = CINEMATIC_CLONE_SPAWN
+	cleanup_time = 0
+
+/datum/cinematic/cloning/content()
+	cinematic_sound(sound('sound/effects/genetics.ogg'))
+	flick("cloning",screen)
+	sleep(70)
 
 /* Intended usage.
 Nuke.Explosion()

@@ -288,6 +288,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 				dat += "<li><a href='byond://?src=[REF(src)];choice=[PDA_UI_NOTEKEEPER]'>[PDAIMG(notes)]Notekeeper</a></li>"
 				dat += "<li><a href='byond://?src=[REF(src)];choice=[PDA_UI_MESSENGER]'>[PDAIMG(mail)]Messenger</a></li>"
 				dat += "<li><a href='byond://?src=[REF(src)];choice=[PDA_UI_SKILL_TRACKER]'>[PDAIMG(skills)]Skill Tracker</a></li>"
+				if (user.mind.corp)
+					dat += "<li><a href='byond://?src=[REF(src)];choice=[PDA_UI_CORPORATION_MENU]'>[PDAIMG(corporation)]Corporation Menu</a></li>"
 
 				if (cartridge)
 					if (cartridge.access & CART_CLOWN)
@@ -415,6 +417,19 @@ GLOBAL_LIST_EMPTY(PDAs)
 							dat += "<br>PROGRESS TO NEXT SKILL LEVEL: [xp_req_to_level+xp_prog_to_level] XP LEFT"
 							dat += "<br>" + num2loadingbar(progress_percent) + "([progress_percent*100])%"
 							dat += "</li></ul>"
+			if(PDA_UI_CORPORATION_MENU)
+				dat += "<h4>[PDAIMG(corporation)] WG-SLV CorpLink (TM)</h4>"
+				var/datum/corporation/targetcorp = user.mind.corp
+				if(targetcorp)
+					dat += "Corporation: [targetcorp.name]<br>"
+					dat += "Stock Symbol: [targetcorp.stock_symbol]<br>"
+					var/datum/mind/corpowner = targetcorp.members_by_code["[targetcorp.owner]"]
+					dat += "Owner: [corpowner.name]<br>"
+					dat += "Funds: $[targetcorp.funds]<br>"
+					dat += "<h4>[PDAIMG(notes)] Employee List</h4>"
+					for (var/corpie_tag in targetcorp.members_by_code)
+						var/datum/mind/corpie_mind = targetcorp.members_by_code[corpie_tag]
+						dat += "[corpie_mind.name]<br>"
 			if(PDA_UI_READ_MESSAGES)
 				if(icon_alert && !istext(icon_alert))
 					cut_overlay(icon_alert)
