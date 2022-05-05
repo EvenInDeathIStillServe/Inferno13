@@ -4,8 +4,8 @@
 
 	shopkeeper_type = /mob/living/simple_animal/snm/interactible/shopkeeper/wellbot
 
-	say_purchase = "Enjoy in good health *BEEP*."
-	say_cant_afford = "*BUZZ* Insufficient balance."
+	say_purchase = "Enjoy in good health BEEP."
+	say_cant_afford = "BUZZ Insufficient balance."
 
 /obj/machinery/shop_rack/meds4less
 	store = "Meds4Less"
@@ -27,4 +27,4 @@
 	icon_state = "wellbot"
 	icon_living = "wellbot"
 	icon_dead = "wellbot"
-	say_greet = "Welcome to Meds-4-Less *PING*."
+	say_greet = "Welcome to Meds-4-Less PING."
