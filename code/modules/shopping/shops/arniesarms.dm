@@ -21,7 +21,8 @@
 	goods = list(
 		new /datum/data/shopping_good("Ruger MKII",					/obj/item/gun/ballistic/automatic/pistol/ruger,					350),
 		new /datum/data/shopping_good("Browning Hi-power",			/obj/item/gun/ballistic/automatic/pistol/browning,				500),
-		new /datum/data/shopping_good("M1911",						/obj/item/gun/ballistic/automatic/pistol/m1911,					1000)
+		new /datum/data/shopping_good("M1911",						/obj/item/gun/ballistic/automatic/pistol/m1911,					1000),
+		new /datum/data/shopping_good("Double-Barrel Shotgun",		/obj/item/gun/ballistic/shotgun/doublebarrel,					2000),
 		)
 
 /obj/machinery/shop_rack/arniesarms/magazines
@@ -30,7 +31,9 @@
 		new /datum/data/shopping_good(".38 Speedloader",			/obj/item/ammo_box/c38,							30),
 		new /datum/data/shopping_good(".22 Magazine",				/obj/item/ammo_box/magazine/m22,				50),
 		new /datum/data/shopping_good("9mm Magazine",				/obj/item/ammo_box/magazine/m9mm,				70),
-		new /datum/data/shopping_good(".45 ACP Magazine",			/obj/item/ammo_box/magazine/m45,				75)
+		new /datum/data/shopping_good(".45 ACP Magazine",			/obj/item/ammo_box/magazine/m45,				75),
+		new /datum/data/shopping_good("12 Gauge Buckshot Box",		/obj/item/ammo_box/shotgun/buckshot,			200),
+		new /datum/data/shopping_good("12 Gauge Slug Box",			/obj/item/ammo_box/shotgun/slug,				250)
 		)
 
 /obj/machinery/shop_rack/arniesarms/clubs

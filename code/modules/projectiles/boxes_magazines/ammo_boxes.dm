@@ -102,3 +102,20 @@
 	icon_state = "foambox_riot"
 	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot
 	custom_materials = list(/datum/material/iron = 50000)
+
+//Shotguns
+/obj/item/ammo_box/shotgun
+	max_ammo = 12
+	ammo_type = /obj/item/ammo_casing/shotgun
+	multiple_sprites = AMMO_BOX_PER_BULLET
+
+/obj/item/ammo_box/shotgun/slug
+	name = "slug shotgun ammo box"
+	desc = "A box full of shotgun shells."
+	icon_state = "lbox"
+
+/obj/item/ammo_box/shotgun/buckshot
+	name = "buckshot shotgun ammo box"
+	desc = "A box full of shotgun shells."
+	ammo_type = /obj/item/ammo_casing/shotgun/buckshot
+	icon_state = "gbox"

@@ -150,7 +150,7 @@ obj/item/melee/proc/charge_indicator(force_update = FALSE)
 		return
 	indicator_lastangle = lastangle
 	var/obj/projectile/beam/beam_rifle/hitscan/aiming_beam/P = new
-	P.melee_weapon = src
+	P.gun = src
 	P.range = attack_range
 	if(charge_time)
 		var/percent = ((100/charge_time)*charge_time_left)

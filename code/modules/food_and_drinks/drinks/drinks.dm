@@ -649,6 +649,20 @@
 	volume = 30
 	spillable = TRUE
 
+/obj/item/reagent_containers/food/drinks/jerrycan
+	name = "jerrycan"
+	desc = "A plastic jerrycan that can hold a lot. Did you know the indentations improve the can's durability? Learn something new everyday."
+	icon_state = "jerrycan"
+	amount_per_transfer_from_this = 50
+	possible_transfer_amounts = list(10,20,25,50,100,250,500)
+	volume = 500
+	isGlass = FALSE
+	w_class = WEIGHT_CLASS_NORMAL
+	obj_value = 200
+
+/obj/item/reagent_containers/food/drinks/jerrycan/red
+	icon_state = "jerrycan_red"
+
 //////////////////////////soda_cans//
 //These are in their own group to be used as IED's in /obj/item/grenade/ghettobomb.dm
 /// How much fizziness is added to the can of soda by throwing it, in percentage points

@@ -20,7 +20,7 @@
 /obj/machinery/shop_rack/threads/shoes
 	icon_state = "shoes"
 	goods = list(
-		new /datum/data/shopping_good("Jackboots",			/obj/item/clothing/shoes/sneakers/red,				90),
+		new /datum/data/shopping_good("Jackboots",			/obj/item/clothing/shoes/jackboots,					90),
 		new /datum/data/shopping_good("Laceups",			/obj/item/clothing/shoes/laceup,					70),
 		new /datum/data/shopping_good("Winter Boots",		/obj/item/clothing/shoes/winterboots,				80),
 		new /datum/data/shopping_good("Sandals",			/obj/item/clothing/shoes/sandal,					20),

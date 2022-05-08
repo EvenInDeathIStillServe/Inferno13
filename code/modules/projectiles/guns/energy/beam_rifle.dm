@@ -31,18 +31,14 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/beam_rifle/hitscan)
 	cell_type = /obj/item/stock_parts/cell/beam_rifle
 	canMouseDown = TRUE
-	var/aiming = FALSE
 	var/aiming_time = 12
 	var/aiming_time_fire_threshold = 5
 	var/aiming_time_left = 12
 	var/aiming_time_increase_user_movement = 3
 	var/scoped_slow = 1
 	var/aiming_time_increase_angle_multiplier = 0.3
-	var/last_process = 0
 
-	var/lastangle = 0
 	var/aiming_lastangle = 0
-	var/mob/current_user = null
 	var/list/obj/effect/projectile/tracer/current_tracers
 
 	var/structure_piercing = 2 //Amount * 2. For some reason structures aren't respecting this unless you have it doubled. Probably with the objects in question's Bump() code instead of this but I'll deal with this later.
@@ -215,7 +211,7 @@
 	aiming_beam(TRUE)
 	last_process = world.time
 
-/obj/item/gun/energy/beam_rifle/proc/check_user(automatic_cleanup = TRUE)
+/obj/item/gun/energy/beam_rifle/check_user(automatic_cleanup = TRUE)
 	if(!istype(current_user) || !isturf(current_user.loc) || !(src in current_user.held_items) || current_user.incapacitated()) //Doesn't work if you're not holding it!
 		if(automatic_cleanup)
 			stop_aiming()
@@ -231,7 +227,7 @@
 		delay_penalty(difference * aiming_time_increase_angle_multiplier)
 		lastangle = angle
 
-/obj/item/gun/energy/beam_rifle/proc/on_mob_move()
+/obj/item/gun/energy/beam_rifle/on_mob_move()
 	SIGNAL_HANDLER
 	check_user()
 	if(aiming)
@@ -239,7 +235,7 @@
 		process_aim()
 		INVOKE_ASYNC(src, .proc/aiming_beam, TRUE)
 
-/obj/item/gun/energy/beam_rifle/proc/start_aiming()
+/obj/item/gun/energy/beam_rifle/start_aiming()
 	aiming_time_left = aiming_time
 	aiming = TRUE
 	process_aim()
@@ -247,14 +243,14 @@
 	zooming_angle = lastangle
 	start_zooming()
 
-/obj/item/gun/energy/beam_rifle/proc/stop_aiming(mob/user)
+/obj/item/gun/energy/beam_rifle/stop_aiming(mob/user)
 	set waitfor = FALSE
 	aiming_time_left = aiming_time
 	aiming = FALSE
 	QDEL_LIST(current_tracers)
 	stop_zooming(user)
 
-/obj/item/gun/energy/beam_rifle/proc/set_user(mob/user)
+/obj/item/gun/energy/beam_rifle/set_user(mob/user)
 	if(user == current_user)
 		return
 	stop_aiming(current_user)

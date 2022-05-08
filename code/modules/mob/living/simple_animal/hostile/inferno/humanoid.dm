@@ -216,10 +216,10 @@
 	experience_on_kill = 100
 	aggro_chance = 5
 	deep_loot = list(
-				/obj/item/clothing/head/helmet/if13/acf = 10,
-				/obj/item/clothing/suit/armor/if13/acf = 10,
-				/obj/item/clothing/gloves/if13/acf = 10,
-				/obj/item/clothing/shoes/if13/acf = 10)
+				/obj/item/flashlight/seclite = 15,
+				/obj/item/flashlight/lantern = 10,
+				/obj/item/dice/d6 = 10,
+				/obj/item/razor = 7)
 
 /mob/living/simple_animal/hostile/humanoid/graverobber/shovel
 	ranged_message = "swings a shovel"
@@ -246,7 +246,7 @@
 
 /mob/living/simple_animal/hostile/humanoid/acf_trooper
 	name = "\improper ACF trooper"
-	desc = "A soldier of the Armee Coloniale Francaise, clad in composite plastic armor and armed with a submachine gun."
+	desc = "A soldier of the Armée Coloniale Française, clad in composite plastic armor and armed with a submachine gun."
 	icon_state = "acf_trooper"
 	icon_living = "acf_trooper"
 	icon_dead = "acf_trooper"
@@ -254,7 +254,7 @@
 	health = 150
 	taunt_chance = 70
 	say_taunt = list("Putain!", "Espèce de chien!", "Hé, un pékin? Tu veux mourir?!", "Pas de capitulation!", "C'est le jour de l'abat!")
-	armor = list("beat" = 10, "slash" = 14, "stab" = 14, "shot" = 12, "enflame" = 8, "electric" = 8, "acid" = 8, "irradiation" = 8, "cold" = 10)
+	armor = list("beat" = 10, "slash" = 14, "stab" = 14, "shot" = 20, "enflame" = 8, "electric" = 8, "acid" = 8, "irradiation" = 8, "cold" = 10)
 	harm_intent_damage = 30
 	melee_damage_lower = 25
 	melee_damage_upper = 35

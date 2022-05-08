@@ -31,6 +31,10 @@
 			return
 		var/mob/living/carbon/human/gymmer = occupant
 		to_chat(gymmer, span_notice("You enter [src]."))
+		if (gymmer.free_points < 1)
+			to_chat(user, span_warning("You don't have any development points."))
+			update_appearance()
+			return
 		var/list/choices = list(STAT_NEURONS = "neurons", STAT_MUSCLES = "muscles", STAT_HEART = "heart",
 								STAT_NERVES = "nerves", STAT_SENSES = "senses", STAT_EGO = "ego")
 		var/choice = show_radial_menu(

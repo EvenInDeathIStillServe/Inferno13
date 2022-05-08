@@ -3,7 +3,10 @@
 	bag_icon = "canteensnsuch"
 	bought_objects = list(
 		/obj/item/stack/ore,
-		/obj/item/stack/sheet)
+		/obj/item/stack/sheet,
+		/obj/item/flashlight,
+		/obj/item/clothing/mask/gas,
+		/obj/item/binoculars)
 
 /obj/machinery/shop_rack/canteensnsuch
 	store = "Canteens 'N Such"
@@ -11,8 +14,8 @@
 /obj/machinery/shop_rack/canteensnsuch/canteens
 	icon_state = "canteens"
 	goods = list(
-		new /datum/data/shopping_good("Green Canteen",			/obj/item/reagent_containers/food/drinks/flask/canteen,			75),
-		new /datum/data/shopping_good("Gray Canteen",			/obj/item/reagent_containers/food/drinks/flask/canteen/gray,	75),
+		new /datum/data/shopping_good("Green Canteen",			/obj/item/reagent_containers/food/drinks/flask/canteen,			100),
+		new /datum/data/shopping_good("Gray Canteen",			/obj/item/reagent_containers/food/drinks/flask/canteen/gray,	100),
 		new /datum/data/shopping_good("Piss Canteen",			/obj/item/reagent_containers/food/drinks/flask/canteen/piss,	150)
 		)
 
@@ -25,9 +28,13 @@
 /obj/machinery/shop_rack/canteensnsuch/survival
 	icon_state = "survival"
 	goods = list(
-		new /datum/data/shopping_good("Gas Mask",				/obj/item/clothing/mask/gas,					200),
-		new /datum/data/shopping_good("Satchel",				/obj/item/storage/backpack/satchel/explorer,	100),
-		new /datum/data/shopping_good("Flashlight",				/obj/item/flashlight,							150),
-		new /datum/data/shopping_good("Heavy-duty Flashlight",	/obj/item/flashlight/seclite,					250),
-		new /datum/data/shopping_good("Lantern",				/obj/item/flashlight/lantern,					300)
+		new /datum/data/shopping_good("Gas Mask",				/obj/item/clothing/mask/gas,									300),
+		new /datum/data/shopping_good("Cardboard Box",			/obj/item/storage/box,											100),
+		new /datum/data/shopping_good("Satchel",				/obj/item/storage/backpack/satchel/explorer,					200),
+		new /datum/data/shopping_good("Flashlight",				/obj/item/flashlight,											150),
+		new /datum/data/shopping_good("Heavy-duty Flashlight",	/obj/item/flashlight/seclite,									350),
+		new /datum/data/shopping_good("Lantern",				/obj/item/flashlight/lantern,									500),
+		new /datum/data/shopping_good("Binoculars",				/obj/item/binoculars,											300),
+		new /datum/data/shopping_good("Jerrycan",				/obj/item/reagent_containers/food/drinks/jerrycan,				300),
+		new /datum/data/shopping_good("Red Jerrycan",			/obj/item/reagent_containers/food/drinks/jerrycan/red,			300)
 		)

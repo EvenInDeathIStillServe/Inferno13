@@ -101,6 +101,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 	var/underline_flag = TRUE //flag for underline
 
+	var/obj/item/radio/radio = null  ///If this is a path, this gets created as an object in Initialize.
+
 /obj/item/pda/suicide_act(mob/living/carbon/user)
 	var/deathMessage = msg_input(user)
 	if (!deathMessage)
@@ -139,6 +141,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 	else
 		inserted_item = new /obj/item/pen(src)
 	RegisterSignal(src, COMSIG_LIGHT_EATER_ACT, .proc/on_light_eater)
+
+	radio = new/obj/item/radio(src)
 
 	update_appearance()
 
@@ -1276,6 +1280,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 		QDEL_NULL(pai)
 	if(istype(inserted_item))
 		QDEL_NULL(inserted_item)
+	if (istype(radio))
+		QDEL_NULL(radio)
 	return ..()
 
 //AI verb and proc for sending PDA messages.
