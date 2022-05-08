@@ -29,6 +29,12 @@
 	/mob/living/simple_animal/hostile/humanoid/firefighter = 70,
 	/mob/living/simple_animal/hostile/humanoid/graverobber = 90)
 
+/datum/contract/extermination/acf_elimination
+	name = "ACF elimination"
+	desc = "The ACF must not be allowed to gain a foothold in Catharsis. Take out some froggies for a nice reward."
+	targets = list(
+	/mob/living/simple_animal/hostile/humanoid/acf_trooper = 250)
+
 /obj/item/contract
 	name = "contract"
 	desc = "A corporate contract of some kind. Seems... Blank."
@@ -59,3 +65,7 @@
 /obj/item/contract/extermination/catharsis_city
 	name = "\improper Catharsis City cleansing contract"
 	contract_datum = /datum/contract/extermination/catharsis_city
+
+/obj/item/contract/extermination/acf_elimination
+	name = "\improper ACF elimination contract"
+	contract_datum = /datum/contract/extermination/acf_elimination

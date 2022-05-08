@@ -434,6 +434,10 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 
 	message = capitalize(message)
 
+	var/ending = copytext_char(message, -1)
+	if (!(ending in list (".", "-", "?", "!")))
+		message += "."
+
 	return message
 
 /mob/living/proc/radio(message, list/message_mods = list(), list/spans, language)

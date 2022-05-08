@@ -7,8 +7,8 @@
 	speak_chance = 0
 	turns_per_move = 5
 	speed = 1
-	attack_verb_continuous = "punches"
-	attack_verb_simple = "punch"
+	attack_verb_continuous = "hits"
+	attack_verb_simple = "hit"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	combat_mode = TRUE
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
@@ -215,6 +215,11 @@
 	cash_loot_max = 200
 	experience_on_kill = 100
 	aggro_chance = 5
+	deep_loot = list(
+				/obj/item/clothing/head/helmet/if13/acf = 10,
+				/obj/item/clothing/suit/armor/if13/acf = 10,
+				/obj/item/clothing/gloves/if13/acf = 10,
+				/obj/item/clothing/shoes/if13/acf = 10)
 
 /mob/living/simple_animal/hostile/humanoid/graverobber/shovel
 	ranged_message = "swings a shovel"
@@ -238,3 +243,36 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	loot = list(/obj/item/melee/blade/scrap_machete)
 	melee_damage_type = SLASH
+
+/mob/living/simple_animal/hostile/humanoid/acf_trooper
+	name = "\improper ACF trooper"
+	desc = "A soldier of the Armee Coloniale Francaise, clad in composite plastic armor and armed with a submachine gun."
+	icon_state = "acf_trooper"
+	icon_living = "acf_trooper"
+	icon_dead = "acf_trooper"
+	maxHealth = 150
+	health = 150
+	taunt_chance = 70
+	say_taunt = list("Putain!", "Espèce de chien!", "Hé, un pékin? Tu veux mourir?!", "Pas de capitulation!", "C'est le jour de l'abat!")
+	armor = list("beat" = 10, "slash" = 14, "stab" = 14, "shot" = 12, "enflame" = 8, "electric" = 8, "acid" = 8, "irradiation" = 8, "cold" = 10)
+	harm_intent_damage = 30
+	melee_damage_lower = 25
+	melee_damage_upper = 35
+	attack_skill = 18
+	retreat_distance = 5
+	minimum_distance = 5
+	rapid = 2
+	projectiletype = /obj/projectile/bullet/c45
+	ranged_message = "fires an SMG"
+	projectile_name = "bullet"
+	projectilesound = 'sound/weapons/gun/smg/shot.ogg'
+	weapon_overlay = "smg"
+	parry_class = 0
+	cash_loot_min = 200
+	cash_loot_max = 300
+	experience_on_kill = 200
+	deep_loot = list(
+				/obj/item/clothing/head/helmet/if13/acf = 10,
+				/obj/item/clothing/suit/armor/if13/acf = 10,
+				/obj/item/clothing/gloves/if13/acf = 10,
+				/obj/item/clothing/shoes/if13/acf = 10)

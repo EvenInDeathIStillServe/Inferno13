@@ -85,3 +85,7 @@
 					/mob/living/simple_animal/hostile/humanoid/graverobber/baton = 1,
 					/mob/living/simple_animal/hostile/humanoid/graverobber/machete = 1)
 	spawn_time = 5 MINUTES
+
+/obj/structure/nest/hidden/acf_trooper
+	mob_types = list(/mob/living/simple_animal/hostile/humanoid/acf_trooper = 1)
+	spawn_time = 7 MINUTES

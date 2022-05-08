@@ -94,6 +94,6 @@
 	var/muscles = 8
 	var/neurons = 8
 	var/heart = 8
-	var/sinews = 8
+	var/nerves = 8
 	var/senses = 8
 	var/ego = 8

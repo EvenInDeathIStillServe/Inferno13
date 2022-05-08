@@ -58,7 +58,9 @@
 		icon_state = "caution"
 	return ..()
 
-/obj/structure/electrical_panel/attackby(obj/item/W, mob/user, params)
+/obj/structure/electrical_panel/attackby(obj/item/W, mob/living/carbon/human/user, params)
+	if (istype(user))
+		return
 	if (!shorted)
 		to_chat(user, span_warning("[src] isn't broken. No need to mess around with it."))
 		return
@@ -68,12 +70,12 @@
 	if (W.tool_behaviour == TOOL_SCREWDRIVER)
 		to_chat(user, span_notice("You start fixing [src]..."))
 		if (W.use_tool(src, user, 50, volume=50))
-			var/repair_skill = user.mind?.get_skill_level(/datum/skill/repair)
-			if (repair_skill < 2)
+			var/repair_skill = user.mind.get_effective_skill(/datum/skill/repair)
+			if (repair_skill < 8)
 				to_chat(user, span_warning("You can't make head nor tail of this!"))
 				return
-			repair_skill += rand(1,3)
-			if (repair_skill >= 5)
+			repair_skill += rand(-4,4)
+			if (repair_skill >= 10)
 				to_chat(user, span_notice("You managed to fix [src]. Time to close the hatch."))
 				user.mind.adjust_experience(/datum/skill/repair, 50)
 				shorted = FALSE

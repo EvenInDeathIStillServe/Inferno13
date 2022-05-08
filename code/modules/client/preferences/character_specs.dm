@@ -23,8 +23,8 @@
 /datum/preference/numeric/stat/heart
 	savefile_key = "heart"
 
-/datum/preference/numeric/stat/sinews
-	savefile_key = "sinews"
+/datum/preference/numeric/stat/nerves
+	savefile_key = "nerves"
 
 /datum/preference/numeric/stat/senses
 	savefile_key = "senses"

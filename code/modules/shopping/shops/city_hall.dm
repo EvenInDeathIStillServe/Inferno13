@@ -15,7 +15,8 @@
 	icon_state = "menu"
 	goods = list(
 		new /datum/data/shopping_good("Business License",							/obj/item/business_license,								1000),
-		new /datum/data/shopping_good("Contract: Catharsis City Cleansing",			/obj/item/contract/extermination/catharsis_city,		300)
+		new /datum/data/shopping_good("Contract: Catharsis City Cleansing",			/obj/item/contract/extermination/catharsis_city,		300),
+		new /datum/data/shopping_good("Contract: ACF Elimination",					/obj/item/contract/extermination/acf_elimination,		750)
 		)
 
 /mob/living/simple_animal/snm/interactible/shopkeeper/city_clerk

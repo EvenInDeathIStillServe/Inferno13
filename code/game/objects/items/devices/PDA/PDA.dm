@@ -718,7 +718,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 			if ("AddFunds")
 				var/amount_to_add = FLOOR(input(U, "How much do you want to add to the corporate account?", "Add Funds", 0) as num|null, 1)
 
-				if(!amount_to_add || amount_to_add < 0)
+				if (!amount_to_add || amount_to_add < 0)
 					return
 				if (U.payact(-amount_to_add))
 					U.mind.corp.funds += amount_to_add

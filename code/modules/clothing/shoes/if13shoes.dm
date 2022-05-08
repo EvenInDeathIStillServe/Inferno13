@@ -30,3 +30,10 @@
 	icon_state = "ronin"
 	armor = list("beat" = 22, "slash" = 22, "stab" = 22, "shot" = 22, "enflame" = 15, "electric" = 12, "acid" = 8, "irradiation" = 3, "cold" = 5)
 	obj_value = 500
+
+/obj/item/clothing/shoes/if13/acf
+	name = "\improper ACF leg set"
+	desc = "A set of leg protection composed of a genouillere and boots."
+	icon_state = "acf"
+	armor = list("beat" = 25, "slash" = 25, "stab" = 25, "shot" = 30, "enflame" = 18, "electric" = 18, "acid" = 12, "irradiation" = 6, "cold" = 8)
+	obj_value = 800

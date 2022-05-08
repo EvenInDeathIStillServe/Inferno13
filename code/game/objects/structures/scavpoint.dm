@@ -42,8 +42,8 @@
 			return
 		if(do_after(user, 20, target = src))
 			to_chat(user, span_notice("You scavenge through [src]."))
-			var/scavmod = 1 + user.mind.get_skill_level(/datum/skill/scavenging)
-			for(var/i=0, i<min(rand(max(scavmod-2,1),scavmod),5), i++)
+			var/scavmod = user.mind.get_effective_skill(/datum/skill/scavenging) + rand(-4,4)
+			for(var/i=0, i<min(round(scavmod/8),5), i++)
 				var/itemtype = pick_weight(lootable_trash)
 				if (itemtype)
 					var/obj/item/item = new itemtype(ST)

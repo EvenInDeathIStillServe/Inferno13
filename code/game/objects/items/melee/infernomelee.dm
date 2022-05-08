@@ -107,7 +107,7 @@
 	charge_indicator(TRUE)
 	mouse_track()
 
-/obj/item/melee/onMouseDown(object, location, params, mob/mob)
+/obj/item/melee/onMouseDown(object, location, params, mob/living/carbon/human/mob)
 	if(!ishuman(mob))
 		return ..()
 	if(istype(object, /atom/movable/screen))// && !istype(object, /obj/screen/click_catcher))
@@ -120,12 +120,12 @@
 		start_charging()
 	return ..()
 
-/obj/item/melee/onMouseUp(object, location, params, mob/M)
+/obj/item/melee/onMouseUp(object, location, params, mob/living/carbon/human/M)
 	if(!ishuman(M))
 		return ..()
 	if(istype(object, /atom/movable/screen))// && !istype(object, /obj/screen/click_catcher))
 		return
-	if(!M.throw_mode)
+	if(!M.throw_mode && M.combat_mode)
 		melee_attack(object, M, M.CanReach(object,src), M.client.mouseParams)
 		set_user(null)
 	return ..()

@@ -550,7 +550,7 @@ SUBSYSTEM_DEF(job)
 		new_character.muscles = player_client.prefs.read_preference(/datum/preference/numeric/stat/muscles)
 		new_character.neurons = player_client.prefs.read_preference(/datum/preference/numeric/stat/neurons)
 		new_character.heart = player_client.prefs.read_preference(/datum/preference/numeric/stat/heart)
-		new_character.sinews = player_client.prefs.read_preference(/datum/preference/numeric/stat/sinews)
+		new_character.nerves = player_client.prefs.read_preference(/datum/preference/numeric/stat/nerves)
 		new_character.senses = player_client.prefs.read_preference(/datum/preference/numeric/stat/senses)
 		new_character.ego = player_client.prefs.read_preference(/datum/preference/numeric/stat/ego)
 

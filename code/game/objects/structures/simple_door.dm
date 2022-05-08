@@ -384,3 +384,19 @@
 	close_sound = "sound/effects/curtain.ogg"
 	can_hold_padlock = TRUE
 	hard_open = 0
+
+/obj/effect/door_chime
+	name = "door chime"
+	invisibility = INVISIBILITY_ABSTRACT
+
+/obj/effect/door_chime/Initialize(mapload)
+	. = ..()
+
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
+/obj/effect/door_chime/proc/on_entered(datum/source, atom/movable/AM)
+	if (ishuman(AM))
+		playsound(src, 'sound/machines/door_chime.ogg', 50, TRUE)

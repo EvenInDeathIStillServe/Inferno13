@@ -25,7 +25,7 @@
 		preferences.update_preference(/datum/preference/numeric/stat/muscles, muscles)
 		preferences.update_preference(/datum/preference/numeric/stat/neurons, neurons)
 		preferences.update_preference(/datum/preference/numeric/stat/heart, heart)
-		preferences.update_preference(/datum/preference/numeric/stat/sinews, sinews)
+		preferences.update_preference(/datum/preference/numeric/stat/nerves, nerves)
 		preferences.update_preference(/datum/preference/numeric/stat/senses, senses)
 		preferences.update_preference(/datum/preference/numeric/stat/ego, ego)
 		preferences.save_character()

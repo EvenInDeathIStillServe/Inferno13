@@ -75,7 +75,7 @@
 	. += "Muscles : [muscles]"
 	. += "Neurons : [neurons]"
 	. += "Heart : [heart]"
-	. += "Sinews : [sinews]"
+	. += "Nerves : [nerves]"
 	. += "Senses : [senses]"
 	. += "Ego : [ego]"
 	if (free_points)
