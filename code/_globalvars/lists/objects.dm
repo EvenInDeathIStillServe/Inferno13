@@ -54,3 +54,6 @@ GLOBAL_LIST_EMPTY(air_vent_names) // Name list of all air vents
 GLOBAL_LIST_EMPTY(trash_piles)	//list of all trash piles
 GLOBAL_LIST_EMPTY(mob_nests)	//list of all nests, 				/obj/structure/nest
 GLOBAL_LIST_EMPTY(lamppost)		//list of all lampposts
+
+GLOBAL_LIST_EMPTY(innerdoors)		//list of all inner accommodation doors
+GLOBAL_LIST_EMPTY(outerdoors)		//list of all outer accommodation doors

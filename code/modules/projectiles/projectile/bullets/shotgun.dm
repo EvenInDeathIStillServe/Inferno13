@@ -78,6 +78,7 @@
 /obj/projectile/bullet/pellet/shotgun_buckshot
 	name = "buckshot pellets"
 	icon_state = "pellets"
+	gender = PLURAL
 	damage = 25
 	wound_bonus = 5
 	bare_wound_bonus = 5

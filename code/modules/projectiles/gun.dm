@@ -513,7 +513,7 @@ obj/item/gun/proc/charge_indicator(force_update = FALSE)
 					return
 			sprd = round((rand(0, 1) - 0.5) * DUALWIELD_PENALTY_EXTRA_MULTIPLIER * (randomized_gun_spread + randomized_bonus_spread))
 			before_firing(target,user)
-			if(!chambered.fire_casing(target, user, params, , suppressed, zone_override, sprd, extra_damage, extra_penetration, src))
+			if(!chambered.fire_casing(target, user, params, bonus_spread, suppressed, zone_override, sprd, extra_damage, extra_penetration, src))
 				shoot_with_empty_chamber(user)
 				return
 			else

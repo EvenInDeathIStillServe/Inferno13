@@ -430,10 +430,15 @@
 		if (last_shot_succeeded && bolt_type == BOLT_TYPE_LOCKING)
 			bolt_locked = TRUE
 			update_appearance()
-
+/*
 /obj/item/gun/ballistic/afterattack()
 	prefire_empty_checks()
 	. = ..() //The gun actually firing
+	postfire_empty_checks(.)
+*/
+/obj/item/gun/ballistic/onMouseUp(object, location, params, mob/living/carbon/human/M)
+	prefire_empty_checks()
+	. = ..()
 	postfire_empty_checks(.)
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE

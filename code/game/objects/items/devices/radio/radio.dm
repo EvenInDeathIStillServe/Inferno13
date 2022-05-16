@@ -208,7 +208,8 @@
 	if(!language)
 		language = M.get_selected_language()
 	INVOKE_ASYNC(src, .proc/talk_into_impl, M, message, channel, spans.Copy(), language, message_mods)
-	return ITALICS | REDUCE_RANGE
+//	return ITALICS | REDUCE_RANGE
+	return
 
 /obj/item/radio/proc/talk_into_impl(atom/movable/M, message, channel, list/spans, datum/language/language, list/message_mods)
 	if(!on)
@@ -266,6 +267,8 @@
 		signal.broadcast()
 		return
 
+	signal.levels = list(0) // INFERNO 13 plug
+
 	// All radios make an attempt to use the subspace system first
 	signal.send_to_receivers()
 
@@ -279,7 +282,7 @@
 
 /obj/item/radio/proc/backup_transmission(datum/signal/subspace/vocal/signal)
 	var/turf/T = get_turf(src)
-	if (signal.data["done"] && (T.z in signal.levels))
+	if ((signal.data["done"] && (T.z in signal.levels)) || (0 in signal.levels))
 		return
 
 	// Okay, the signal was never processed, send a mundane broadcast.
@@ -316,6 +319,7 @@
 		return FALSE
 	if (freq == FREQ_CENTCOM)
 		return independent  // hard-ignores the z-level check
+
 	if (!(0 in level))
 		var/turf/position = get_turf(src)
 		if(!position || !(position.z in level))
