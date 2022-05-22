@@ -195,6 +195,11 @@
 				/obj/item/clothing/shoes/if13/turnout = 100)
 	experience_on_kill = 300
 
+/mob/living/simple_animal/hostile/humanoid/hardplace/death(gibbed)
+	..()
+	for (var/mob/living/carbon/human/attacker in player_attackers)
+		attacker.award_journal(/datum/journal/extinguished)
+
 /mob/living/simple_animal/hostile/humanoid/graverobber
 	name = "graverobber"
 	desc = "An economically-minded individual, taking part in a radical recycling initiative."

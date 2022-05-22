@@ -41,6 +41,8 @@
 
 	var/obj_value = 0 //How much it's worth.
 
+	var/packit_type //If valid, can be drag&dropped in order to pack it up into a packit box of the same type
+
 /obj/vv_edit_var(vname, vval)
 	if(vname == NAMEOF(src, obj_flags))
 		if ((obj_flags & DANGEROUS_POSSESSION) && !(vval & DANGEROUS_POSSESSION))
@@ -393,3 +395,16 @@
 
 /obj/proc/get_obj_value()
 	return obj_value
+
+/obj/MouseDrop(over_object, src_location, over_location)
+	..()
+	if(over_object == usr && Adjacent(usr) && packit_type)
+		if(!ishuman(usr) || !usr.canUseTopic(src, BE_CLOSE))
+			return FALSE
+		if(has_buckled_mobs())
+			return FALSE
+		to_chat(usr, span_notice("You start packing up [src] into packit form."))
+		if (do_after(usr, 2 SECONDS, target = src))
+			usr.visible_message(span_notice("[usr] packs up \the [src.name]."), span_notice("You pack up \the [src.name]."))
+			new packit_type(get_turf(src))
+			qdel(src)

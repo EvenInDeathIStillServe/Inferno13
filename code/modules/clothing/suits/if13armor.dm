@@ -42,3 +42,17 @@
 	icon_state = "acf"
 	armor = list("beat" = 25, "slash" = 25, "stab" = 25, "shot" = 30, "enflame" = 18, "electric" = 18, "acid" = 12, "irradiation" = 6, "cold" = 8)
 	obj_value = 2000
+
+/obj/item/clothing/suit/armor/if13/operator
+	name = "operator vest"
+	desc = "An IIIA bulletproof vest. Should stop low-powered projectiles."
+	icon_state = "operator"
+	armor = list("beat" = 22, "slash" = 22, "stab" = 28, "shot" = 35, "enflame" = 15, "electric" = 12, "acid" = 10, "irradiation" = 6, "cold" = 8)
+	obj_value = 2000
+
+/obj/item/clothing/suit/armor/if13/rusty_breastplate
+	name = "rusty breastplate"
+	desc = "A breastplate hammered out of scavenged iron."
+	icon_state = "rusty_bplate"
+	armor = list("beat" = 30, "slash" = 30, "stab" = 30, "shot" = 25, "enflame" = 10, "electric" = 4, "acid" = 10, "irradiation" = 8, "cold" = 4)
+	obj_value = 2000

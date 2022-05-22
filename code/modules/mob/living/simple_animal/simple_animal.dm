@@ -476,6 +476,7 @@
 	if (experience_on_kill)
 		for (var/mob/living/carbon/human/attacker in player_attackers)
 			attacker.grant_experience(experience_on_kill)
+			attacker.award_journal(/datum/journal/murderer)
 		experience_on_kill = 0
 	if (last_attacker && last_attacker.mind.corp)
 		for (var/datum/contract/extermination/ex_contract in last_attacker.mind.corp.contracts)

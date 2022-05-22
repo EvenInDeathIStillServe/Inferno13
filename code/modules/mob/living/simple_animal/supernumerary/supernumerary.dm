@@ -35,6 +35,7 @@
 /mob/living/simple_animal/snm/interactible/proc/snm_interacted(mob/living/carbon/human/M)
 	if (!check_interactable(M))
 		return
+	M.award_journal(/datum/journal/basicsocialskill)
 	say(say_greet)
 	if (!LAZYLEN(taught_skills))
 		return
@@ -93,6 +94,7 @@
 		return
 	if (interacting)
 		return
+	M.award_journal(/datum/journal/basicsocialskill)
 	interacting = TRUE
 	say("You must be a new clone. Welcome to the meat factory. Hey, how about a job? There's plenty of defective clones that need...  processing.")
 	spawn (50)
@@ -119,6 +121,7 @@
 /mob/living/simple_animal/snm/interactible/vanguard_graphic/snm_interacted(mob/living/carbon/human/M)
 	if (interacting)
 		return
+	M.award_journal(/datum/journal/basicsocialskill)
 	interacting = TRUE
 	say("Oh, hello. I'm kind of in the middle of designing a logo for VanGuard's new video player software.")
 	spawn (50)

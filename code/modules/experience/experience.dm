@@ -1,4 +1,4 @@
-#define EXPERIENCE_LEVELS list(0, 1000, 2500, 7500, 15000)
+#define EXPERIENCE_LEVELS list(0, 1000, 2500, 7500, 15000, 30000, 50000, 80000)
 
 /mob/living/carbon/human/proc/grant_experience(experience_gained)
 	total_experience += experience_gained

@@ -318,47 +318,52 @@
 
 	if(LAZYLEN(armor_list))
 		armor_list.Cut()
-	if(armor.bio)
-		armor_list += list("TOXIN" = armor.bio)
-	if(armor.bomb)
-		armor_list += list("EXPLOSIVE" = armor.bomb)
-	if(armor.bullet)
-		armor_list += list("BULLET" = armor.bullet)
-	if(armor.energy)
-		armor_list += list("ENERGY" = armor.energy)
-	if(armor.laser)
-		armor_list += list("LASER" = armor.laser)
-	if(armor.melee)
-		armor_list += list("MELEE" = armor.melee)
+	if (armor.beat)
+		armor_list += list("BEAT" = armor.beat)
+	if (armor.slash)
+		armor_list += list("SLASH" = armor.slash)
+	if (armor.stab)
+		armor_list += list("STAB" = armor.stab)
+	if (armor.shot)
+		armor_list += list("SHOT" = armor.shot)
+	if (armor.enflame)
+		armor_list += list("ENFLAME" = armor.enflame)
+	if (armor.electric)
+		armor_list += list("ELECTRIC" = armor.electric)
+	if (armor.caustic)
+		armor_list += list("CAUSTIC" = armor.caustic)
+	if (armor.irradiation)
+		armor_list += list("IRRADIATION" = armor.irradiation)
+	if (armor.cold)
+		armor_list += list("COLD" = armor.cold)
 
 	if(LAZYLEN(durability_list))
 		durability_list.Cut()
-	if(armor.fire)
-		durability_list += list("FIRE" = armor.fire)
-	if(armor.acid)
-		durability_list += list("ACID" = armor.acid)
 
 	if(LAZYLEN(armor_list) || LAZYLEN(durability_list))
-		. += span_notice("It has a <a href='?src=[REF(src)];list_armor=1'>tag</a> listing its protection classes.")
+		. += span_notice("It has a <a href='?src=[REF(src)];list_armor=1'>tag</a> listing its armor values.")
 
 /obj/item/clothing/Topic(href, href_list)
 	. = ..()
 
 	if(href_list["list_armor"])
-		var/list/readout = list("<span class='notice'><u><b>PROTECTION CLASSES (I-X)</u></b>")
+		var/list/readout = list("<span class='notice'><u><b>PROTECTION VALUES</u></b>")
 		if(LAZYLEN(armor_list))
 			readout += "\n<b>ARMOR</b>"
 			for(var/dam_type in armor_list)
 				var/armor_amount = armor_list[dam_type]
-				readout += "\n[dam_type] [armor_to_protection_class(armor_amount)]" //e.g. BOMB IV
+				readout += "\n[dam_type] [armor_amount]"
 		if(LAZYLEN(durability_list))
 			readout += "\n<b>DURABILITY</b>"
 			for(var/dam_type in durability_list)
 				var/durability_amount = durability_list[dam_type]
-				readout += "\n[dam_type] [armor_to_protection_class(durability_amount)]" //e.g. FIRE II
+				readout += "\n[dam_type] [durability_amount]"
 		readout += "</span>"
 
 		to_chat(usr, "[readout.Join()]")
+
+		if (ishuman(usr))
+			usr:award_journal(/datum/journal/eyeforvalue)
 
 /**
  * Rounds armor_value to nearest 10, divides it by 10 and then expresses it in roman numerals up to 10

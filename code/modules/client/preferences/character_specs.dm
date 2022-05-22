@@ -37,15 +37,24 @@
 	minimum = 1
 	maximum = 100
 
+/datum/preference/numeric/stat/experience_level/create_default_value()
+	return 1
+
 /datum/preference/numeric/stat/total_experience
 	savefile_key = "total_experience"
 	minimum = 0
 	maximum = 1000000
 
+/datum/preference/numeric/stat/total_experience/create_default_value()
+	return 0
+
 /datum/preference/numeric/stat/free_experience
 	savefile_key = "free_experience"
 	minimum = 0
 	maximum = 1000000
+
+/datum/preference/numeric/stat/free_experience/create_default_value()
+	return 0
 
 /datum/preference/numeric/stat/free_points
 	savefile_key = "free_points"

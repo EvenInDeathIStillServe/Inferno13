@@ -48,3 +48,17 @@
 		new /datum/data/shopping_good("Ronin Vambraces",		/obj/item/clothing/gloves/if13/ronin,					500),
 		new /datum/data/shopping_good("Ronin Tabi",				/obj/item/clothing/shoes/if13/ronin,					500)
 		)
+
+/obj/machinery/shop_rack/armourup/torso
+	icon_state = "torso_armor"
+	goods = list(
+		new /datum/data/shopping_good("Operator Vest",			/obj/item/clothing/suit/armor/if13/operator,			2000),
+		new /datum/data/shopping_good("Rusty Breastplate",		/obj/item/clothing/suit/armor/if13/rusty_breastplate,	2000)
+		)
+
+/obj/machinery/shop_rack/armourup/helmets
+	icon_state = "helmets"
+	goods = list(
+		new /datum/data/shopping_good("Rider Helmet",			/obj/item/clothing/head/helmet/if13/rider,				1200),
+		new /datum/data/shopping_good("Hard Hat",				/obj/item/clothing/head/helmet/if13/light/hardhat,		1200)
+		)

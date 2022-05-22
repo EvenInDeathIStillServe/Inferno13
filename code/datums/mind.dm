@@ -94,6 +94,7 @@
 	var/list/failed_special_equipment
 
 	var/datum/corporation/corp //The corporation they belong to.
+	var/rented_accommodation //ID of the accommodation the player has rented
 
 /datum/mind/New(_key)
 	key = _key

@@ -76,7 +76,7 @@
 	var/tile_dropoff_s = 0.5
 
 /obj/projectile/bullet/pellet/shotgun_buckshot
-	name = "buckshot pellets"
+	name = "buckshot cloud"
 	icon_state = "pellets"
 	gender = PLURAL
 	damage = 25

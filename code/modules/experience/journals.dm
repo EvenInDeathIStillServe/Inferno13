@@ -46,6 +46,36 @@ GLOBAL_LIST_INIT(journal_types, subtypesof(/datum/journal))
 	desc = "Found the 'secret' behind soylent red. Everyone already knows about it, come on."
 	experience_value = 200
 
+/datum/journal/capitalismho
+	name = "Capitalism, Ho!"
+	desc = "Spent your hard-earned credits at a store."
+	experience_value = 50
+
+/datum/journal/basicsocialskill
+	name = "Basic Social Skill"
+	desc = "Interacted with a supernumerary in a way that did not result in the gruesome death of an interlocutor. It didn't, right?"
+	experience_value = 50
+
+/datum/journal/murderer
+	name = "Murderer"
+	desc = "Let this be the first of many."
+	experience_value = 100
+
+/datum/journal/tenant
+	name = "Tenant"
+	desc = "Finally get a place of your own. Well, not really your own: you're just renting it."
+	experience_value = 100
+
+/datum/journal/packitcarttheory
+	name = "PackIt Cart Theory"
+	desc = "The PackIt Cart is what determines whether a person is a good or bad member of society. You would have made the same decision even without the deposit thing, right?"
+	experience_value = 100
+
+/datum/journal/extinguished
+	name = "Extinguished"
+	desc = "Put out the flame in Rock Hardplace's heart. And his flamethrower too, I suppose."
+	experience_value = 500
+
 /datum/journal/visit
 	name = "Visit: Base"
 	desc = "This is the base visit journal. How the fuck did you get this?"

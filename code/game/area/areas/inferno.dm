@@ -25,6 +25,11 @@
 	icon_state = "firestation"
 	visit_journal = /datum/journal/visit/firestation
 
+/area/if13/building/accommodation
+	name = "Accommodation"
+	icon_state = "accommodation"
+	area_flags = UNIQUE_AREA | FURNITURE_DEPLOYABLE
+
 /area/if13/tunnel
 	name = "Tunnel"
 	icon_state = "tunnel"

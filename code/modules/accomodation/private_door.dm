@@ -147,12 +147,20 @@
 	if (door)
 		door.panel = src
 
+/obj/machinery/door_panel/examine(mob/user)
+	. = ..()
+	if(door)
+		. += "<b>It's registered to apartment number <b>[door.accommodation_id]</b>. [owner_tag ? "It's occupied." : "It's available for rent."]"
+
 /obj/machinery/door_panel/attack_hand(mob/living/carbon/human/user, list/modifiers)
 	if (!door)
 		return
 	if (!ishuman(user))
 		return
 	if (!owner_tag)
+		if (user.mind.rented_accommodation)
+			to_chat(user, span_warning("Slow down, Donald Trump. You can only have one apartment."))
+			return
 		to_chat(user, span_notice("You interface your wristpad with [src] and begin registering yourself as the new owner of the apartment."))
 		if (do_after(user, 5 SECONDS, target = src))
 			if (user.payact(-2000))
@@ -160,6 +168,7 @@
 				owner_tag = user.clone_tag
 				door.connect_door()
 				door.connected.panel.owner_tag = owner_tag
+				user.award_journal(/datum/journal/tenant)
 				return
 			else
 				to_chat(user, span_warning("You seem to be broke. Try not being so."))

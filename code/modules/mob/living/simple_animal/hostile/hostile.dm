@@ -723,6 +723,10 @@
 /mob/living/simple_animal/hostile/proc/add_target(new_target)
 	if(target)
 		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
-	target = new_target
+	if (target != new_target)
+		if (new_target)
+			do_alert_animation(src)
+			playsound(loc, 'sound/machines/chime.ogg', 50, 1, -1)
+		target = new_target
 	if(target)
 		RegisterSignal(target, COMSIG_PARENT_QDELETING, .proc/handle_target_del)

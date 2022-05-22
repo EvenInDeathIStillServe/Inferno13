@@ -31,14 +31,14 @@
 	var/fullness = M.hydration + 10
 	for(var/datum/reagent/C in M.reagents.reagent_list) //add the hydration value first
 		fullness += C.water_factor * C.volume / C.metabolization_rate
-
+/*
 	if(fullness > HYDRATION_LEVEL_MAX)
 		if(M == user)
 			to_chat(M, "<span class='notice'>You can't drink anymore.</span>")
 		else
 			to_chat(user, "<span class='notice'>[M] can't drink anymore.</span>")
 		return 0
-
+*/
 	if(M == user)
 		user.visible_message(span_notice("[user] swallows a gulp of [src]."), \
 			span_notice("You swallow a gulp of [src]."))

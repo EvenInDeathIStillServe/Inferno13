@@ -62,6 +62,7 @@
 		qdel(card)
 		speech(say_purchase)
 		user.put_in_active_hand(bag)
+		user.award_journal(/datum/journal/capitalismho)
 	else
 		var/sale_value = try_sell(W, user)
 		if (sale_value > 0)
