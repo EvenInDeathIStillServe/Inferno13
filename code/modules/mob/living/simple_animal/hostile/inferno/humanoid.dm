@@ -40,6 +40,8 @@
 	attack_skill = 8
 	experience_on_kill = 10
 	aggro_chance = 20
+	random_prefix = list("mutated", "defective", "deformed", "unwanted", "sick")
+	random_suffix = list("clone", "failure", "meatsack", "humanoid", "tubeborn")
 
 /mob/living/simple_animal/hostile/humanoid/clone/female
 	gender = FEMALE
@@ -69,6 +71,9 @@
 	cash_loot_min = 0
 	cash_loot_max = 50
 	experience_on_kill = 20
+
+	random_prefix = list("crazy", "mad", "barmy", "nutty", "agitated")
+	random_suffix = list("junkie", "crackhead", "squatter", "druggie", "addict")
 
 /mob/living/simple_animal/hostile/humanoid/crackhead/Initialize()
 	..()
@@ -120,6 +125,9 @@
 	butcher_results = list(/obj/item/food/meat/slab/human/mutant/chud = 2, /obj/item/stack/sheet/animalhide/chud = 2)
 	experience_on_kill = 30
 
+	random_prefix = list("hungry", "ravenous", "creeping", "murderous", "monstrous")
+	random_suffix = list("chud", "C.H.U.D", "sewerman", "undergrounder", "humanoid")
+
 /mob/living/simple_animal/hostile/humanoid/chud/Initialize()
 	..()
 	icon_living = "chud_[rand(1,4)]"
@@ -156,6 +164,8 @@
 				/obj/item/clothing/gloves/if13/turnout = 10,
 				/obj/item/clothing/shoes/if13/turnout = 10)
 	experience_on_kill = 75
+	random_prefix = list("fiery", "raging", "heated", "hot-headed", "blazing")
+	random_suffix = list("firefighter")
 
 /mob/living/simple_animal/hostile/humanoid/firefighter/Initialize()
 	..()
@@ -297,15 +307,15 @@
 	maxHealth = 150
 	health = 150
 	armor = list("beat" = 6, "slash" = 6, "stab" = 6, "shot" = 6, "enflame" = 12, "electric" = 15, "acid" = 12, "irradiation" = 20, "cold" = 8)
-	harm_intent_damage = 30
-	melee_damage_lower = 25
-	melee_damage_upper = 35
+	harm_intent_damage = 35
+	melee_damage_lower = 30
+	melee_damage_upper = 38
 	attack_skill = 16
 	parry_class = 1
 	cash_loot_min = 50
 	cash_loot_max = 100
 	experience_on_kill = 100
-	random_prefix = list("mutated", "freak", "deformed", "monstrous")
+	random_prefix = list("mutated", "freak", "deformed", "monstrous", "irradiated")
 	random_suffix = list("chemical operator", "chemical engineer", "chemical inspector", "waste handler", "chemist", "chemical specialist")
 
 /mob/living/simple_animal/hostile/humanoid/chemplant_mutant/Initialize()
