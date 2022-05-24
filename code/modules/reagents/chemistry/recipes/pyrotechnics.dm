@@ -144,9 +144,11 @@
 	..()
 
 /datum/chemical_reaction/gunpowder
-	results = list(/datum/reagent/gunpowder = 3)
-	required_reagents = list(/datum/reagent/saltpetre = 1, /datum/reagent/medicine/c2/multiver = 1, /datum/reagent/sulfur = 1)
+	results = list(/datum/reagent/gunpowder = 10)
+	required_reagents = list(/datum/reagent/saltpetre = 7, /datum/reagent/carbon = 2, /datum/reagent/sulfur = 1)
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_EXPLOSIVE
+	needs_chemistry = TRUE
+	reaction_skill = 12
 
 /datum/chemical_reaction/reagent_explosion/gunpowder_explosion
 	required_reagents = list(/datum/reagent/gunpowder = 1)

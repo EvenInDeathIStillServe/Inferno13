@@ -23,6 +23,8 @@
 	var/mob_react = TRUE
 	///The message shown to nearby people upon mixing, if applicable
 	var/mix_message = "The solution begins to bubble."
+	///The message shown to nearby people when the reaction fails.
+	var/fail_message = "The solution fizzles: the reaction has failed."
 	///The sound played upon mixing, if applicable
 	var/mix_sound = 'sound/effects/bubbles.ogg'
 
@@ -54,10 +56,15 @@
 	/// If purity is below 0.15, it calls OverlyImpure() too. Set to 0 to disable this.
 	var/purity_min = 0.15
 	/// bitflags for clear conversions; REACTION_CLEAR_IMPURE, REACTION_CLEAR_INVERSE, REACTION_CLEAR_RETAIN, REACTION_INSTANT
-	var/reaction_flags = NONE
+	var/reaction_flags
 	///Tagging vars
 	///A bitflag var for tagging reagents for the reagent loopup functon
 	var/reaction_tags = NONE
+
+	///Needs to occur through a chemistry set or something similar
+	var/needs_chemistry = FALSE
+	///Skill required to successfully achieve the reaction in a chemistry set
+	var/reaction_skill = 0
 
 /datum/chemical_reaction/New()
 	. = ..()

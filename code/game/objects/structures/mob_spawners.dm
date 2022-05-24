@@ -89,3 +89,7 @@
 /obj/structure/nest/hidden/acf_trooper
 	mob_types = list(/mob/living/simple_animal/hostile/humanoid/acf_trooper = 1)
 	spawn_time = 7 MINUTES
+
+/obj/structure/nest/hidden/chemplant_mutant
+	mob_types = list(/mob/living/simple_animal/hostile/humanoid/chemplant_mutant = 1)
+	spawn_time = 5 MINUTES

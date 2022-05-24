@@ -25,6 +25,11 @@
 	icon_state = "firestation"
 	visit_journal = /datum/journal/visit/firestation
 
+/area/if13/building/chemplant
+	name = "Chemical Plant"
+	icon_state = "chemplant"
+	visit_journal = /datum/journal/visit/chemplant
+
 /area/if13/building/accommodation
 	name = "Accommodation"
 	icon_state = "accommodation"

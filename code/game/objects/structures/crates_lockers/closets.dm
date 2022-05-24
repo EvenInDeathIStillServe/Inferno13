@@ -369,6 +369,13 @@
 	else
 		return ..()
 
+/obj/structure/closet/packit_up(mob/living/carbon/human/user)
+	if (!opened && contents.len)
+		to_chat(user, span_warning("[src] needs to be empty before packing it up."))
+	else
+		..()
+
+
 /obj/structure/closet/proc/tool_interact(obj/item/W, mob/living/user)//returns TRUE if attackBy call shouldn't be continued (because tool was used/closet was of wrong type), FALSE if otherwise
 	. = TRUE
 	if(opened)

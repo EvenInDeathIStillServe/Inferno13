@@ -403,8 +403,11 @@
 			return FALSE
 		if(has_buckled_mobs())
 			return FALSE
-		to_chat(usr, span_notice("You start packing up [src] into packit form."))
-		if (do_after(usr, 2 SECONDS, target = src))
-			usr.visible_message(span_notice("[usr] packs up \the [src.name]."), span_notice("You pack up \the [src.name]."))
-			new packit_type(get_turf(src))
-			qdel(src)
+		packit_up(usr)
+
+/obj/proc/packit_up(mob/living/carbon/human/user)
+	to_chat(usr, span_notice("You start packing up [src] into packit form."))
+	if (do_after(usr, 2 SECONDS, target = src))
+		usr.visible_message(span_notice("[usr] packs up \the [src.name]."), span_notice("You pack up \the [src.name]."))
+		new packit_type(get_turf(src))
+		qdel(src)

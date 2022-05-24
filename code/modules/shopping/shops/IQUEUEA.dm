@@ -74,6 +74,12 @@
 	sold_packit = /obj/item/packit/crate
 	price = 500
 
+/obj/structure/furniture_model/chemistry_set
+	name = "chemistry set"
+	icon_state = "chemistry_set"
+	sold_packit = /obj/item/packit/chemistry_set
+	price = 500
+
 /obj/structure/packitcart_dispenser
 	name = "packit cart dispenser"
 	desc = "An array of packit carts, ripe for the taking... as long as you pay the $250 deposit fee, recoverable when you return the cart."

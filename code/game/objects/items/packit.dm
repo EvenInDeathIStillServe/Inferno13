@@ -61,6 +61,11 @@
 	icon_state = "crate"
 	furniture_type = /obj/structure/closet/crate
 
+/obj/item/packit/chemistry_set
+	name = "packit (chemistry set)"
+	icon_state = "crafting"
+	furniture_type = /obj/machinery/chemistry_set
+
 /obj/structure/packitcart
 	name = "packit cart"
 	desc = "A trolley cart designed specially for handling PackIt! packits."

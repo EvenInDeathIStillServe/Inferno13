@@ -27,7 +27,8 @@
 	/mob/living/simple_animal/hostile/humanoid/crackhead = 40,
 	/mob/living/simple_animal/hostile/humanoid/chud = 50,
 	/mob/living/simple_animal/hostile/humanoid/firefighter = 70,
-	/mob/living/simple_animal/hostile/humanoid/graverobber = 90)
+	/mob/living/simple_animal/hostile/humanoid/graverobber = 90,
+	/mob/living/simple_animal/hostile/humanoid/chemplant_mutant = 150)
 
 /datum/contract/extermination/acf_elimination
 	name = "ACF elimination"

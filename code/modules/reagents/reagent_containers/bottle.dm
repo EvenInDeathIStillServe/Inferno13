@@ -7,8 +7,8 @@
 	fill_icon_state = "bottle"
 	inhand_icon_state = "atoxinbottle"
 	worn_icon_state = "bottle"
-	possible_transfer_amounts = list(5,10,15,25,30)
-	volume = 30
+	possible_transfer_amounts = list(5,10,15,25,30,50)
+	volume = 50
 	fill_icon_thresholds = list(0, 1, 20, 40, 60, 80, 100)
 
 /obj/item/reagent_containers/glass/bottle/Initialize(mapload)
@@ -319,107 +319,107 @@
 
 /obj/item/reagent_containers/glass/bottle/hydrogen
 	name = "hydrogen bottle"
-	list_reagents = list(/datum/reagent/hydrogen = 30)
+	list_reagents = list(/datum/reagent/hydrogen = 50)
 
 /obj/item/reagent_containers/glass/bottle/lithium
 	name = "lithium bottle"
-	list_reagents = list(/datum/reagent/lithium = 30)
+	list_reagents = list(/datum/reagent/lithium = 50)
 
 /obj/item/reagent_containers/glass/bottle/carbon
 	name = "carbon bottle"
-	list_reagents = list(/datum/reagent/carbon = 30)
+	list_reagents = list(/datum/reagent/carbon = 50)
 
 /obj/item/reagent_containers/glass/bottle/nitrogen
 	name = "nitrogen bottle"
-	list_reagents = list(/datum/reagent/nitrogen = 30)
+	list_reagents = list(/datum/reagent/nitrogen = 50)
 
 /obj/item/reagent_containers/glass/bottle/oxygen
 	name = "oxygen bottle"
-	list_reagents = list(/datum/reagent/oxygen = 30)
+	list_reagents = list(/datum/reagent/oxygen = 50)
 
 /obj/item/reagent_containers/glass/bottle/fluorine
 	name = "fluorine bottle"
-	list_reagents = list(/datum/reagent/fluorine = 30)
+	list_reagents = list(/datum/reagent/fluorine = 50)
 
 /obj/item/reagent_containers/glass/bottle/sodium
 	name = "sodium bottle"
-	list_reagents = list(/datum/reagent/sodium = 30)
+	list_reagents = list(/datum/reagent/sodium = 50)
 
 /obj/item/reagent_containers/glass/bottle/aluminium
 	name = "aluminium bottle"
-	list_reagents = list(/datum/reagent/aluminium = 30)
+	list_reagents = list(/datum/reagent/aluminium = 50)
 
 /obj/item/reagent_containers/glass/bottle/silicon
 	name = "silicon bottle"
-	list_reagents = list(/datum/reagent/silicon = 30)
+	list_reagents = list(/datum/reagent/silicon = 50)
 
 /obj/item/reagent_containers/glass/bottle/phosphorus
 	name = "phosphorus bottle"
-	list_reagents = list(/datum/reagent/phosphorus = 30)
+	list_reagents = list(/datum/reagent/phosphorus = 50)
 
 /obj/item/reagent_containers/glass/bottle/sulfur
 	name = "sulfur bottle"
-	list_reagents = list(/datum/reagent/sulfur = 30)
+	list_reagents = list(/datum/reagent/sulfur = 50)
 
 /obj/item/reagent_containers/glass/bottle/chlorine
 	name = "chlorine bottle"
-	list_reagents = list(/datum/reagent/chlorine = 30)
+	list_reagents = list(/datum/reagent/chlorine = 50)
 
 /obj/item/reagent_containers/glass/bottle/potassium
 	name = "potassium bottle"
-	list_reagents = list(/datum/reagent/potassium = 30)
+	list_reagents = list(/datum/reagent/potassium = 50)
 
 /obj/item/reagent_containers/glass/bottle/iron
 	name = "iron bottle"
-	list_reagents = list(/datum/reagent/iron = 30)
+	list_reagents = list(/datum/reagent/iron = 50)
 
 /obj/item/reagent_containers/glass/bottle/copper
 	name = "copper bottle"
-	list_reagents = list(/datum/reagent/copper = 30)
+	list_reagents = list(/datum/reagent/copper = 50)
 
 /obj/item/reagent_containers/glass/bottle/mercury
 	name = "mercury bottle"
-	list_reagents = list(/datum/reagent/mercury = 30)
+	list_reagents = list(/datum/reagent/mercury = 50)
 
 /obj/item/reagent_containers/glass/bottle/radium
 	name = "radium bottle"
-	list_reagents = list(/datum/reagent/uranium/radium = 30)
+	list_reagents = list(/datum/reagent/uranium/radium = 50)
 
 /obj/item/reagent_containers/glass/bottle/water
 	name = "water bottle"
-	list_reagents = list(/datum/reagent/water = 30)
+	list_reagents = list(/datum/reagent/water = 50)
 
 /obj/item/reagent_containers/glass/bottle/ethanol
 	name = "ethanol bottle"
-	list_reagents = list(/datum/reagent/consumable/ethanol = 30)
+	list_reagents = list(/datum/reagent/consumable/ethanol = 50)
 
 /obj/item/reagent_containers/glass/bottle/sugar
 	name = "sugar bottle"
-	list_reagents = list(/datum/reagent/consumable/sugar = 30)
+	list_reagents = list(/datum/reagent/consumable/sugar = 50)
 
 /obj/item/reagent_containers/glass/bottle/sacid
 	name = "sulphuric acid bottle"
-	list_reagents = list(/datum/reagent/toxin/acid = 30)
+	list_reagents = list(/datum/reagent/toxin/acid = 50)
 
 /obj/item/reagent_containers/glass/bottle/welding_fuel
 	name = "welding fuel bottle"
-	list_reagents = list(/datum/reagent/fuel = 30)
+	list_reagents = list(/datum/reagent/fuel = 50)
 
 /obj/item/reagent_containers/glass/bottle/silver
 	name = "silver bottle"
-	list_reagents = list(/datum/reagent/silver = 30)
+	list_reagents = list(/datum/reagent/silver = 50)
 
 /obj/item/reagent_containers/glass/bottle/iodine
 	name = "iodine bottle"
-	list_reagents = list(/datum/reagent/iodine = 30)
+	list_reagents = list(/datum/reagent/iodine = 50)
 
 /obj/item/reagent_containers/glass/bottle/bromine
 	name = "bromine bottle"
-	list_reagents = list(/datum/reagent/bromine = 30)
+	list_reagents = list(/datum/reagent/bromine = 50)
 
 /obj/item/reagent_containers/glass/bottle/thermite
 	name = "thermite bottle"
-	list_reagents = list(/datum/reagent/thermite = 30)
+	list_reagents = list(/datum/reagent/thermite = 50)
 
 // Bottles for mail goodies.
 
@@ -431,7 +431,7 @@
 /obj/item/reagent_containers/glass/bottle/saltpetre
 	name = "saltpetre bottle"
 	desc = "A small bottle. Contains saltpetre."
-	list_reagents = list(/datum/reagent/saltpetre = 30)
+	list_reagents = list(/datum/reagent/saltpetre = 50)
 
 /obj/item/reagent_containers/glass/bottle/flash_powder
 	name = "flash powder bottle"

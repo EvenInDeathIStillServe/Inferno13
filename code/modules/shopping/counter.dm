@@ -19,6 +19,8 @@
 	var/sell_modifier = 1
 	var/list/bought_objects = list()
 	var/list/unwanted_objects = list()
+	var/list/bought_reagents = list()
+	var/list/unwanted_reagents = list()
 	var/mob/living/simple_animal/snm/interactible/shopkeeper/shopkeeper
 	var/shopkeeper_type
 
@@ -78,7 +80,23 @@
 			total_value += try_sell(thing, user, TRUE)
 		to_chat(user, "<span class='notice'>You present the contents of [W].</span>")
 		return total_value
-	else if (bought_objects.len)
+	if (bought_reagents.len && istype(W, /obj/item/reagent_containers))
+		var/reagents_value
+		var/obj/item/reagent_containers/container = W
+		for (var/datum/reagent/reagent in container.reagents.reagent_list)
+			if (unwanted_reagents && is_type_in_list(reagent, unwanted_reagents))
+				continue
+			if (is_type_in_list(reagent, bought_reagents))
+				reagents_value += reagent.volume * reagent.reagent_value
+		if (reagents_value < 1)
+			if (!bulk)
+				to_chat(usr, "<span class='warning'>[W] is worthless.</span>")
+			return
+		special_sell(container, user)
+		to_chat(user, "<span class='notice'>You sell [W].</span>")
+		qdel(container)
+		return reagents_value
+	if (bought_objects.len)
 		if (!W.get_obj_value())
 			if (!bulk)
 				to_chat(usr, "<span class='warning'>[W] is worthless.</span>")

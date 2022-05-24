@@ -810,7 +810,7 @@
 /// Handle any reactions possible in this holder
 /// Also UPDATES the reaction list
 /// High potential for infinite loopsa if you're editing this.
-/datum/reagents/proc/handle_reactions()
+/datum/reagents/proc/handle_reactions(intentional_chemistry = FALSE , chemist_skill = 0)
 	if(QDELING(src))
 		CRASH("[my_atom] is trying to handle reactions while being flagged for deletion. It presently has [length(reagent_list)] number of reactants in it. If that is over 0 then something terrible happened.")
 
@@ -842,6 +842,10 @@
 
 			if(!reaction.required_reagents)//Don't bring in empty ones
 				continue
+
+			if (reaction.needs_chemistry && !intentional_chemistry)
+				continue
+
 			var/list/cached_required_reagents = reaction.required_reagents
 			var/total_required_reagents = cached_required_reagents.len
 			var/total_matching_reagents = 0
@@ -904,7 +908,7 @@
 	//This is the point where we have all the possible reactions from a reagent/catalyst point of view, so we set up the reaction list
 	for(var/datum/chemical_reaction/selected_reaction as anything in possible_reactions)
 		if((selected_reaction.reaction_flags & REACTION_INSTANT) || (flags & REAGENT_HOLDER_INSTANT_REACT)) //If we have instant reactions, we process them here
-			instant_react(selected_reaction)
+			instant_react(selected_reaction, chemist_skill)
 			.++
 			update_total()
 			continue
@@ -1111,7 +1115,7 @@
 
 ///Old reaction mechanics, edited to work on one only
 ///This is changed from the old - purity of the reagents will affect yield
-/datum/reagents/proc/instant_react(datum/chemical_reaction/selected_reaction)
+/datum/reagents/proc/instant_react(datum/chemical_reaction/selected_reaction, chemist_skill = 0)
 	var/list/cached_required_reagents = selected_reaction.required_reagents
 	var/list/cached_results = selected_reaction.results
 	var/datum/cached_my_atom = my_atom
@@ -1130,11 +1134,14 @@
 		remove_reagent(_reagent, (multiplier * cached_required_reagents[_reagent]), safety = 1)
 	sum_purity /= cached_required_reagents.len
 
-	for(var/product in selected_reaction.results)
-		multiplier = max(multiplier, 1) //this shouldn't happen ...
-		var/yield = (cached_results[product]*multiplier)*sum_purity
-		SSblackbox.record_feedback("tally", "chemical_reaction", yield, product)
-		add_reagent(product, yield, null, chem_temp, sum_purity)
+	var/reaction_success
+	if (chemist_skill >= selected_reaction.reaction_skill)
+		reaction_success = TRUE
+		for(var/product in selected_reaction.results)
+			multiplier = max(multiplier, 1) //this shouldn't happen ...
+			var/yield = (cached_results[product]*multiplier)*sum_purity
+			SSblackbox.record_feedback("tally", "chemical_reaction", yield, product)
+			add_reagent(product, yield, null, chem_temp, sum_purity)
 
 	var/list/seen = viewers(4, get_turf(my_atom))
 	var/iconhtml = icon2html(cached_my_atom, seen)
@@ -1143,7 +1150,10 @@
 			if(selected_reaction.mix_sound)
 				playsound(get_turf(cached_my_atom), selected_reaction.mix_sound, 80, TRUE)
 
-			my_atom.audible_message(span_notice("[iconhtml] [selected_reaction.mix_message]"))
+			if (reaction_success)
+				my_atom.audible_message(span_notice("[iconhtml] [selected_reaction.mix_message]"))
+			else
+				my_atom.audible_message(span_warning("[iconhtml] [selected_reaction.fail_message]"))
 
 		if(istype(cached_my_atom, /obj/item/slime_extract))
 			var/obj/item/slime_extract/extract = my_atom
@@ -1152,8 +1162,8 @@
 				my_atom.visible_message(span_notice("[iconhtml] \The [my_atom]'s power is consumed in the reaction."))
 				extract.name = "used slime extract"
 				extract.desc = "This extract has been used up."
-
-	selected_reaction.on_reaction(src, null, multiplier)
+	if (reaction_success)
+		selected_reaction.on_reaction(src, null, multiplier)
 
 ///Possibly remove - see if multiple instant reactions is okay (Though, this "sorts" reactions by temp decending)
 ///Presently unused

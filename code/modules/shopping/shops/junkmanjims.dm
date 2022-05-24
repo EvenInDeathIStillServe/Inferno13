@@ -29,4 +29,4 @@
 	icon_state = "junkmanjim"
 	icon_living = "junkmanjim"
 	icon_dead = "junkmanjim"
-	taught_skills = list("Scavenging" = 5)
+	taught_skills = list("Scavenging" = 5, "Science" = 5, "Crafting" = 5)

@@ -43,7 +43,7 @@
 		if(do_after(user, 20, target = src))
 			to_chat(user, span_notice("You scavenge through [src]."))
 			var/scavmod = user.mind.get_effective_skill(/datum/skill/scavenging) + rand(-4,4)
-			for(var/i=0, i<min(round(scavmod/8),5), i++)
+			for(var/i=0, i<min(round(scavmod/7),5), i++)
 				var/itemtype = pick_weight(lootable_trash)
 				if (itemtype)
 					var/obj/item/item = new itemtype(ST)
@@ -71,3 +71,15 @@ GLOBAL_LIST_INIT(sewer_loot, list(
 
 /obj/item/storage/scavpoint/sewer/get_loot_list()
 	return list(GLOB.sewer_loot)
+
+GLOBAL_LIST_INIT(chemplant_loot, list(
+	/obj/item/reagent_containers/glass/bottle/carbon = 3,
+	/obj/item/reagent_containers/glass/bottle/sodium = 3,
+	/obj/item/reagent_containers/glass/bottle/phosphorus = 3,
+	/obj/item/reagent_containers/glass/bottle/sulfur = 3,
+	/obj/item/reagent_containers/glass/bottle/saltpetre = 3,
+	/obj/item/geiger_counter = 3
+))
+
+/obj/item/storage/scavpoint/chemplant/get_loot_list()
+	return list(GLOB.chemplant_loot)

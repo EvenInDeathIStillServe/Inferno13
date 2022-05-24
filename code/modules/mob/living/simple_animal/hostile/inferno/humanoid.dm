@@ -226,6 +226,12 @@
 				/obj/item/dice/d6 = 10,
 				/obj/item/razor = 7)
 
+/mob/living/simple_animal/hostile/humanoid/graverobber/Initialize()
+	..()
+	icon_living = "graverobber_[rand(1,3)]"
+	icon_dead = icon_living
+	icon_state = icon_living
+
 /mob/living/simple_animal/hostile/humanoid/graverobber/shovel
 	ranged_message = "swings a shovel"
 	projectile_name = "serrated shovel"
@@ -281,3 +287,29 @@
 				/obj/item/clothing/suit/armor/if13/acf = 10,
 				/obj/item/clothing/gloves/if13/acf = 10,
 				/obj/item/clothing/shoes/if13/acf = 10)
+
+/mob/living/simple_animal/hostile/humanoid/chemplant_mutant
+	name = "chemplant mutant"
+	desc = "A former employee at the MERCURE CHIM chemical plant, now severely mutated and with a crazed look in his eyes. Looks like someone didn't use proper PPE."
+	icon_state = "mutant_1"
+	icon_living = "mutant_1"
+	icon_dead = "mutant_1"
+	maxHealth = 150
+	health = 150
+	armor = list("beat" = 6, "slash" = 6, "stab" = 6, "shot" = 6, "enflame" = 12, "electric" = 15, "acid" = 12, "irradiation" = 20, "cold" = 8)
+	harm_intent_damage = 30
+	melee_damage_lower = 25
+	melee_damage_upper = 35
+	attack_skill = 16
+	parry_class = 1
+	cash_loot_min = 50
+	cash_loot_max = 100
+	experience_on_kill = 100
+	random_prefix = list("mutated", "freak", "deformed", "monstrous")
+	random_suffix = list("chemical operator", "chemical engineer", "chemical inspector", "waste handler", "chemist", "chemical specialist")
+
+/mob/living/simple_animal/hostile/humanoid/chemplant_mutant/Initialize()
+	..()
+	icon_living = "chemplantmutant_[rand(1,4)]"
+	icon_dead = icon_living
+	icon_state = icon_living

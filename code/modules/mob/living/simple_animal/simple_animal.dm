@@ -139,6 +139,9 @@
 	var/del_on_death = 0
 	var/deathmessage = ""
 
+	var/list/random_prefix = list()
+	var/list/random_suffix = list()
+
 	var/allow_movement_on_non_turfs = FALSE
 
 	///Played when someone punches the creature.
@@ -190,6 +193,10 @@
 	GLOB.simple_animals[AIStatus] += src
 	if(gender == PLURAL)
 		gender = pick(MALE,FEMALE)
+	if (random_suffix)
+		name = pick(random_suffix)
+	if (random_prefix)
+		name = "[pick(random_prefix)] [name]"
 	if(!real_name)
 		real_name = name
 	if(!loc)

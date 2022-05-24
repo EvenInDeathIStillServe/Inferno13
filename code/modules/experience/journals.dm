@@ -88,3 +88,7 @@ GLOBAL_LIST_INIT(journal_types, subtypesof(/datum/journal))
 /datum/journal/visit/firestation
 	name = "Visit: Fire Station"
 	desc = "You're pretty sure you shouldn't be smelling napalm in a fire station."
+
+/datum/journal/visit/chemplant
+	name = "Visit: Chemical Plant"
+	desc = "All your senses are overloaded with an acidic tinge."
