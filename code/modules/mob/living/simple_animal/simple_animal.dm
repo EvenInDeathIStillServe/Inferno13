@@ -193,9 +193,9 @@
 	GLOB.simple_animals[AIStatus] += src
 	if(gender == PLURAL)
 		gender = pick(MALE,FEMALE)
-	if (random_suffix)
+	if (length(random_suffix))
 		name = pick(random_suffix)
-	if (random_prefix)
+	if (length(random_prefix))
 		name = "[pick(random_prefix)] [name]"
 	if(!real_name)
 		real_name = name

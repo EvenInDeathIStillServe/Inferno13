@@ -15,7 +15,7 @@
 	unsuitable_atmos_damage = 15
 	faction = list("nefarious")
 	status_flags = CANPUSH
-	butcher_results = list(/obj/item/food/meat/slab/human = 2)
+	butcher_results = list(/obj/item/food/meat/slab/human = 2, /obj/item/stack/sheet/leather = 2)
 	deathmessage = "keels over and falls limp."
 	ranged = TRUE
 	ranged_message = "swings"

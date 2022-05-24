@@ -17,7 +17,7 @@
 	set_butchering()
 
 /obj/item/melee/blade/proc/set_butchering()
-	AddComponent(/datum/component/butchering, 80 - force, 100, force - 10) //bonus chance increases depending on force
+	AddComponent(/datum/component/butchering, 50 - force, 100, force - 10) //bonus chance increases depending on force
 
 /obj/item/melee/blade/suicide_act(mob/user)
 	user.visible_message(pick(span_suicide("[user] is slitting [user.p_their()] wrists with the [src.name]! It looks like [user.p_theyre()] trying to commit suicide."), \

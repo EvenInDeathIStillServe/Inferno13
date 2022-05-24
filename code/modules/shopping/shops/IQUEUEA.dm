@@ -78,7 +78,7 @@
 	name = "chemistry set"
 	icon_state = "chemistry_set"
 	sold_packit = /obj/item/packit/chemistry_set
-	price = 500
+	price = 1000
 
 /obj/structure/packitcart_dispenser
 	name = "packit cart dispenser"

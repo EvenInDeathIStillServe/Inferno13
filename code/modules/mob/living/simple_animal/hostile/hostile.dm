@@ -478,6 +478,7 @@
 			P.armour_penetration = armour_penetration
 			P.name = projectile_name
 			P.hitsound = attack_sound
+			do_attack_animation(targeted_atom)
 		P.original = targeted_atom
 		P.preparePixelProjectile(targeted_atom, src)
 		P.fire()

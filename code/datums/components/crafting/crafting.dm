@@ -211,6 +211,12 @@
 			if(!check_tools(a, R, contents))
 				return ", missing tool."
 			var/list/parts = del_reqs(R, a)
+			if (length(R.craft_skills) && ishuman(a))
+				var/mob/living/carbon/human/crafter = a
+				for (var/craft_skill in R.craft_skills)
+					var/skill_level = crafter.mind.get_effective_skill(craft_skill) + rand(-4,4)
+					if (skill_level < R.craft_skills[craft_skill])
+						return ", too difficult"
 			var/atom/movable/I = new R.result (get_turf(a.loc))
 			I.CheckParts(parts, R)
 			if(send_feedback)

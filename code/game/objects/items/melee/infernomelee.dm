@@ -46,6 +46,7 @@
 		M.attack_skill = effective_skill
 	playsound(user, 'sound/weapons/punchmiss.ogg', 40, 1)
 	M.fire()
+	user.do_attack_animation(target, no_effect = TRUE)
 	user.Immobilize(2)
 	after_melee_attack()
 	return

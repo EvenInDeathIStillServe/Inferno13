@@ -24,6 +24,8 @@
 	var/list/machinery
 	///Should only one object exist on the same turf?
 	var/one_per_turf = FALSE
+	///Associative list of skills & level required
+	var/list/craft_skills = list()
 
 /datum/crafting_recipe/New()
 	if(!(result in reqs))
