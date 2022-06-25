@@ -66,6 +66,11 @@
 	icon_state = "crafting"
 	furniture_type = /obj/machinery/chemistry_set
 
+/obj/item/packit/reloading_bench
+	name = "packit (reloading bench)"
+	icon_state = "crafting"
+	furniture_type = /obj/machinery/reloading_bench
+
 /obj/structure/packitcart
 	name = "packit cart"
 	desc = "A trolley cart designed specially for handling PackIt! packits."

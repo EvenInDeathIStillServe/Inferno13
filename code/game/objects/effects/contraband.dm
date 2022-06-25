@@ -673,5 +673,9 @@
 	icon_state = "poster_legit_aspev_delam"
 //End of AspEv posters
 
+/obj/structure/sign/poster/official/acf_bounty
+	name = "ACF Bounty"
+	desc = "A poster advertising a bounty by the Catharsis City Council on hostile ACF personnel."
+	icon_state = "poster_acf_bounty"
 
 #undef PLACE_SPEED

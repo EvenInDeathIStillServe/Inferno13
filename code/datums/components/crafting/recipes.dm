@@ -1651,5 +1651,72 @@
 	crafted_pipe.setDir(user.dir)
 	crafted_pipe.update()
 
+//INFERNO STUFF
+
+/datum/crafting_recipe/leather_armor
+	name = "Leather Armor"
+	result = /obj/item/clothing/suit/armor/if13/leather
+	reqs = list(/obj/item/stack/sheet/leather = 5)
+	time = 60
+	category = CAT_CLOTHING
+	craft_skills = list(/datum/skill/crafting = 12)
+
+/datum/crafting_recipe/leather_cap
+	name = "Leather Cap"
+	result = /obj/item/clothing/head/helmet/if13/leather
+	reqs = list(/obj/item/stack/sheet/leather = 3)
+	time = 40
+	category = CAT_CLOTHING
+	craft_skills = list(/datum/skill/crafting = 12)
+
+/datum/crafting_recipe/leather_gloves
+	name = "Leather Gloves"
+	result = /obj/item/clothing/gloves/if13/leather
+	reqs = list(/obj/item/stack/sheet/leather = 2)
+	time = 40
+	category = CAT_CLOTHING
+	craft_skills = list(/datum/skill/crafting = 12)
+
+/datum/crafting_recipe/leather_boots
+	name = "Leather Boots"
+	result = /obj/item/clothing/shoes/if13/leather
+	reqs = list(/obj/item/stack/sheet/leather = 2)
+	time = 40
+	category = CAT_CLOTHING
+	craft_skills = list(/datum/skill/crafting = 12)
+
+/datum/crafting_recipe/pistol_9mm_box
+	name = "9mm Ammo Box"
+	result = /obj/item/ammo_box/c9mm
+	time = 4 SECONDS
+	reqs = list(/obj/item/stack/crafting/metalparts = 3,
+				/datum/reagent/gunpowder = 30)
+	machinery = list(/obj/machinery/reloading_bench = CRAFTING_MACHINERY_USE)
+	craft_skills = list(/datum/skill/crafting = 12)
+	category = CAT_WEAPONRY
+	subcategory = CAT_AMMO
+
+/datum/crafting_recipe/buckshot_box
+	name = "12 Gauge Buckshot Box"
+	result = /obj/item/ammo_box/shotgun/buckshot
+	time = 4 SECONDS
+	reqs = list(/obj/item/stack/crafting/metalparts = 4,
+				/datum/reagent/gunpowder = 40)
+	machinery = list(/obj/machinery/reloading_bench = CRAFTING_MACHINERY_USE)
+	craft_skills = list(/datum/skill/crafting = 12)
+	category = CAT_WEAPONRY
+	subcategory = CAT_AMMO
+
+/datum/crafting_recipe/slug_box
+	name = "12 Gauge Slug Box"
+	result = /obj/item/ammo_box/shotgun/slug
+	time = 4 SECONDS
+	reqs = list(/obj/item/stack/crafting/metalparts = 4,
+				/datum/reagent/gunpowder = 40)
+	machinery = list(/obj/machinery/reloading_bench = CRAFTING_MACHINERY_USE)
+	craft_skills = list(/datum/skill/crafting = 12)
+	category = CAT_WEAPONRY
+	subcategory = CAT_AMMO
+
 #undef CRAFTING_MACHINERY_CONSUME
 #undef CRAFTING_MACHINERY_USE

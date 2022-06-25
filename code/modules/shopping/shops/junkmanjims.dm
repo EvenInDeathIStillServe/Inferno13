@@ -5,6 +5,7 @@
 		/obj/item/treasure,
 		/obj/item/broken_bottle,
 		/obj/item/stack/sheet/animalhide,
+		/obj/item/stack/crafting,
 		/obj/item/reagent_containers/syringe,
 		/obj/item/toy,
 		/obj/item/geiger_counter,

@@ -66,7 +66,9 @@ GLOBAL_LIST_INIT(sewer_loot, list(
 	/obj/item/geiger_counter = 1,
 	/obj/item/treasure/trash/pipe = 4,
 	/obj/item/toy/crayon/spraycan = 1,
-	/obj/item/broken_bottle = 3
+	/obj/item/broken_bottle = 3,
+	/obj/item/stack/crafting/metalparts = 5,
+	/obj/item/stack/crafting/metalparts/three = 1
 ))
 
 /obj/item/storage/scavpoint/sewer/get_loot_list()

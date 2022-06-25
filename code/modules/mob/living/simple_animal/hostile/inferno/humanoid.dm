@@ -125,7 +125,7 @@
 	butcher_results = list(/obj/item/food/meat/slab/human/mutant/chud = 2, /obj/item/stack/sheet/animalhide/chud = 2)
 	experience_on_kill = 30
 
-	random_prefix = list("hungry", "ravenous", "creeping", "murderous", "monstrous")
+	random_prefix = list("hungry", "ravenous", "creeping", "murderous", "monstrous", "blood-splattered")
 	random_suffix = list("chud", "C.H.U.D", "sewerman", "undergrounder", "humanoid")
 
 /mob/living/simple_animal/hostile/humanoid/chud/Initialize()
@@ -164,7 +164,7 @@
 				/obj/item/clothing/gloves/if13/turnout = 10,
 				/obj/item/clothing/shoes/if13/turnout = 10)
 	experience_on_kill = 75
-	random_prefix = list("fiery", "raging", "heated", "hot-headed", "blazing")
+	random_prefix = list("fiery", "raging", "heated", "hot-headed", "blazing", "charred")
 	random_suffix = list("firefighter")
 
 /mob/living/simple_animal/hostile/humanoid/firefighter/Initialize()
@@ -235,6 +235,8 @@
 				/obj/item/flashlight/lantern = 10,
 				/obj/item/dice/d6 = 10,
 				/obj/item/razor = 7)
+	random_prefix = list("sly", "opportunistic", "wily", "dirt-covered", "grubby")
+	random_suffix = list("looter", "graverobber", "archeologist", "pilferer")
 
 /mob/living/simple_animal/hostile/humanoid/graverobber/Initialize()
 	..()
@@ -315,7 +317,7 @@
 	cash_loot_min = 50
 	cash_loot_max = 100
 	experience_on_kill = 100
-	random_prefix = list("mutated", "freak", "deformed", "monstrous", "irradiated")
+	random_prefix = list("mutated", "freak", "deformed", "monstrous", "irradiated", "acidified")
 	random_suffix = list("chemical operator", "chemical engineer", "chemical inspector", "waste handler", "chemist", "chemical specialist")
 
 /mob/living/simple_animal/hostile/humanoid/chemplant_mutant/Initialize()

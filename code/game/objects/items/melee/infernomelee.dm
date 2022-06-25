@@ -35,6 +35,11 @@
 	M.def_zone = ran_zone(user.zone_selected)
 	M.range = attack_range
 	M.parry_class = parry_class
+	M.icon = icon
+	M.icon_state = icon_state
+	M.alpha = 150
+	if (istype(src, /obj/item/melee) && !src:charge_time_left)
+		M.color = COLOR_RED
 	if (ishuman(user) && combat_skill)
 		M.combat_skill = combat_skill
 		var/combatant_skill = user.mind.get_skill_level(combat_skill)
