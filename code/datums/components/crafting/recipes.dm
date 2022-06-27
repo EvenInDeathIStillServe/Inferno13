@@ -1696,6 +1696,17 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
 
+/datum/crafting_recipe/pistol_45_box
+	name = ".45 ACP Ammo Box"
+	result = /obj/item/ammo_box/c45
+	time = 4 SECONDS
+	reqs = list(/obj/item/stack/crafting/metalparts = 4,
+				/datum/reagent/gunpowder = 40)
+	machinery = list(/obj/machinery/reloading_bench = CRAFTING_MACHINERY_USE)
+	craft_skills = list(/datum/skill/crafting = 12)
+	category = CAT_WEAPONRY
+	subcategory = CAT_AMMO
+
 /datum/crafting_recipe/buckshot_box
 	name = "12 Gauge Buckshot Box"
 	result = /obj/item/ammo_box/shotgun/buckshot
@@ -1715,6 +1726,36 @@
 				/datum/reagent/gunpowder = 40)
 	machinery = list(/obj/machinery/reloading_bench = CRAFTING_MACHINERY_USE)
 	craft_skills = list(/datum/skill/crafting = 12)
+	category = CAT_WEAPONRY
+	subcategory = CAT_AMMO
+
+/datum/crafting_recipe/pistol_9mm_mag
+	name = "9mm Pistol Magazine"
+	result = /obj/item/ammo_box/magazine/m9mm/empty
+	time = 2 SECONDS
+	reqs = list(/obj/item/stack/crafting/metalparts = 2)
+	machinery = list(/obj/machinery/reloading_bench = CRAFTING_MACHINERY_USE)
+	craft_skills = list(/datum/skill/crafting = 10)
+	category = CAT_WEAPONRY
+	subcategory = CAT_AMMO
+
+/datum/crafting_recipe/pistol_45_mag
+	name = ".45 ACP Pistol Magazine"
+	result = /obj/item/ammo_box/magazine/m45/empty
+	time = 2 SECONDS
+	reqs = list(/obj/item/stack/crafting/metalparts = 2)
+	machinery = list(/obj/machinery/reloading_bench = CRAFTING_MACHINERY_USE)
+	craft_skills = list(/datum/skill/crafting = 10)
+	category = CAT_WEAPONRY
+	subcategory = CAT_AMMO
+
+/datum/crafting_recipe/pistol_22_mag
+	name = ".22LR Pistol Magazine"
+	result = /obj/item/ammo_box/magazine/m22/empty
+	time = 2 SECONDS
+	reqs = list(/obj/item/stack/crafting/metalparts = 2)
+	machinery = list(/obj/machinery/reloading_bench = CRAFTING_MACHINERY_USE)
+	craft_skills = list(/datum/skill/crafting = 10)
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
 

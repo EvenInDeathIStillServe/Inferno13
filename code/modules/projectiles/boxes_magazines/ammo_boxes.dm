@@ -55,7 +55,7 @@
 	name = "ammo box (9mm)"
 	icon_state = "9mmbox"
 	ammo_type = /obj/item/ammo_casing/c9mm
-	max_ammo = 30
+	max_ammo = 50
 
 /obj/item/ammo_box/c10mm
 	name = "ammo box (10mm)"
@@ -67,7 +67,7 @@
 	name = "ammo box (.45)"
 	icon_state = "45box"
 	ammo_type = /obj/item/ammo_casing/c45
-	max_ammo = 20
+	max_ammo = 50
 
 /obj/item/ammo_box/a40mm
 	name = "ammo box (40mm grenades)"

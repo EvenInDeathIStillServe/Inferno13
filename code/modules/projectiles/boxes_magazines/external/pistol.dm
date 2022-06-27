@@ -19,6 +19,9 @@
 	. = ..()
 	icon_state = "[base_icon_state]-[min(ammo_count(), 8)]"
 
+/obj/item/ammo_box/magazine/m45/empty
+	start_empty = TRUE
+
 /obj/item/ammo_box/magazine/m9mm
 	name = "pistol magazine (9mm)"
 	icon_state = "9x19p-8"
@@ -30,6 +33,9 @@
 /obj/item/ammo_box/magazine/m9mm/update_icon_state()
 	. = ..()
 	icon_state = "[base_icon_state]-[ammo_count() ? "8" : "0"]"
+
+/obj/item/ammo_box/magazine/m9mm/empty
+	start_empty = TRUE
 
 /obj/item/ammo_box/magazine/m9mm/fire
 	name = "pistol magazine (9mm incendiary)"
@@ -83,6 +89,9 @@
 	caliber = ".22lr"
 	max_ammo = 16
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+
+/obj/item/ammo_box/magazine/m22/empty
+	start_empty = TRUE
 
 /obj/item/ammo_box/magazine/m50
 	name = "handgun magazine (.50ae)"

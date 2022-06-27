@@ -192,6 +192,9 @@
 
 	return TRUE
 
+#define CRAFT_SUCCESS 0
+#define CRAFT_FAIL 1
+#define CRAFT_EPIC_FAIL 2
 
 /datum/component/personal_crafting/proc/construct_item(atom/a, datum/crafting_recipe/R)
 	var/list/contents = get_surroundings(a,R.blacklist)
@@ -210,13 +213,21 @@
 				return ", missing component."
 			if(!check_tools(a, R, contents))
 				return ", missing tool."
-			var/list/parts = del_reqs(R, a)
+			var/outcome = CRAFT_SUCCESS
 			if (length(R.craft_skills) && ishuman(a))
 				var/mob/living/carbon/human/crafter = a
 				for (var/craft_skill in R.craft_skills)
 					var/skill_level = crafter.mind.get_effective_skill(craft_skill) + rand(-4,4)
-					if (skill_level < R.craft_skills[craft_skill])
-						return ", too difficult"
+					if (skill_level < R.craft_skills[craft_skill] - 4)
+						outcome = CRAFT_EPIC_FAIL
+						break
+					else if (skill_level < R.craft_skills[craft_skill])
+						outcome = CRAFT_FAIL
+			if (outcome == CRAFT_FAIL)
+				return ", too difficult."
+			var/list/parts = del_reqs(R, a)
+			if (outcome == CRAFT_EPIC_FAIL)
+				return ", really difficult! Wasted the materials."
 			var/atom/movable/I = new R.result (get_turf(a.loc))
 			I.CheckParts(parts, R)
 			if(send_feedback)
