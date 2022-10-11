@@ -80,7 +80,7 @@
 		if (source.force > 0)
 			readout += "A regular blow deals [source.force] [source.damtype] damage."
 		else
-			readout += "It is useless as a weapon."
+			readout += "It is useless as a melee weapon."
 
 		if (source.throwforce > 0)
 			readout += "When thrown, it will deal [source.throwforce] damage."

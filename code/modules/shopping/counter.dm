@@ -53,7 +53,7 @@
 			return
 		to_chat(usr, "<span class='notice'>You pay for your purchase and get a bag with your stuff inside.</span>")
 		if (!card.prepaid)
-			user.payact(-card.total)
+			user.payact(-card.total, store)
 		var/obj/item/storage/box/shopping_bag/bag = new /obj/item/storage/box/shopping_bag(loc)
 		for (var/list/entry in card.goods)
 			var/path = entry["item_path"]
@@ -68,7 +68,7 @@
 	else
 		var/sale_value = try_sell(W, user)
 		if (sale_value > 0)
-			user.payact(sale_value)
+			user.payact(sale_value, store)
 			speech(say_sell)
 		else
 			speech(say_no_sell)

@@ -26,7 +26,7 @@
 		if (!user.canpay(price))
 			to_chat(user, "<span class='warning'>Your credchip beeps sadly, and you retract your hand out of shame.</span>")
 			return
-		user.payact(-price)
+		user.payact(-price, "IQUEUEA")
 		var/obj/item/packit/packit = new sold_packit(src.loc)
 		user.put_in_hands(packit)
 		to_chat(user, span_notice("Your credchip automatically registers the purchase as you pick up [packit]."))
@@ -107,7 +107,7 @@
 		if (!user.canpay(250))
 			to_chat(user, "<span class='warning'>Your credchip beeps sadly, and you retract your hand out of shame.</span>")
 			return
-		user.payact(-250)
+		user.payact(-250, "IQUEUEA")
 		var/obj/item/packit/packit = new /obj/structure/packitcart(user.loc)
 		user.start_pulling(packit)
 		to_chat(user, span_notice("Your credchip automatically registers the purchase as you pull out [packit]."))
@@ -120,7 +120,7 @@
 		if (cart.contents.len)
 			to_chat(user, "<span class='warning'>[cart] is still loaded! Unload it first.</span>")
 			return
-		user.payact(250)
+		user.payact(250, "IQUEUEA")
 		to_chat(user, span_notice("You return the cart and receive the deposit for it."))
 		user.award_journal(/datum/journal/packitcarttheory)
 		qdel(cart)
