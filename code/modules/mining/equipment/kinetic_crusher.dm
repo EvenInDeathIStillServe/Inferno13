@@ -26,7 +26,7 @@
 	light_on = FALSE
 	var/list/trophies = list()
 	var/charged = TRUE
-	var/charge_time = 15
+	charge_time = 15
 	var/detonation_damage = 50
 	var/backstab_bonus = 30
 	var/wielded = FALSE // track wielded status on item

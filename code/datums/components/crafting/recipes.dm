@@ -222,7 +222,7 @@
 /datum/crafting_recipe/tempgun/New()
 	..()
 	blacklist += subtypesof(/obj/item/gun/energy/e_gun)
-
+/*
 /datum/crafting_recipe/beam_rifle
 	name = "Particle Acceleration Rifle"
 	tool_behaviors = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
@@ -239,7 +239,7 @@
 /datum/crafting_recipe/beam_rifle/New()
 	..()
 	blacklist += subtypesof(/obj/item/gun/energy/e_gun)
-
+*/
 /datum/crafting_recipe/ebow
 	name = "Energy Crossbow"
 	tool_behaviors = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)

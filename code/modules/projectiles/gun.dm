@@ -23,16 +23,8 @@
 	combat_skill = /datum/skill/guns
 
 	canMouseDown = TRUE
-	var/aiming_slowdown = 0.5
-	var/aiming = FALSE
-	var/charge_time_left = 2 SECONDS
-	var/charge_time = 2 SECONDS
-	var/lastangle = 0
-	var/indicator_lastangle = 0
-	var/last_indicator = 0
-	var/last_process = 0
-	var/list/obj/effect/projectile/tracer/current_indicators
-	var/mob/current_user = null
+//	var/aiming_slowdown = 0.5
+	charge_time = 3
 
 	var/gun_flags = NONE
 	var/fire_sound = 'sound/weapons/gun/pistol/shot.ogg'
@@ -103,7 +95,6 @@
 	if(gun_light)
 		alight = new(src)
 	build_zooming()
-	current_indicators = list()
 
 /obj/item/gun/Destroy()
 	if(isobj(pin)) //Can still be the initial path, then we skip
@@ -119,107 +110,6 @@
 	if(isatom(suppressed)) //SUPPRESSED IS USED AS BOTH A TRUE/FALSE AND AS A REF, WHAT THE FUCKKKKKKKKKKKKKKKKK
 		QDEL_NULL(suppressed)
 	return ..()
-
-/obj/item/gun/process()
-	if (!ishuman(loc))
-		STOP_PROCESSING(SSfastprocess, src)
-		return
-	charge_time_left = max(0, charge_time_left - (world.time - last_process))
-	last_process = world.time
-	charge_indicator(TRUE)
-	mouse_track()
-
-/obj/item/gun/onMouseDown(object, location, params, mob/living/carbon/human/mob)
-	if(!ishuman(mob))
-		return ..()
-	if(istype(object, /atom/movable/screen))// && !istype(object, /obj/screen/click_catcher))
-		return
-	if((object in mob.contents) || (object == mob))
-		return
-	if(mob:combat_mode)
-		set_user(mob)
-		mouse_track()
-		start_aiming()
-	return ..()
-
-/obj/item/gun/onMouseUp(object, location, params, mob/living/carbon/human/M)
-	if(!ishuman(M))
-		return ..()
-	if(istype(object, /atom/movable/screen))// && !istype(object, /obj/screen/click_catcher))
-		return
-	if(!M.throw_mode && M.combat_mode)
-		fire_gun(object, M, M.CanReach(object,src), M.client.mouseParams)
-		set_user(null)
-	return ..()
-
-/obj/item/gun/proc/mouse_track()
-	if (istype(current_user) && current_user.client && current_user.client.mouseParams)
-		var/angle = mouse_angle_from_client(current_user.client)
-		current_user.setDir(angle2dir_cardinal(angle))
-		lastangle = angle
-
-obj/item/gun/proc/charge_indicator(force_update = FALSE)
-	var/diff = abs(indicator_lastangle - lastangle)
-	if(!check_user())
-		return
-	if(((diff < CHARGE_INDICATOR_ANGLE_CHANGE_THRESHOLD) || ((last_indicator + 1) > world.time)) && !force_update)
-		return
-	indicator_lastangle = lastangle
-	var/obj/projectile/beam/beam_rifle/hitscan/aiming_beam/P = new
-	P.gun = src
-	P.range = 3
-	if(charge_time)
-		var/percent = ((100/charge_time)*charge_time_left)
-		P.color = rgb(255 * percent,255 * ((100 - percent) / 100),0)
-	else
-		P.color = rgb(0, 255, 0)
-	var/turf/curloc = get_turf(src)
-	var/turf/targloc = get_turf(current_user.client.mouseObject)
-	if(!istype(targloc))
-		if(!istype(curloc))
-			return
-		targloc = get_turf_in_angle(lastangle, curloc, 10)
-	var/mouse_modifiers = params2list(current_user.client.mouseParams)
-	P.preparePixelProjectile(targloc, current_user, mouse_modifiers, 0)
-	P.fire(lastangle)
-	last_indicator = world.time
-
-/obj/item/gun/proc/check_user(automatic_cleanup = TRUE)
-	if(!istype(current_user) || !isturf(current_user.loc) || !(src in current_user.held_items) || current_user.incapacitated())	//Doesn't work if you're not holding it!
-		if(automatic_cleanup)
-			set_user(null)
-		return FALSE
-	return TRUE
-
-/obj/item/gun/proc/on_mob_move()
-	check_user()
-	if(aiming)
-		charge_indicator(TRUE)
-
-/obj/item/gun/proc/start_aiming()
-	charge_time_left = charge_time
-	aiming = TRUE
-	slowdown = aiming_slowdown
-	current_user?.update_equipment_speed_mods()
-
-/obj/item/gun/proc/stop_aiming()
-	set waitfor = FALSE
-	charge_time_left = charge_time
-	aiming = FALSE
-	QDEL_LIST(current_indicators)
-	slowdown = initial(slowdown)
-	current_user?.update_equipment_speed_mods()
-
-/obj/item/gun/proc/set_user(mob/user)
-	if(user == current_user)
-		return
-	stop_aiming(current_user)
-	if(current_user)
-		UnregisterSignal(current_user, COMSIG_MOVABLE_MOVED)
-		current_user = null
-	if(istype(user))
-		current_user = user
-		RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/on_mob_move)
 
 /obj/item/gun/handle_atom_del(atom/A)
 	if(A == pin)
@@ -340,11 +230,11 @@ obj/item/gun/proc/charge_indicator(force_update = FALSE)
 
 	user.AddComponent(/datum/component/gunpoint, victim, src)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-/*
+
 /obj/item/gun/afterattack(atom/target, mob/living/user, flag, params)
 	. = ..()
 	return fire_gun(target, user, flag, params)
-*/
+
 /obj/item/gun/proc/fire_gun(atom/target, mob/living/user, flag, params)
 	if(QDELETED(target))
 		return
@@ -403,8 +293,8 @@ obj/item/gun/proc/charge_indicator(force_update = FALSE)
 		var/gun_skill = user.mind.get_skill_level(combat_skill)
 		if (gun_skill < minimum_combat_skill)
 			bonus_spread += 50
-	if (charge_time_left)
-		bonus_spread +=  50*charge_time_left/charge_time
+	if (last_attack + charge_time > world.time)
+		bonus_spread +=  50 * (world.time - last_attack)/charge_time
 	return process_fire(target, user, TRUE, params, null, bonus_spread)
 
 /obj/item/gun/proc/check_botched(mob/living/user, atom/target)
@@ -531,9 +421,8 @@ obj/item/gun/proc/charge_indicator(force_update = FALSE)
 
 	if(user)
 		user.update_inv_hands()
+	last_attack = world.time
 	SSblackbox.record_feedback("tally", "gun_fired", 1, type)
-
-	aiming = FALSE
 
 	return TRUE
 
@@ -735,7 +624,6 @@ obj/item/gun/proc/charge_indicator(force_update = FALSE)
 	..()
 	if(azoom)
 		azoom.Grant(user)
-	START_PROCESSING(SSfastprocess, src)
 
 /obj/item/gun/dropped(mob/user)
 	. = ..()
@@ -743,13 +631,6 @@ obj/item/gun/proc/charge_indicator(force_update = FALSE)
 		azoom.Remove(user)
 	if(zoomed)
 		zoom(user, user.dir, FALSE)
-	aiming = FALSE
-	STOP_PROCESSING(SSfastprocess, src)
-
-/obj/item/gun/Destroy()
-	STOP_PROCESSING(SSfastprocess, src)
-	QDEL_LIST(current_indicators)
-	..()
 
 /obj/item/gun/update_overlays()
 	. = ..()

@@ -30,7 +30,7 @@
 		return FALSE
 	if (world.time < spawn_delay)
 		return 0
-	if (viewed_by_player())
+	if (get_turf(viewed_by_player()))
 //		addtimer(CALLBACK(src, .proc/spawn_mob), 1 MINUTES)
 		return FALSE
 	spawn_delay = world.time + spawn_time

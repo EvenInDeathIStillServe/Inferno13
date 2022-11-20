@@ -49,8 +49,8 @@
 	minimum_combat_skill = 5
 	wound_bonus = -15
 	bare_wound_bonus = 20
-	charge_time = 3 SECONDS
-	charging_slowdown = 0.7
+	charge_time = 4 SECONDS
+//	charging_slowdown = 0.7
 	obj_value = 400
 
 /obj/item/melee/club/fireaxe/ComponentInitialize()

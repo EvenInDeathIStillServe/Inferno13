@@ -28,6 +28,8 @@
 
 	pb_knockback = 2
 
+	charge_time = 5
+
 /obj/item/gun/ballistic/shotgun/blow_up(mob/user)
 	. = 0
 	if(chambered?.loaded_projectile)

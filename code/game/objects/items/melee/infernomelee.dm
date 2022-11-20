@@ -1,17 +1,17 @@
-#define CHARGE_INDICATOR_ANGLE_CHANGE_THRESHOLD 0.1
-
 /obj/item
 	var/combat_capable = FALSE //Whether it can swing as a weapon.
 	var/attack_range = 3
 	var/combat_skill = null //Combat skill used (/datum/skill/melee)
 	var/minimum_combat_skill = 0 //If combat skill is lower than this, big damage debuff. for guns, big inaccuracy
 	var/parry_class = 1
+	var/last_attack = 0
+	var/charge_time = 2 SECONDS
 
 /obj/item/afterattack(atom/target, mob/living/user, flag, params)
 	. = ..()
 	if (!combat_capable)
 		return
-	if (!istype(src, /obj/item/melee) && user.combat_mode)
+	if (user.combat_mode)
 		melee_attack(target, user, flag, params)
 
 /obj/item/proc/melee_attack(atom/target, mob/living/user, proximity_flag, clickparams)
@@ -38,7 +38,7 @@
 	M.icon = icon
 	M.icon_state = icon_state
 	M.alpha = 150
-	if (istype(src, /obj/item/melee) && !src:charge_time_left)
+	if (last_attack + charge_time <= world.time)
 		M.color = COLOR_RED
 	if (ishuman(user) && combat_skill)
 		M.combat_skill = combat_skill
@@ -51,6 +51,7 @@
 		M.attack_skill = effective_skill
 	playsound(user, 'sound/weapons/punchmiss.ogg', 40, 1)
 	M.fire()
+	last_attack = world.time
 	user.do_attack_animation(target, no_effect = TRUE)
 	user.Immobilize(2)
 	after_melee_attack()
@@ -64,152 +65,17 @@
 
 /obj/item/melee
 	combat_capable = TRUE
-	canMouseDown = TRUE
 	slot_flags = ITEM_SLOT_BELT
-	var/charging_slowdown = 0.5
-	var/charging = FALSE
-	var/charge_time_left = 2 SECONDS
-	var/charge_time = 2 SECONDS
-	var/lastangle = 0
-	var/indicator_lastangle = 0
-	var/last_indicator = 0
-	var/last_process = 0
-	var/list/obj/effect/projectile/tracer/current_indicators
-	var/mob/current_user = null
 	parry_class = 1
 
 /obj/item/melee/apply_damage_modifier()
-	if (charging)
-		return (force/2) + ((charge_time-charge_time_left)/charge_time) * force
-	else return force/2
+	return force/2 + (min(force/2, force * ((world.time - last_attack)/charge_time)))
 
 /obj/item/melee/after_melee_attack()
-	charging = FALSE
-
-/obj/item/melee/Initialize()
-	. = ..()
-	current_indicators = list()
 
 /obj/item/melee/pickup(mob/user)
 	..()
-	START_PROCESSING(SSfastprocess, src)
-
-/obj/item/melee/dropped(mob/user)
-	..()
-	charging = FALSE
-	STOP_PROCESSING(SSfastprocess, src)
-
-/obj/item/melee/Destroy()
-	STOP_PROCESSING(SSfastprocess, src)
-	QDEL_LIST(current_indicators)
-	..()
-
-/obj/item/melee/process()
-	if (!ishuman(loc))
-		STOP_PROCESSING(SSfastprocess, src)
-		return
-	charge_time_left = max(0, charge_time_left - (world.time - last_process))
-	last_process = world.time
-	charge_indicator(TRUE)
-	mouse_track()
-
-/obj/item/melee/onMouseDown(object, location, params, mob/living/carbon/human/mob)
-	if(!ishuman(mob))
-		return ..()
-	if(istype(object, /atom/movable/screen))// && !istype(object, /obj/screen/click_catcher))
-		return
-	if((object in mob.contents) || (object == mob))
-		return
-	if(mob:combat_mode)
-		set_user(mob)
-		mouse_track()
-		start_charging()
-	return ..()
-
-/obj/item/melee/onMouseUp(object, location, params, mob/living/carbon/human/M)
-	if(!ishuman(M))
-		return ..()
-	if(istype(object, /atom/movable/screen))// && !istype(object, /obj/screen/click_catcher))
-		return
-	if(!M.throw_mode && M.combat_mode)
-		melee_attack(object, M, M.CanReach(object,src), M.client.mouseParams)
-		set_user(null)
-	return ..()
-
-obj/item/melee/onMouseDrag(src_object, over_object, src_location, over_location, params, mob)
-	if(charging)
-		mouse_track()
-		charge_indicator()
-	return ..()
-
-/obj/item/melee/proc/mouse_track()
-	if (istype(current_user) && current_user.client && current_user.client.mouseParams)
-		var/angle = mouse_angle_from_client(current_user.client)
-		current_user.setDir(angle2dir_cardinal(angle))
-		lastangle = angle
-
-obj/item/melee/proc/charge_indicator(force_update = FALSE)
-	var/diff = abs(indicator_lastangle - lastangle)
-	if(!check_user())
-		return
-	if(((diff < CHARGE_INDICATOR_ANGLE_CHANGE_THRESHOLD) || ((last_indicator + 1) > world.time)) && !force_update)
-		return
-	indicator_lastangle = lastangle
-	var/obj/projectile/beam/beam_rifle/hitscan/aiming_beam/P = new
-	P.gun = src
-	P.range = attack_range
-	if(charge_time)
-		var/percent = ((100/charge_time)*charge_time_left)
-		P.color = rgb(255 * percent,255 * ((100 - percent) / 100),0)
-	else
-		P.color = rgb(0, 255, 0)
-	var/turf/curloc = get_turf(src)
-	var/turf/targloc = get_turf(current_user.client.mouseObject)
-	if(!istype(targloc))
-		if(!istype(curloc))
-			return
-		targloc = get_turf_in_angle(lastangle, curloc, 10)
-	var/mouse_modifiers = params2list(current_user.client.mouseParams)
-	P.preparePixelProjectile(targloc, current_user, mouse_modifiers, 0)
-	P.fire(lastangle)
-	last_indicator = world.time
-
-/obj/item/melee/proc/check_user(automatic_cleanup = TRUE)
-	if(!istype(current_user) || !isturf(current_user.loc) || !(src in current_user.held_items) || current_user.incapacitated())	//Doesn't work if you're not holding it!
-		if(automatic_cleanup)
-			set_user(null)
-		return FALSE
-	return TRUE
-
-/obj/item/melee/proc/on_mob_move()
-	check_user()
-	if(charging)
-		charge_indicator(TRUE)
-
-/obj/item/melee/proc/start_charging()
-	charge_time_left = charge_time
-	charging = TRUE
-	slowdown = charging_slowdown
-	current_user?.update_equipment_speed_mods()
-
-/obj/item/melee/proc/stop_charging()
-	set waitfor = FALSE
-	charge_time_left = charge_time
-	charging = FALSE
-	QDEL_LIST(current_indicators)
-	slowdown = initial(slowdown)
-	current_user?.update_equipment_speed_mods()
-
-/obj/item/melee/proc/set_user(mob/user)
-	if(user == current_user)
-		return
-	stop_charging(current_user)
-	if(current_user)
-		UnregisterSignal(current_user, COMSIG_MOVABLE_MOVED)
-		current_user = null
-	if(istype(user))
-		current_user = user
-		RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/on_mob_move)
+	last_attack = world.time
 
 /obj/item/melee/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if (!owner.combat_mode)
